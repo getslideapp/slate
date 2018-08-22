@@ -41,3 +41,8 @@ For those who don't have JavaScript runtime or are experiencing JavaScript runti
 
 ## Deployment
 
+Run the following command to push the changes to https://docs.getslideapp.com/. 
+
+```
+./deploy.sh
+```

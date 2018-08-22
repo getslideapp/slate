@@ -41,16 +41,3 @@ For those who don't have JavaScript runtime or are experiencing JavaScript runti
 
 ## Deployment
 
-### Check environment
-
-`gcloud config configurations list`
-
-`gcloud config configurations activate [stage/prod]`
-
-### Deploy
-
-`gcloud app deploy --version [VERSION_NAME]`
-
-### Mapping Custom Domains
-
-`gcloud app deploy dispatch.yaml`

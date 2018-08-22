@@ -1,12 +1,10 @@
-Sample Docs
-------------
+## Sample Docs
 
 If you'd like to check out what Slate is capable of, take a look at the [sample docs](http://lord.github.io/slate)
 
 
 
-Starting the Server
-------------
+## Starting the Server
 
 Locally
 
@@ -27,8 +25,7 @@ docker-compose up
 
 You can now see the docs at http://localhost:4567.
 
-Getting Started with Slate
-------------------------------
+## Getting Started with Slate 
 
 ### Prerequisites
 
@@ -41,3 +38,19 @@ You're going to need:
 ### Note on JavaScript Runtime
 
 For those who don't have JavaScript runtime or are experiencing JavaScript runtime issues with ExecJS, it is recommended to add the [rubyracer gem](https://github.com/cowboyd/therubyracer) to your gemfile and run `bundle` again.
+
+## Deployment
+
+### Check environment
+
+`gcloud config configurations list`
+
+`gcloud config configurations activate [stage/prod]`
+
+### Deploy
+
+`gcloud app deploy --version [VERSION_NAME]`
+
+### Mapping Custom Domains
+
+`gcloud app deploy dispatch.yaml`

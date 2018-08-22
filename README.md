@@ -5,10 +5,10 @@ If you'd like to check out what Slate is capable of, take a look at the [sample 
 
 
 
-Getting Running
+Starting the Server
 ------------
 
-
+Locally
 
 ```shell
 # either run this to run locally
@@ -19,7 +19,7 @@ bundle exec middleman server
 vagrant up
 ```
 
-OR using docker
+Using docker
 
 ```shell
 docker-compose up

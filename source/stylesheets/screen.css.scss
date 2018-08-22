@@ -275,8 +275,9 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding: 5px;
+    // padding-top: 5px;
+    // left: 5px;
     // border-bottom: 5px solid $lang-select-active-bg;
   }
 }
@@ -297,11 +298,13 @@ html, body {
     &:active, &:focus {
       background-color: $lang-select-pressed-bg;
       color: $lang-select-pressed-text;
+      border-radius: 5px 5px 5px 5px;
     }
 
     &.active {
       background-color: $lang-select-active-bg;
       color: $lang-select-active-text;
+      border-radius: 5px 5px 5px 5px;
     }
   }
 

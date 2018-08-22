@@ -19,55 +19,65 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+> Production API Endpoint:
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+```shell
+https://[COMPANY].getslideapp.com/api/2
+```
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+> Development API Endpoint:
+
+```shell
+https://stage.[COMPANY].getslideapp.com/api/2
+```
+
+> Make sure to replace `[COMPANY]` with your Company Id.
+
+The Slide API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.
+
+Requests made with test mode credentials never hit the banking networks and incur no cost.
+
+<aside class="notice">
+You must replace <code>[COMPANY]</code> in all API Requests with your Company Id.
+</aside>
+
 
 # Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "https://[COMPANY].getslideapp.com/api/2" \
+  -H "Authorization: [TOKEN]"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `[TOKEN]` with your API token.
 
-let api = kittn.authorize('meowmeowmeow');
-```
+Slide uses a token-based HTTP Authentication scheme.
 
-> Make sure to replace `meowmeowmeow` with your API key.
+Authenticate your account by including your token in API requests. Your API tokens carry many privileges, so be sure to keep them secure!
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Once a user has logged in and received a token, each subsequent request should include the token in the HTTP Authorization header.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+<!-- You can register a new Slide API key at our [developer portal](http://example.com/developers).You can manage your API keys in the Dashboard.  -->
 
-`Authorization: meowmeowmeow`
+
+
+
+All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
+
+Slide expects the API token to be included in the HTTP Authorization header in all API requests to the server:
+
+`Authorization: [TOKEN]`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>[TOKEN]</code> with your personal API token.
 </aside>
 
-# Kittens
+# Users
 
-## Get All Kittens
+## Get All Users
 
 ```ruby
 require 'kittn'
@@ -116,7 +126,7 @@ let kittens = api.kittens.get();
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all users.
 
 ### HTTP Request
 
@@ -133,7 +143,7 @@ available | true | If set to false, the result will include kittens that have al
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Get a Specific Kitten
+## Get a Specific User
 
 ```ruby
 require 'kittn'
@@ -187,7 +197,7 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
 
-## Delete a Specific Kitten
+## Delete a Specific User
 
 ```ruby
 require 'kittn'

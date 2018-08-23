@@ -22,13 +22,13 @@ search: true
 > Production API Endpoint:
 
 ```shell
-https://api.[COMPANY].getslideapp.com/2
+https://[COMPANY].api.getslideapp.com/2
 ```
 
 > Development API Endpoint:
 
 ```shell
-https://dev.api.[COMPANY].getslideapp.com/2
+https://dev.[COMPANY].api.getslideapp.com/2
 ```
 
 > Make sure to replace `[COMPANY]` with your Company Id.
@@ -47,7 +47,7 @@ You must replace <code>[COMPANY]</code> in all API Requests with your Company Id
 > To authorize, use this code:
 
 ```shell
-curl "https://[COMPANY].getslideapp.com/api/2" \
+curl "https://[COMPANY].api.getslideapp.com/2" \
   -H "Authorization: [TOKEN]"
 ```
 

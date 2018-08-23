@@ -79,7 +79,7 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 ## Get All Users
 
 ```ruby
-require 'kittn'
+require 'kittns'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
 api.kittens.get

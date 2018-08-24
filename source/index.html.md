@@ -8,8 +8,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
 #  - javascript
 
 toc_footers:
-  - <a href='#'>ADD LINKS HERE</a>
-  #- <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a>
+  - <a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a>
 
 includes:
   - errors

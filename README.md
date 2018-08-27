@@ -2,7 +2,15 @@
 
 If you'd like to check out what Slate is capable of, take a look at the [sample docs](http://lord.github.io/slate)
 
+## Getting Started with Slate 
 
+### Prerequisites
+
+You're going to need:
+
+ - **Linux or macOS** — Windows may work, but is unsupported.
+ - **Ruby, version 2.3.1 or newer**
+ - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
 
 ## Starting the Server
 
@@ -25,15 +33,9 @@ docker-compose up
 
 You can now see the docs at http://localhost:4567.
 
-## Getting Started with Slate 
+## Editing the Documents
 
-### Prerequisites
-
-You're going to need:
-
- - **Linux or macOS** — Windows may work, but is unsupported.
- - **Ruby, version 2.3.1 or newer**
- - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
+You can edit the documents by editing the following file: `source/index/html.md`
 
 ## Deployment
 

@@ -1,8 +1,8 @@
 ---
-title: Slide API Reference
+title: Slide API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
+  - shell : cURL
   - ruby
 #  - python
 #  - javascript

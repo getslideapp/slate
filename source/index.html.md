@@ -68,7 +68,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail. 
 
 Slide expects the API token to be included in the HTTP Authorization header in all API requests to the server:
 
-`Authorization: [TOKEN]`
+`Authorization: Token [TOKEN]`
 
 <aside class="notice">
 You must replace <code>[TOKEN]</code> with your personal API token.
@@ -76,172 +76,202 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 
 # Users
 
-## Get All Users
-
-```ruby
-require 'kittns'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Get User
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "https://[COMPANY].api.getslideapp.com/2/user/"
+  -X GET
+  -H "Authorization: Token [TOKEN]"
 ```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+    "data": {
+        "identifier": "230899032-f09832409-23580913",
+        "first_name": "Testy",
+        "last_name": "McTester",
+        "email": "testy@getslideapp.com",
+        "mobile_number": "+27821111112",
+        "company": "slide",
+        "group": "user",
+        "created": "2018-08-21T09:27:25.882898Z",
+        "updated": "2018-08-29T16:58:54.647283Z"
+    },
+    "message": null,
+    "status": "success"
+}
 ```
 
-This endpoint retrieves all users.
+This endpoint retrieves the profile details for the logged in user.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://[COMPANY].api.getslideapp.com/2/user/`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+None
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+# Admin
 
-## Get a Specific User
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## List Users
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl "https://[COMPANY].api.getslideapp.com/2/admin/users/"
+  -X GET
+  -H "Authorization: Token [TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+    "data": {
+        "identifier": "230899032-f09832409-23580913",
+        "first_name": "Testy",
+        "last_name": "McTester",
+        "email": "testy@getslideapp.com",
+        "mobile_number": "+27821111112",
+        "company": "slide",
+        "group": "user",
+        "created": "2018-08-21T09:27:25.882898Z",
+        "updated": "2018-08-29T16:58:54.647283Z"
+    },
+    "message": null,
+    "status": "success"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves a list of all users.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://[COMPANY].api.getslideapp.com/2/admin/users/`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+None
 
-## Delete a Specific User
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+## Create User
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+curl "https://[COMPANY].api.getslideapp.com/2/admin/users/"
+  -X POST
+  -H "Authorization: Token [TOKEN]"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+    "data": {
+        "identifier": "230899032-f09832409-23580913",
+        "first_name": "Testy",
+        "last_name": "McTester",
+        "email": "testy@getslideapp.com",
+        "mobile_number": "+27821111112",
+        "company": "slide",
+        "group": "user",
+        "created": "2018-08-21T09:27:25.882898Z",
+        "updated": "2018-08-29T16:58:54.647283Z"
+    },
+    "message": null,
+    "status": "success"
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint creates a user.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`POST https://[COMPANY].api.getslideapp.com/2/admin/users/`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Parameter | Description | Default | Required
+--------- | ----------- | ------- | --------
+first_name | User's first name | null | true
+last_name | User's last name | null | true
+mobile_number | User's mobile number | null | true
+email | User's email address | null | true
+
+## Retrieve User
+
+```shell
+curl "https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/"
+  -X GET
+  -H "Authorization: Token [TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "230899032-f09832409-23580913",
+        "first_name": "Testy",
+        "last_name": "McTester",
+        "email": "testy@getslideapp.com",
+        "mobile_number": "+27821111112",
+        "company": "slide",
+        "group": "user",
+        "created": "2018-08-21T09:27:25.882898Z",
+        "updated": "2018-08-29T16:58:54.647283Z"
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves a user.
+
+### HTTP Request
+
+`GET https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/`
+
+### URL Parameters
+
+None
+
+## Update User
+
+```shell
+curl "https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/"
+  -X PUT
+  -H "Authorization: Token [TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "230899032-f09832409-23580913",
+        "first_name": "Testy",
+        "last_name": "McTester",
+        "email": "testy@getslideapp.com",
+        "mobile_number": "+27821111112",
+        "company": "slide",
+        "group": "user",
+        "created": "2018-08-21T09:27:25.882898Z",
+        "updated": "2018-08-29T16:58:54.647283Z"
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint updates an existing user.
+
+### HTTP Request
+
+`POST https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/`
+
+### URL Parameters
+
+Parameter | Description | Default | Required
+--------- | ----------- | ------- | --------
+first_name | User's first name | null | false
+last_name | User's last name | null | false
+mobile_number | User's mobile number | null | false
+email | User's email address | null | false

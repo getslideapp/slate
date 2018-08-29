@@ -3,7 +3,7 @@ title: Slide API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell : cURL
-  - ruby
+#  - ruby
 #  - python
 #  - javascript
 
@@ -22,20 +22,20 @@ search: true
 > Production API Endpoint:
 
 ```shell
-https://[COMPANY].api.getslideapp.com/2
+https://[COMPANY].api.getslideapp.com/2/
 ```
 
 > Development API Endpoint:
 
 ```shell
-https://dev.[COMPANY].api.getslideapp.com/2
+https://dev.[COMPANY].api.getslideapp.com/2/
 ```
 
 > Make sure to replace `[COMPANY]` with your Company Id.
 
 The Slide API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.
 
-Requests made with test mode credentials never hit the banking networks and incur no cost.
+Requests made with test credentials never hit the banking networks and incur no cost.
 
 <aside class="notice">
 You must replace <code>[COMPANY]</code> in all API Requests with your Company Id.
@@ -61,14 +61,13 @@ Once a user has logged in and received a token, each subsequent request should i
 
 <!-- You can register a new Slide API key at our [developer portal](http://example.com/developers).You can manage your API keys in the Dashboard.  -->
 
-
-
-
 All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
 
 Slide expects the API token to be included in the HTTP Authorization header in all API requests to the server:
 
 `Authorization: Token [TOKEN]`
+
+You can obtain a new Slide API key by emailing us at info@getslideapp.com.
 
 <aside class="notice">
 You must replace <code>[TOKEN]</code> with your personal API token.
@@ -79,10 +78,11 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 ## Get User
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2/user/"
-  -X GET
+curl "https://[COMPANY].api.getslideapp.com/2/user/" \
+  -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
+> The above command returns JSON structured like this:
 
 ```json
 {
@@ -117,8 +117,8 @@ None
 ## List Users
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2/admin/users/"
-  -X GET
+curl "https://[COMPANY].api.getslideapp.com/2/admin/users/" \
+  -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
 
@@ -155,8 +155,8 @@ None
 ## Create User
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2/admin/users/"
-  -X POST
+curl "https://[COMPANY].api.getslideapp.com/2/admin/users/" \
+  -X POST \
   -H "Authorization: Token [TOKEN]"
 ```
 
@@ -195,11 +195,12 @@ last_name | User's last name | null | true
 mobile_number | User's mobile number | null | true
 email | User's email address | null | true
 
-## Retrieve User
+## Get User
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/"
-  -X GET
+curl \
+"https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/" \
+  -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
 
@@ -236,8 +237,9 @@ None
 ## Update User
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/"
-  -X PUT
+curl \
+"https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/" \
+  -X PUT \
   -H "Authorization: Token [TOKEN]"
 ```
 

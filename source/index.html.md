@@ -265,7 +265,7 @@ This endpoint updates an existing user.
 
 ### HTTP Request
 
-`POST https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/`
+`PUT https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/`
 
 ### URL Parameters
 

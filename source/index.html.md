@@ -19,19 +19,19 @@ search: true
 
 # Introduction
 
-> Production API Endpoint:
+> Production base URL:
 
 ```shell
-https://[COMPANY].api.getslideapp.com/2/
+https://[COMPANY].api.getslideapp.com/2
 ```
 
-> Development API Endpoint:
+> Development base URL:
 
 ```shell
-https://dev.[COMPANY].api.getslideapp.com/2/
+https://dev.[COMPANY].api.getslideapp.com/2
 ```
 
-> Make sure to replace `[COMPANY]` with your Company Id.
+> Make sure to replace `[COMPANY]` with your Company Id and to use either of the above URLs as the `{base_url}`.
 
 > The format of a standard success response is structured like this:
 
@@ -70,14 +70,15 @@ You must replace <code>[COMPANY]</code> in all API Requests with your Company Id
 
 # Authentication
 
-> To authorize, use this code:
+> To check authorization, use this code:
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2" \
-  -H "Authorization: [TOKEN]"
+curl "{base_url}/user/" \
+  -X GET \
+  -H "Authorization: Token [TOKEN]"
 ```
 
-> Make sure to replace `[TOKEN]` with your API token.
+> Make sure to replace `[TOKEN]` with your API token and `{base_url}` with the desired base url.
 
 Slide uses a token-based HTTP Authentication scheme.
 
@@ -106,7 +107,7 @@ All actions are performed by registered users. The user endpoints allow a user t
 ## Get User
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2/user/" \
+curl "{base_url}/user/" \
   -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
@@ -134,7 +135,7 @@ This endpoint retrieves the profile details for the logged in user.
 
 #### HTTP Request
 
-`GET /2/user/`
+`GET /user/`
 
 #### Query Parameters
 
@@ -151,7 +152,7 @@ The Admin user endpoints allows an admin user to view or alter user information 
 ### List Users
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2/admin/users/" \
+curl "{base_url}/admin/users/" \
   -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
@@ -180,7 +181,7 @@ This endpoint retrieves a list of all users.
 
 #### HTTP Request
 
-`GET /2/admin/users/`
+`GET /admin/users/`
 
 #### URL Parameters
 
@@ -189,9 +190,13 @@ None
 ### Create User
 
 ```shell
-curl "https://[COMPANY].api.getslideapp.com/2/admin/users/" \
+curl "{base_url}/admin/users/" \
   -X POST \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token [TOKEN]" \
+  -d '{"first_name": "Joe",
+       "last_name": "Shmoe",
+       "mobile_number": "+27820000000",
+       "email": "example@email.com"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -218,7 +223,7 @@ This endpoint creates a user.
 
 #### HTTP Request
 
-`POST /2/admin/users/`
+`POST /admin/users/`
 
 #### URL Parameters
 
@@ -232,8 +237,7 @@ email | User's email address | null | true
 ### Get User
 
 ```shell
-curl \
-"https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/" \
+curl "{base_url}/admin/users/{identifier}/" \
   -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
@@ -263,7 +267,7 @@ This endpoint retrieves a user.
 
 #### HTTP Request
 
-`GET /2/admin/users/{identifier}/`
+`GET /admin/users/{identifier}/`
 
 #### URL Parameters
 
@@ -272,10 +276,13 @@ None
 ### Update User
 
 ```shell
-curl \
-"https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/" \
+curl "{base_url}/admin/users/{identifier}/" \
   -X PUT \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token [TOKEN]" \
+  -d '{"first_name": "Joe",
+       "last_name": "Shmoe",
+       "mobile_number": "+27820000000",
+       "email": "example@email.com"}'
 ```
 > Make sure to replace `{identifier}` with the User Id.
 
@@ -303,7 +310,7 @@ This endpoint updates an existing user.
 
 #### HTTP Request
 
-`PUT /2/admin/users/{identifier}/`
+`PUT /admin/users/{identifier}/`
 
 #### URL Parameters
 

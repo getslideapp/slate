@@ -67,6 +67,11 @@ If anything is missing or seems incorrect, please check the [GitHub issues](http
 You must replace <code>[COMPANY]</code> in all API Requests with your Company Id.
 </aside>
 
+# User Types
+
+There are two types of users for each company:
+- Users: General users of the system within a company with no additional priviledges. These users will be in the `user` group. They will have access to all non-admin endpoints which can be used to view their own data or make transactions on their own behalf.
+- Company Admin Users: A user who is an admin within a company and who has admin privileges within the company. These users will be in the `admin_external` group. They will have access to admin endpoints in addition to all endpoints that Users have access to. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company.
 
 # Authentication
 
@@ -99,6 +104,11 @@ You can obtain a new Slide API token and Company Id by emailing us at info@getsl
 <aside class="notice">
 You must replace <code>[TOKEN]</code> with your personal API token.
 </aside>
+
+
+## External User Authentication
+
+Should we describe external vs internal authentication in the authentication section? If external, then describe the format of the expected response. Add external subsection to Authentication. -> What can they expect, what do we expect for success and failure.
 
 # Users
 

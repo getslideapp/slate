@@ -31,7 +31,7 @@ https://[COMPANY].api.getslideapp.com/2
 https://dev.[COMPANY].api.getslideapp.com/2
 ```
 
-> Make sure to replace `[COMPANY]` with your Company Id and to use either of the above URLs as the `{base_url}`.
+> Make sure to replace `[COMPANY]` with your Company Name and to use either of the above URLs as the `[BASE_URL]`.
 
 > The format of a standard success response is structured like this:
 
@@ -64,7 +64,7 @@ Requests made with test credentials never hit the banking networks and incur no 
 If anything is missing or seems incorrect, please check the [GitHub issues](https://github.com/getslideapp/slate/issues) for existing known issues or create a new issue.
 
 <aside class="notice">
-You must replace <code>[COMPANY]</code> in all API Requests with your Company Id.
+You must replace <code>[COMPANY]</code> in all API Requests with your Company Name.
 </aside>
 
 # User Types
@@ -78,12 +78,12 @@ There are two types of users for each company:
 > To check authorization, use this code:
 
 ```shell
-curl "{base_url}/user/" \
+curl "[BASE_URL]/user/" \
   -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
 
-> Make sure to replace `[TOKEN]` with your API token and `{base_url}` with the desired base url.
+> Make sure to replace `[TOKEN]` with your API token and `[BASE_URL]` with the desired base url.
 
 Slide uses a token-based HTTP Authentication scheme.
 
@@ -99,7 +99,7 @@ Slide expects the API token to be included in the HTTP Authorization header in a
 
 `Authorization: Token [TOKEN]`
 
-You can obtain a new Slide API token and Company Id by emailing us at info@getslideapp.com.
+You can obtain a new Slide API token and Company Name by emailing us at info@getslideapp.com.
 
 <aside class="notice">
 You must replace <code>[TOKEN]</code> with your personal API token.
@@ -108,7 +108,16 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 
 ## External User Authentication
 
-Should we describe external vs internal authentication in the authentication section? If external, then describe the format of the expected response. Add external subsection to Authentication. -> What can they expect, what do we expect for success and failure.
+Either Slide can handle all the authentication for a company or the company can choose to handle their own user authentication. If Slide handles all the authentication, then Slide will authenticate all User API calls using the API token that the user receives when they log in.
+
+If the company prefers to manage their own authentication, Users will not log in via Slide. In this case Slide will need to authenticate all User API calls with the company's server:
+- When a user makes an API call to Slide, Slide will check with the company's server as to whether the user should be authenticated or not.
+- The company will respond to Slide either authenticating the User or not.
+
+<!-- Details of the URL format that we will send -->
+<!-- Slide will send out a request of the form and include the following details -->
+<!-- Details of the response that we expect -->
+<!-- Slide expects a json response of the form including the following fields -->
 
 # Users
 
@@ -117,7 +126,7 @@ All actions are performed by registered users. The user endpoints allow a user t
 ## Get User
 
 ```shell
-curl "{base_url}/user/" \
+curl "[BASE_URL]/user/" \
   -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
@@ -159,7 +168,7 @@ The Admin user endpoints allows an admin user to view or alter user information 
 ### List Users
 
 ```shell
-curl "{base_url}/admin/users/" \
+curl "[BASE_URL]/admin/users/" \
   -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
@@ -193,7 +202,7 @@ This endpoint retrieves a list of all users.
 ### Create User
 
 ```shell
-curl "{base_url}/admin/users/" \
+curl "[BASE_URL]/admin/users/" \
   -X POST \
   -H "Authorization: Token [TOKEN]" \
   -d '{"first_name": "Joe",
@@ -244,11 +253,11 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 ### Get User
 
 ```shell
-curl "{base_url}/admin/users/{identifier}/" \
+curl "[BASE_URL]/admin/users/[IDENTIFIER]/" \
   -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
-> Make sure to replace `{identifier}` with the User Id.
+> Make sure to replace `[IDENTIFIER]` with the User Id.
 
 > The above command returns JSON structured like this:
 
@@ -274,13 +283,13 @@ This endpoint retrieves a user.
 
 #### HTTP Request
 
-`GET /admin/users/{identifier}/`
+`GET /admin/users/[IDENTIFIER]/`
 
 
 ### Update User
 
 ```shell
-curl "{base_url}/admin/users/{identifier}/" \
+curl "[BASE_URL]/admin/users/[IDENTIFIER]/" \
   -X PUT \
   -H "Authorization: Token [TOKEN]" \
   -d '{"first_name": "Joe",
@@ -288,7 +297,7 @@ curl "{base_url}/admin/users/{identifier}/" \
        "mobile_number": "+27820000000",
        "email": "example@email.com"}'
 ```
-> Make sure to replace `{identifier}` with the User Id.
+> Make sure to replace `[IDENTIFIER]` with the User Id.
 
 > The above command returns JSON structured like this:
 
@@ -314,7 +323,7 @@ This endpoint updates an existing user.
 
 #### HTTP Request
 
-`PUT /admin/users/{identifier}/`
+`PUT /admin/users/[IDENTIFIER]/`
 
 #### URL Parameters
 

@@ -137,9 +137,6 @@ This endpoint retrieves the profile details for the logged in user.
 
 `GET /user/`
 
-#### Query Parameters
-
-None
 
 # Admin
 
@@ -183,10 +180,6 @@ This endpoint retrieves a list of all users.
 
 `GET /admin/users/`
 
-#### URL Parameters
-
-None
-
 ### Create User
 
 ```shell
@@ -227,12 +220,16 @@ This endpoint creates a user.
 
 #### URL Parameters
 
-Parameter | Description | Default | Required
---------- | ----------- | ------- | --------
-first_name | User's first name | null | true
-last_name | User's last name | null | true
-mobile_number | User's mobile number | null | true
-email | User's email address | null | true
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`first_name` | User's first name | String | true
+`last_name` | User's last name | String | true
+`mobile_number` | User's mobile number | String | true
+`email` | User's email address | String | true
+
+<aside class="notice">
+Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
+</aside>
 
 ### Get User
 
@@ -269,9 +266,6 @@ This endpoint retrieves a user.
 
 `GET /admin/users/{identifier}/`
 
-#### URL Parameters
-
-None
 
 ### Update User
 
@@ -314,9 +308,13 @@ This endpoint updates an existing user.
 
 #### URL Parameters
 
-Parameter | Description | Default | Required
---------- | ----------- | ------- | --------
-first_name | User's first name | null | false
-last_name | User's last name | null | false
-mobile_number | User's mobile number | null | false
-email | User's email address | null | false
+Parameter | Description | Type | Required
+--------- | ----------- | ---- | --------
+`first_name` | User's first name | String | false
+`last_name` | User's last name | String | false
+`mobile_number` | User's mobile number | String | false
+`email` | User's email address | String | false
+
+<aside class="notice">
+Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
+</aside>

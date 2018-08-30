@@ -55,9 +55,13 @@ https://dev.[COMPANY].api.getslideapp.com/2/
 }
 ```
 
+Welcome to the public API documentation for Slide Link.
+
 The Slide API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.
 
 Requests made with test credentials never hit the banking networks and incur no cost.
+
+If anything is missing or seems incorrect, please check the [GitHub issues](https://github.com/getslideapp/slate/issues) for existing known issues or create a new issue.
 
 <aside class="notice">
 You must replace <code>[COMPANY]</code> in all API Requests with your Company Id.
@@ -89,13 +93,15 @@ Slide expects the API token to be included in the HTTP Authorization header in a
 
 `Authorization: Token [TOKEN]`
 
-You can obtain a new Slide API key by emailing us at info@getslideapp.com.
+You can obtain a new Slide API token and Company Id by emailing us at info@getslideapp.com.
 
 <aside class="notice">
 You must replace <code>[TOKEN]</code> with your personal API token.
 </aside>
 
 # Users
+
+All actions are performed by registered users. The user endpoints allow a user to view or alter their information.
 
 ## Get User
 
@@ -126,11 +132,11 @@ curl "https://[COMPANY].api.getslideapp.com/2/user/" \
 
 This endpoint retrieves the profile details for the logged in user.
 
-### HTTP Request
+#### HTTP Request
 
-`GET https://[COMPANY].api.getslideapp.com/2/user/`
+`GET /2/user/`
 
-### Query Parameters
+#### Query Parameters
 
 None
 
@@ -138,7 +144,11 @@ None
 
 Admin endpoints are a set of admin-only accessible endpoints that provide administrative functionality across a company.
 
-## List Users
+## Users
+
+The Admin user endpoints allows an admin user to view or alter user information the user's behalf.
+
+### List Users
 
 ```shell
 curl "https://[COMPANY].api.getslideapp.com/2/admin/users/" \
@@ -168,15 +178,15 @@ curl "https://[COMPANY].api.getslideapp.com/2/admin/users/" \
 
 This endpoint retrieves a list of all users.
 
-### HTTP Request
+#### HTTP Request
 
-`GET https://[COMPANY].api.getslideapp.com/2/admin/users/`
+`GET /2/admin/users/`
 
-### URL Parameters
+#### URL Parameters
 
 None
 
-## Create User
+### Create User
 
 ```shell
 curl "https://[COMPANY].api.getslideapp.com/2/admin/users/" \
@@ -206,11 +216,11 @@ curl "https://[COMPANY].api.getslideapp.com/2/admin/users/" \
 
 This endpoint creates a user.
 
-### HTTP Request
+#### HTTP Request
 
-`POST https://[COMPANY].api.getslideapp.com/2/admin/users/`
+`POST /2/admin/users/`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description | Default | Required
 --------- | ----------- | ------- | --------
@@ -219,7 +229,7 @@ last_name | User's last name | null | true
 mobile_number | User's mobile number | null | true
 email | User's email address | null | true
 
-## Get User
+### Get User
 
 ```shell
 curl \
@@ -227,6 +237,7 @@ curl \
   -X GET \
   -H "Authorization: Token [TOKEN]"
 ```
+> Make sure to replace `{identifier}` with the User Id.
 
 > The above command returns JSON structured like this:
 
@@ -250,15 +261,15 @@ curl \
 
 This endpoint retrieves a user.
 
-### HTTP Request
+#### HTTP Request
 
-`GET https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/`
+`GET /2/admin/users/{identifier}/`
 
-### URL Parameters
+#### URL Parameters
 
 None
 
-## Update User
+### Update User
 
 ```shell
 curl \
@@ -266,6 +277,7 @@ curl \
   -X PUT \
   -H "Authorization: Token [TOKEN]"
 ```
+> Make sure to replace `{identifier}` with the User Id.
 
 > The above command returns JSON structured like this:
 
@@ -289,11 +301,11 @@ curl \
 
 This endpoint updates an existing user.
 
-### HTTP Request
+#### HTTP Request
 
-`PUT https://[COMPANY].api.getslideapp.com/2/admin/users/{identifier}/`
+`PUT /2/admin/users/{identifier}/`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description | Default | Required
 --------- | ----------- | ------- | --------

@@ -222,7 +222,7 @@ curl "{base_url}/admin/users/" \
 }
 ```
 
-This endpoint creates a user.
+This endpoint creates a user. When a new user is created they will by default be in the `user` group.
 
 #### HTTP Request
 

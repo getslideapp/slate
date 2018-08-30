@@ -33,6 +33,28 @@ https://dev.[COMPANY].api.getslideapp.com/2/
 
 > Make sure to replace `[COMPANY]` with your Company Id.
 
+> The format of a standard success response is structured like this:
+
+```json
+{
+    "status": "success",
+    "data": {
+        /* Application-specific data would go here. */
+    },
+    "message": null /* Or optional success message */
+}
+```
+
+> The format of a standard error response is structured like this:
+
+```json
+{
+    "status": "error",
+    "data": null /* or optional error payload */,
+    "message": "Error xyz has occurred"
+}
+```
+
 The Slide API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.
 
 Requests made with test credentials never hit the banking networks and incur no cost.
@@ -113,6 +135,8 @@ This endpoint retrieves the profile details for the logged in user.
 None
 
 # Admin
+
+Admin endpoints are a set of admin-only accessible endpoints that provide administrative functionality across a company.
 
 ## List Users
 

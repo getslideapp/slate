@@ -10,6 +10,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a>
   - <a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a>
+  - v1.0.0
 
 includes:
   - errors

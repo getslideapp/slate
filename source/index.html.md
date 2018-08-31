@@ -67,13 +67,15 @@ If anything is missing or seems incorrect, please check the [GitHub issues](http
 You must replace <code>[COMPANY]</code> in all API Requests with your Company Name.
 </aside>
 
-# User Types
+## Endpoint Types
 
-There are two types of users for each company:
-- Users: General users of the system within a company with no additional priviledges. These users will be in the `user` group. They will have access to all non-admin endpoints which can be used to view their own data or make transactions on their own behalf.
-- Company Admin Users: A user who is an admin within a company and who has admin privileges within the company. These users will be in the `admin_external` group. They will have access to admin endpoints in addition to all endpoints that Users have access to. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company.
+We service two different types of API endpoints.
 
-# Authentication
+Users: Requests that we receive directly from the client are essentially a user interacting with the service. Users will be able to view their own data or make transactions on their own behalf.
+
+Company Admin Users: Requests by an administrator. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company.
+
+## Authentication
 
 > To check authorization, use this code:
 
@@ -106,18 +108,51 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 </aside>
 
 
-## External User Authentication
+### External User Authentication
+
+> We will make a request using this format:
+
+```shell
+curl "[COMPANY_AUTHENTICATION_URL]" \
+  -X GET \
+  -H "Authorization: Token [TOKEN]"
+```
+
+> Where `[TOKEN]` is the authentication token received from the client.
+
+> If authentication is successful, we expect a 200 response containing user data structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "230899032-f09832409-23580913",
+        "first_name": "Testy",
+        "last_name": "McTester",
+        "email": "testy@getslideapp.com",
+        "mobile_number": "+27821111112",
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+> If authentication is unsuccessful, we expect a 4XX response like this:
+
+```json
+{
+    "status": "error",
+    "data": null,
+    "message": "[YOUR_ERROR_MESSAGE]"
+}
+```
 
 Either Slide can handle all the authentication for a company or the company can choose to handle their own user authentication. If Slide handles all the authentication, then Slide will authenticate all User API calls using the API token that the user receives when they log in.
 
-If the company prefers to manage their own authentication, Users will not log in via Slide. In this case Slide will need to authenticate all User API calls with the company's server:
-- When a user makes an API call to Slide, Slide will check with the company's server as to whether the user should be authenticated or not.
-- The company will respond to Slide either authenticating the User or not.
+If the company prefers to manage their own authentication, Users will not log in via Slide. In this case Slide will need to authenticate all User API calls with the company's server.
 
-<!-- Details of the URL format that we will send -->
-<!-- Slide will send out a request of the form and include the following details -->
-<!-- Details of the response that we expect -->
-<!-- Slide expects a json response of the form including the following fields -->
+When a user makes an API call to Slide, Slide will check with the company's server as to whether the user should be authenticated or not.
+
+The company will respond to Slide either authenticating the User or not.
 
 # Users
 
@@ -241,10 +276,10 @@ This endpoint creates a user. When a new user is created they will by default be
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
-`first_name` | User's first name | String | true
-`last_name` | User's last name | String | true
-`mobile_number` | User's mobile number | String | true
-`email` | User's email address | String | true
+`first_name` | User's first name | String | Yes
+`last_name` | User's last name | String | Yes
+`mobile_number` | User's mobile number | String | Yes
+`email` | User's email address | String | Yes
 
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
@@ -329,10 +364,10 @@ This endpoint updates an existing user.
 
 Parameter | Description | Type | Required
 --------- | ----------- | ---- | --------
-`first_name` | User's first name | String | false
-`last_name` | User's last name | String | false
-`mobile_number` | User's mobile number | String | false
-`email` | User's email address | String | false
+`first_name` | User's first name | String | No
+`last_name` | User's last name | String | No
+`mobile_number` | User's mobile number | String | No
+`email` | User's email address | String | No
 
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).

@@ -224,9 +224,19 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#endpoint-types" class="toc-h2 toc-link" data-title="Endpoint Types">Endpoint Types</a>
+                  </li>
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#external-user-authentication" class="toc-h3 toc-link" data-title="Introduction">External User Authentication</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
@@ -265,6 +275,7 @@
         <ul class="toc-footer">
             <li><a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a></li>
             <li><a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a></li>
+            <li>v1.0.0</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -282,7 +293,7 @@
 <pre class="highlight shell tab-shell"><code>https://dev.[COMPANY].api.getslideapp.com/2
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>[COMPANY]</code> with your Company Id and to use either of the above URLs as the <code>{base_url}</code>.</p>
+<p>Make sure to replace <code>[COMPANY]</code> with your Company Name and to use either of the above URLs as the <code>[BASE_URL]</code>.</p>
 
 <p>The format of a standard success response is structured like this:</p>
 </blockquote>
@@ -312,18 +323,24 @@
 <p>If anything is missing or seems incorrect, please check the <a href="https://github.com/getslideapp/slate/issues">GitHub issues</a> for existing known issues or create a new issue.</p>
 
 <aside class="notice">
-You must replace <code>[COMPANY]</code> in all API Requests with your Company Id.
+You must replace <code>[COMPANY]</code> in all API Requests with your Company Name.
 </aside>
-<h1 id='authentication'>Authentication</h1>
+<h2 id='endpoint-types'>Endpoint Types</h2>
+<p>We service two different types of API endpoints.</p>
+
+<p>Users: Requests that we receive directly from the client are essentially a user interacting with the service. Users will be able to view their own data or make transactions on their own behalf.</p>
+
+<p>Company Admin Users: Requests by an administrator. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company.</p>
+<h2 id='authentication'>Authentication</h2>
 <blockquote>
 <p>To check authorization, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/user/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token [TOKEN]"</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>[TOKEN]</code> with your API token and <code>{base_url}</code> with the desired base url.</p>
+<p>Make sure to replace <code>[TOKEN]</code> with your API token and <code>[BASE_URL]</code> with the desired base url.</p>
 </blockquote>
 
 <p>Slide uses a token-based HTTP Authentication scheme.</p>
@@ -340,14 +357,55 @@ You must replace <code>[COMPANY]</code> in all API Requests with your Company Id
 
 <p><code>Authorization: Token [TOKEN]</code></p>
 
-<p>You can obtain a new Slide API token and Company Id by emailing us at info@getslideapp.com.</p>
+<p>You can obtain a new Slide API token and Company Name by emailing us at info@getslideapp.com.</p>
 
 <aside class="notice">
 You must replace <code>[TOKEN]</code> with your personal API token.
 </aside>
+<h3 id='external-user-authentication'>External User Authentication</h3>
+<blockquote>
+<p>We will make a request using this format:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"[COMPANY_AUTHENTICATION_URL]"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token [TOKEN]"</span>
+</code></pre>
+<blockquote>
+<p>Where <code>[TOKEN]</code> is the authentication token received from the client.</p>
+
+<p>If authentication is successful, we expect a 200 response containing user data structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230899032-f09832409-23580913"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>If authentication is unsuccessful, we expect a 4XX response like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_ERROR_MESSAGE]"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Either Slide can handle all the authentication for a company or the company can choose to handle their own user authentication. If Slide handles all the authentication, then Slide will authenticate all User API calls using the API token that the user receives when they log in.</p>
+
+<p>If the company prefers to manage their own authentication, Users will not log in via Slide. In this case Slide will need to authenticate all User API calls with the company&#39;s server.</p>
+
+<p>When a user makes an API call to Slide, Slide will check with the company&#39;s server as to whether the user should be authenticated or not.</p>
+
+<p>The company will respond to Slide either authenticating the User or not.</p>
 <h1 id='users'>Users</h1>
 <p>All actions are performed by registered users. The user endpoints allow a user to view or alter their information.</p>
-<h2 id='get-user'>Get User</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/"</span> <span class="se">\</span>
+<h2 id='get-user'>Get User</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/user/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token [TOKEN]"</span>
 </code></pre>
@@ -377,7 +435,7 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 <p>Admin endpoints are a set of admin-only accessible endpoints that provide administrative functionality across a company.</p>
 <h2 id='users-2'>Users</h2>
 <p>The Admin user endpoints allows an admin user to view or alter user information the user&#39;s behalf.</p>
-<h3 id='list-users'>List Users</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/"</span> <span class="se">\</span>
+<h3 id='list-users'>List Users</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/admin/users/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token [TOKEN]"</span>
 </code></pre>
@@ -403,7 +461,7 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 <p>This endpoint retrieves a list of all users.</p>
 <h4 id='http-request-2'>HTTP Request</h4>
 <p><code>GET /admin/users/</code></p>
-<h3 id='create-user'>Create User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/"</span> <span class="se">\</span>
+<h3 id='create-user'>Create User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/admin/users/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Authorization: Token [TOKEN]"</span> <span class="se">\</span>
   -d <span class="s1">'{"first_name": "Joe",
@@ -430,7 +488,7 @@ You must replace <code>[TOKEN]</code> with your personal API token.
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint creates a user.</p>
+<p>This endpoint creates a user. When a new user is created they will by default be in the <code>user</code> group.</p>
 <h4 id='http-request-3'>HTTP Request</h4>
 <p><code>POST /admin/users/</code></p>
 <h4 id='url-parameters'>URL Parameters</h4>
@@ -446,37 +504,37 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 <td><code>first_name</code></td>
 <td>User&#39;s first name</td>
 <td>String</td>
-<td>true</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td><code>last_name</code></td>
 <td>User&#39;s last name</td>
 <td>String</td>
-<td>true</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td><code>mobile_number</code></td>
 <td>User&#39;s mobile number</td>
 <td>String</td>
-<td>true</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td><code>email</code></td>
 <td>User&#39;s email address</td>
 <td>String</td>
-<td>true</td>
+<td>Yes</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
 </aside>
-<h3 id='get-user-2'>Get User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/{identifier}/"</span> <span class="se">\</span>
+<h3 id='get-user-2'>Get User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/admin/users/[IDENTIFIER]/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token [TOKEN]"</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>{identifier}</code> with the User Id.</p>
+<p>Make sure to replace <code>[IDENTIFIER]</code> with the User Id.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -498,8 +556,8 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 </span></code></pre>
 <p>This endpoint retrieves a user.</p>
 <h4 id='http-request-4'>HTTP Request</h4>
-<p><code>GET /admin/users/{identifier}/</code></p>
-<h3 id='update-user'>Update User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/{identifier}/"</span> <span class="se">\</span>
+<p><code>GET /admin/users/[IDENTIFIER]/</code></p>
+<h3 id='update-user'>Update User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/admin/users/[IDENTIFIER]/"</span> <span class="se">\</span>
   -X PUT <span class="se">\</span>
   -H <span class="s2">"Authorization: Token [TOKEN]"</span> <span class="se">\</span>
   -d <span class="s1">'{"first_name": "Joe",
@@ -508,7 +566,7 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
        "email": "example@email.com"}'</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>{identifier}</code> with the User Id.</p>
+<p>Make sure to replace <code>[IDENTIFIER]</code> with the User Id.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -530,7 +588,7 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 </span></code></pre>
 <p>This endpoint updates an existing user.</p>
 <h4 id='http-request-5'>HTTP Request</h4>
-<p><code>PUT /admin/users/{identifier}/</code></p>
+<p><code>PUT /admin/users/[IDENTIFIER]/</code></p>
 <h4 id='url-parameters-2'>URL Parameters</h4>
 <table><thead>
 <tr>
@@ -544,25 +602,25 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 <td><code>first_name</code></td>
 <td>User&#39;s first name</td>
 <td>String</td>
-<td>false</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code>last_name</code></td>
 <td>User&#39;s last name</td>
 <td>String</td>
-<td>false</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code>mobile_number</code></td>
 <td>User&#39;s mobile number</td>
 <td>String</td>
-<td>false</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code>email</code></td>
 <td>User&#39;s email address</td>
 <td>String</td>
-<td>false</td>
+<td>No</td>
 </tr>
 </tbody></table>
 

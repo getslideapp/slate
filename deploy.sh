@@ -221,17 +221,22 @@ increment_version() {
 # check that file has no uncommitted changes
 
 if git diff-index --quiet HEAD --; then
-    echo no changes
+    echo No uncommitted changes
 else
-    echo changes
+  echo Aborting due to uncommitted changes
+  exit 1
 fi
 
 # read in value from file, extract the version and increment
 version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
-increment_version $version
+version=increment_version $version
 
-sed -i '' 's/- v1.*/- v'$(increment_version $version)'/' source/index.html.md
+sed -i '' 's/- v1.*/- v'$version'/' source/index.html.md
+
 #commmit changes with message incrementing version
+git add source/index.html.md
+git commit -m "Incrementing version number to "$version
+git push
 
 # if [[ $1 = --source-only ]]; then
 #   run_build

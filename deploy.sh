@@ -229,7 +229,7 @@ fi
 
 # read in value from file, extract the version and increment
 version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
-version=increment_version $version
+version=$(increment_version $version)
 
 sed -i '' 's/- v1.*/- v'$version'/' source/index.html.md
 

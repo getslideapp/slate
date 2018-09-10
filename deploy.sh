@@ -217,32 +217,33 @@ increment_version() {
  echo "$v" | perl -pe s/$rgx.*$'/${1}'`printf %0${#val}s $(($val+1))`/
 }
 
-#New function
+update_version() {
 # check that file has no uncommitted changes
+  if git diff-index --quiet HEAD --; then
+      echo No uncommitted changes
+  else
+    echo Aborting due to uncommitted changes
+    exit 1
+  fi
 
-if git diff-index --quiet HEAD --; then
-    echo No uncommitted changes
+  # read in value from file, extract the version and increment
+  version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
+  version=$(increment_version $version)
+
+  sed -i '' 's/- v1.*/- v'$version'/' source/index.html.md
+
+  #commmit changes with message incrementing version
+  git add source/index.html.md
+  git commit -m "Incrementing version number to "$version
+  git push
+}
+
+update_version
+if [[ $1 = --source-only ]]; then
+  run_build
+elif [[ $1 = --push-only ]]; then
+  main "$@"
 else
-  echo Aborting due to uncommitted changes
-  exit 1
+  run_build
+  main "$@"
 fi
-
-# read in value from file, extract the version and increment
-version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
-version=$(increment_version $version)
-
-sed -i '' 's/- v1.*/- v'$version'/' source/index.html.md
-
-#commmit changes with message incrementing version
-git add source/index.html.md
-git commit -m "Incrementing version number to "$version
-git push
-
-# if [[ $1 = --source-only ]]; then
-#   run_build
-# elif [[ $1 = --push-only ]]; then
-#   main "$@"
-# else
-#   run_build
-#   main "$@"
-# fi

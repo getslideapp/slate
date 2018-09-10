@@ -205,11 +205,39 @@ sanitize() {
   "$@" 2> >(filter 1>&2) | filter
 }
 
-if [[ $1 = --source-only ]]; then
-  run_build
-elif [[ $1 = --push-only ]]; then
-  main "$@"
+increment_version() {
+ local v=$1
+ if [ -z $2 ]; then
+    local rgx='^((?:[0-9]+\.)*)([0-9]+)($)'
+ else
+    local rgx='^((?:[0-9]+\.){'$(($2-1))'})([0-9]+)(\.|$)'
+    for (( p=`grep -o "\."<<<".$v"|wc -l`; p<$2; p++)); do
+       v+=.0; done; fi
+ val=`echo -e "$v" | perl -pe 's/^.*'$rgx'.*$/$2/'`
+ echo "$v" | perl -pe s/$rgx.*$'/${1}'`printf %0${#val}s $(($val+1))`/
+}
+
+#New function
+# check that file has no uncommitted changes
+
+if git diff-index --quiet HEAD --; then
+    echo no changes
 else
-  run_build
-  main "$@"
+    echo changes
 fi
+
+# read in value from file, extract the version and increment
+version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
+increment_version $version
+
+sed -i '' 's/- v1.*/- v'$(increment_version $version)'/' source/index.html.md
+#commmit changes with message incrementing version
+
+# if [[ $1 = --source-only ]]; then
+#   run_build
+# elif [[ $1 = --push-only ]]; then
+#   main "$@"
+# else
+#   run_build
+#   main "$@"
+# fi

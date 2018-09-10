@@ -281,6 +281,7 @@ Parameter | Description | Type | Required
 `last_name` | User's last name | String | Yes
 `mobile_number` | User's mobile number | String | Yes
 `email` | User's email address | String | Yes
+`groups` | User's group (Options are: `user` or `admin_user`) | String | No
 
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).

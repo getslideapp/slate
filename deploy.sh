@@ -220,30 +220,38 @@ increment_version() {
 update_version() {
 # check that file has no uncommitted changes
   if git diff-index --quiet HEAD --; then
-      echo No uncommitted changes
+      echo No uncommitted local changes. Please either commit or discard your changes.
   else
-    echo Aborting due to uncommitted changes
+    echo -e "\033[31m Error: Uncommitted local changes \033[0m"
     exit 1
   fi
 
-  # read in value from file, extract the version and increment
-  version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
-  version=$(increment_version $version)
+  #check if a pull is required (NEEDS TO BE VALIDATED)
+    if git fetch --dry-run; then
+        echo Local branch is up-to-date with remote
+    else
+        echo -e "\033[31m Error: Aborting because local branch is behind remote. Pull and merge remote to ensure that your local branch is up-to-date. \033[0m"
+      exit 1
+    fi
 
-  sed -i '' 's/- v1.*/- v'$version'/' source/index.html.md
+  sed -i '' 's/- v1.0.1*/- '$(git describe --tags)'/' source/index.html.md
+
+  # read in value from file, extract the version and increment
+  #version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
+  #version=$(increment_version $version)
 
   #commmit changes with message incrementing version
-  git add source/index.html.md
-  git commit -m "Incrementing version number to "$version
-  git push
+  # git add source/index.html.md
+  # git commit -m "Incrementing version number to "$version
+  # git push
 }
 
 update_version
-if [[ $1 = --source-only ]]; then
-  run_build
-elif [[ $1 = --push-only ]]; then
-  main "$@"
-else
-  run_build
-  main "$@"
-fi
+# if [[ $1 = --source-only ]]; then
+#   run_build
+# elif [[ $1 = --push-only ]]; then
+#   main "$@"
+# else
+#   run_build
+#   main "$@"
+# fi

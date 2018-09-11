@@ -22,6 +22,8 @@ Options:
 
 run_build() {
   bundle exec middleman build --clean
+  #REVERT THE VERSION SO THAT IT'S NOT INCREMENTED
+  sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
 }
 
 parse_args() {
@@ -249,12 +251,9 @@ update_version() {
 update_version
 if [[ $1 = --source-only ]]; then
   run_build
-  sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
 elif [[ $1 = --push-only ]]; then
   main "$@"
-  sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
 else
   run_build
   main "$@"
-  sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
 fi

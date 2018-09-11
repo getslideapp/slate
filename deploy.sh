@@ -23,7 +23,7 @@ Options:
 run_build() {
   #UPDATE THE VERSION
   echo Current git tag $(git describe --tags)
-  sed -i '' 's/- v1*/- '$(git describe --tags)'/' source/index.html.md
+  sed -i '' 's/- v1.*/- '$(git describe --tags)'/' source/index.html.md
   bundle exec middleman build --clean
   #REVERT THE VERSION SO THAT IT'S NOT INCREMENTED
   sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md

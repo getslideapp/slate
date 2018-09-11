@@ -123,6 +123,7 @@ main() {
   fi
 
   restore_head
+  sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
 }
 
 initial_deploy() {

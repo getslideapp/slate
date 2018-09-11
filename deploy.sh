@@ -21,6 +21,9 @@ Options:
 
 
 run_build() {
+  #UPDATE THE VERSION
+  echo Current git tag $(git describe --tags)
+  sed -i '' 's/- v1*/- '$(git describe --tags)'/' source/index.html.md
   bundle exec middleman build --clean
   #REVERT THE VERSION SO THAT IT'S NOT INCREMENTED
   sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
@@ -219,42 +222,22 @@ increment_version() {
  echo "$v" | perl -pe s/$rgx.*$'/${1}'`printf %0${#val}s $(($val+1))`/
 }
 
-update_version() {
+uncommitted_changes_check() {
 # check that file has no uncommitted changes
   if git diff-index --quiet HEAD --; then
       echo No uncommitted local changes
   else
-    echo -e "\033[33m Warning: Local is ahead of remote. Please either commit local changes or discard. \033[0m"
+    echo -e "\033[31m Error: Local uncommitted changes. Please either commit local changes or discard. \033[0m"
     exit 1
   fi
-
-  #check if a pull is required (NEEDS TO BE VALIDATED)
-    # if git fetch --dry-run; then
-    #     echo Local branch is up-to-date with remote
-    # else
-    #     echo -e "\033[31m Error: Aborting because local branch is behind remote. Pull and merge remote to ensure that your local branch is up-to-date. \033[0m"
-    #   exit 1
-    # fi
-
-  echo Current git tag $(git describe --tags)
-  #sed -i '' 's/- v1*/- '$(git describe --tags)'/' source/index.html.md
-
-  # read in value from file, extract the version and increment
-  #version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
-  #version=$(increment_version $version)
-
-  #commmit changes with message incrementing version
-  # git add source/index.html.md
-  # git commit -m "Incrementing version number to "$version
-  # git push
 }
 
-update_version
-# if [[ $1 = --source-only ]]; then
-#   run_build
-# elif [[ $1 = --push-only ]]; then
-#   main "$@"
-# else
-#   run_build
-#   main "$@"
-# fi
+uncommitted_changes_check
+if [[ $1 = --source-only ]]; then
+  run_build
+elif [[ $1 = --push-only ]]; then
+  main "$@"
+else
+  run_build
+  main "$@"
+fi

@@ -224,18 +224,19 @@ update_version() {
   if git diff-index --quiet HEAD --; then
       echo No uncommitted local changes
   else
-    echo -e "\033[31m Error: Local is ahead of remote. Please either commit and push local changes or discard. \033[0m"
+    echo -e "\033[33m Warning: Local is ahead of remote. Please either commit local changes or discard. \033[0m"
     exit 1
   fi
 
   #check if a pull is required (NEEDS TO BE VALIDATED)
-    if git fetch --dry-run; then
-        echo Local branch is up-to-date with remote
-    else
-        echo -e "\033[31m Error: Aborting because local branch is behind remote. Pull and merge remote to ensure that your local branch is up-to-date. \033[0m"
-      exit 1
-    fi
+    # if git fetch --dry-run; then
+    #     echo Local branch is up-to-date with remote
+    # else
+    #     echo -e "\033[31m Error: Aborting because local branch is behind remote. Pull and merge remote to ensure that your local branch is up-to-date. \033[0m"
+    #   exit 1
+    # fi
 
+  echo Current git tag $(git describe --tags)
   sed -i '' 's/- v1*/- '$(git describe --tags)'/' source/index.html.md
 
   # read in value from file, extract the version and increment
@@ -249,11 +250,11 @@ update_version() {
 }
 
 update_version
-if [[ $1 = --source-only ]]; then
-  run_build
-elif [[ $1 = --push-only ]]; then
-  main "$@"
-else
-  run_build
-  main "$@"
-fi
+# if [[ $1 = --source-only ]]; then
+#   run_build
+# elif [[ $1 = --push-only ]]; then
+#   main "$@"
+# else
+#   run_build
+#   main "$@"
+# fi

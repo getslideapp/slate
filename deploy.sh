@@ -220,9 +220,9 @@ increment_version() {
 update_version() {
 # check that file has no uncommitted changes
   if git diff-index --quiet HEAD --; then
-      echo No uncommitted local changes. Please either commit or discard your changes.
+      echo No uncommitted local changes
   else
-    echo -e "\033[31m Error: Uncommitted local changes \033[0m"
+    echo -e "\033[31m Error: Uncommitted local changes. Please either commit or discard your changes. \033[0m"
     exit 1
   fi
 

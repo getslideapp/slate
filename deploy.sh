@@ -237,7 +237,7 @@ update_version() {
     # fi
 
   echo Current git tag $(git describe --tags)
-  sed -i '' 's/- v1*/- '$(git describe --tags)'/' source/index.html.md
+  #sed -i '' 's/- v1*/- '$(git describe --tags)'/' source/index.html.md
 
   # read in value from file, extract the version and increment
   #version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)

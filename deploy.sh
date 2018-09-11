@@ -234,7 +234,7 @@ update_version() {
       exit 1
     fi
 
-  sed -i '' 's/- [version]*/- '$(git describe --tags)'/' source/index.html.md
+  sed -i '' 's/- v1*/- '$(git describe --tags)'/' source/index.html.md
 
   # read in value from file, extract the version and increment
   #version=$(grep '\- v1.' source/index.html.md | cut -d 'v' -f 2)
@@ -249,12 +249,12 @@ update_version() {
 update_version
 if [[ $1 = --source-only ]]; then
   run_build
-  sed -i '' 's/- v2.*/- [version]/' source/index.html.md
+  sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
 elif [[ $1 = --push-only ]]; then
   main "$@"
-  sed -i '' 's/- v2.*/- [version]/' source/index.html.md
+  sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
 else
   run_build
   main "$@"
-  sed -i '' 's/- v2.*/- [version]/' source/index.html.md
+  sed -i '' 's/- v2.*/- v1.0.1/' source/index.html.md
 fi

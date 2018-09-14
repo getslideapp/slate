@@ -195,7 +195,7 @@ This endpoint retrieves the profile details for the logged in user.
 
 ## Bank Accounts
 
-The Admin user endpoints allows an admin user to view or alter user information the user's behalf.
+For user management of their own bank accounts.
 
 ### List Bank Accounts
 
@@ -230,6 +230,41 @@ This endpoint retrieves a list of all the bank accounts for the logged in user.
 #### HTTP Request
 
 `GET /user/bank-accounts/`
+
+### Get Bank Account
+
+```shell
+curl "[BASE_URL]/user/bank-accounts/{id}/" \
+  -X GET \
+  -H "Authorization: Token [TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "name": "Mr T McTester",
+        "account_number": "000000000",
+        "type": "Checque",
+        "bank_name": "Nedbank",
+        "bank_code": "198765",
+        "branch_code": "198765",
+        "primary": true,
+        "created": "2018-08-21T09:27:25.882898Z",
+        "updated": "2018-08-29T16:58:54.647283Z"
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves the bank account with `id = {id}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+#### HTTP Request
+
+`GET /user/bank-accounts/{id}/`
+
 
 ### Create Bank Account
 
@@ -322,7 +357,7 @@ curl "[BASE_URL]/user/bank-account/" \
 }
 ```
 
-This endpoint updates the bank account with id = {id}, for the logged in user.
+This endpoint updates the bank account with `id = {id}`, for the logged in user.
 It can be used to set a secondary Bank Account back to 'primary'.
 
 #### HTTP Request
@@ -384,6 +419,43 @@ This endpoint retrieves a list of all users.
 
 `GET /admin/users/`
 
+
+### Get User
+
+```shell
+curl "[BASE_URL]/admin/users/[IDENTIFIER]/" \
+  -X GET \
+  -H "Authorization: Token [TOKEN]"
+```
+> Make sure to replace `[IDENTIFIER]` with the User Id.
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "230899032-f09832409-23580913",
+        "first_name": "Testy",
+        "last_name": "McTester",
+        "email": "testy@getslideapp.com",
+        "mobile_number": "+27821111112",
+        "company": "slide",
+        "group": "user",
+        "created": "2018-08-21T09:27:25.882898Z",
+        "updated": "2018-08-29T16:58:54.647283Z"
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves a user.
+
+#### HTTP Request
+
+`GET /admin/users/[IDENTIFIER]/`
+
+
 ### Create User
 
 ```shell
@@ -435,42 +507,6 @@ Parameter | Description | Type | Required
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
 </aside>
-
-### Get User
-
-```shell
-curl "[BASE_URL]/admin/users/[IDENTIFIER]/" \
-  -X GET \
-  -H "Authorization: Token [TOKEN]"
-```
-> Make sure to replace `[IDENTIFIER]` with the User Id.
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "data": {
-        "identifier": "230899032-f09832409-23580913",
-        "first_name": "Testy",
-        "last_name": "McTester",
-        "email": "testy@getslideapp.com",
-        "mobile_number": "+27821111112",
-        "company": "slide",
-        "group": "user",
-        "created": "2018-08-21T09:27:25.882898Z",
-        "updated": "2018-08-29T16:58:54.647283Z"
-    },
-    "message": null,
-    "status": "success"
-}
-```
-
-This endpoint retrieves a user.
-
-#### HTTP Request
-
-`GET /admin/users/[IDENTIFIER]/`
-
 
 ### Update User
 

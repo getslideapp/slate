@@ -161,6 +161,10 @@ All actions are performed by registered users. The user endpoints allow a user t
 
 ## User
 
+For user management of their own user profiles.
+
+### Get User
+
 ```shell
 curl "[BASE_URL]/user/" \
   -X GET \
@@ -212,7 +216,7 @@ curl "[BASE_URL]/user/bank-accounts/" \
     "data": {
         "name": "Mr T McTester",
         "account_number": "000000000",
-        "type": "Checque",
+        "type": "Cheque",
         "bank_name": "Nedbank",
         "bank_code": "198765",
         "branch_code": "198765",
@@ -246,7 +250,7 @@ curl "[BASE_URL]/user/bank-accounts/{id}/" \
     "data": {
         "name": "Mr T McTester",
         "account_number": "000000000",
-        "type": "Checque",
+        "type": "Cheque",
         "bank_name": "Nedbank",
         "bank_code": "198765",
         "branch_code": "198765",
@@ -314,11 +318,10 @@ Parameter | Description | Type | Required
 `name` | Account name | String | Yes
 `account_number` | Account number | String | Yes
 `type` | Account type (Options are: `Cheque` or `Savings`) | String | Yes
-`bank_name` | Account bank | String | Yes
+`bank_name` | Account bank (Options are: `Standard`, `Absa`, `FNB`, `Nedbank`, `Capitec`) | String | Yes
 `branch_code` | Bank branch code | String | Yes
 `bank_code` | Bank code | String | No
 `primary` | Defaults to True | String | No
-
 
 ### Update Bank Account
 

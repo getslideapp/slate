@@ -159,7 +159,7 @@ The company will respond to Slide either authenticating the User or not.
 
 All actions are performed by registered users. The user endpoints allow a user to view or alter their information.
 
-## Get User
+## User
 
 ```shell
 curl "[BASE_URL]/user/" \
@@ -191,6 +191,155 @@ This endpoint retrieves the profile details for the logged in user.
 #### HTTP Request
 
 `GET /user/`
+
+
+## Bank Accounts
+
+The Admin user endpoints allows an admin user to view or alter user information the user's behalf.
+
+### List Bank Accounts
+
+```shell
+curl "[BASE_URL]/user/bank-accounts/" \
+  -X GET \
+  -H "Authorization: Token [TOKEN]"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "name": "Mr T McTester",
+        "account_number": "000000000",
+        "type": "Checque",
+        "bank_name": "Nedbank",
+        "bank_code": "198765",
+        "branch_code": "198765",
+        "primary": true,
+        "created": "2018-08-21T09:27:25.882898Z",
+        "updated": "2018-08-29T16:58:54.647283Z"
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves a list of all the bank accounts for the logged in user.
+
+#### HTTP Request
+
+`GET /user/bank-accounts/`
+
+### Create Bank Account
+
+```shell
+curl "[BASE_URL]/user/bank-account/" \
+  -X POST \
+  -H "Authorization: Token [TOKEN]" \
+  -d '{ "name": "Mr T. McTester",
+        "account_number": "00000000",
+        "type": "Savings",
+        "bank_name": "Nedbank",
+        "bank_code": "198765",
+        "branch_code": "198765"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "success",
+  "message": "created",
+  "data": {
+      "id": 4,
+      "primary": true,
+      "name": "Mr T. McTester",
+      "account_number": "00000000",
+      "type": "Savings",
+      "bank_name": "Nedbank",
+      "bank_code": "198765",
+      "branch_code": "198765",
+      "created": "2018-09-14T13:19:00.549216Z",
+      "updated": "2018-09-14T13:19:00.549257Z"
+  }
+}
+```
+
+This endpoint creates a bank account for the logged in user. When a new bank account is created it will by default be set as the primary account for that user.
+
+#### HTTP Request
+
+`POST /user/bank-accounts/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`name` | Account name | String | Yes
+`account_number` | Account number | String | Yes
+`type` | Account type (Options are: `Cheque` or `Savings`) | String | Yes
+`bank_name` | Account bank | String | Yes
+`branch_code` | Bank branch code | String | Yes
+`bank_code` | Bank code | String | No
+`primary` | Defaults to True | String | No
+
+
+### Update Bank Account
+
+```shell
+curl "[BASE_URL]/user/bank-account/" \
+  -X PUT \
+  -H "Authorization: Token [TOKEN]" \
+  -d '{ "name": "Mr T. McTester",
+        "account_number": "00000000",
+        "type": "Savings",
+        "bank_name": "Nedbank",
+        "bank_code": "198765",
+        "branch_code": "198765",
+        "primary": true,
+      }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "success",
+  "message": "created",
+  "data": {
+      "id": 4,
+      "primary": true,
+      "name": "Mr T. McTester",
+      "account_number": "00000000",
+      "type": "Savings",
+      "bank_name": "Nedbank",
+      "bank_code": "198765",
+      "branch_code": "198765",
+      "created": "2018-09-14T13:19:00.549216Z",
+      "updated": "2018-09-14T13:19:00.549257Z"
+  }
+}
+```
+
+This endpoint updates the bank account with id = {id}, for the logged in user.
+It can be used to set a secondary Bank Account back to 'primary'.
+
+#### HTTP Request
+
+`POST /user/bank-accounts/{id}/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`name` | Account name | String | No
+`account_number` | Account number | String | No
+`type` | Account type (Options are: `Cheque` or `Savings`) | String | No
+`bank_name` | Account bank | String | No
+`branch_code` | Bank branch code | String | No
+`bank_code` | Bank code | String | No
+`primary` | Sets the account as the primary account | String | No
 
 
 # Admin

@@ -216,9 +216,8 @@ curl "[BASE_URL]/user/bank-accounts/" \
     "data": {
         "name": "Mr T McTester",
         "account_number": "000000000",
-        "type": "Cheque",
-        "bank_name": "Nedbank",
-        "bank_code": "198765",
+        "type": "cheque",
+        "bank_name": "nedbank",
         "branch_code": "198765",
         "primary": true,
         "created": "2018-08-21T09:27:25.882898Z",
@@ -250,9 +249,8 @@ curl "[BASE_URL]/user/bank-accounts/{id}/" \
     "data": {
         "name": "Mr T McTester",
         "account_number": "000000000",
-        "type": "Cheque",
-        "bank_name": "Nedbank",
-        "bank_code": "198765",
+        "type": "cheque",
+        "bank_name": "nedbank",
         "branch_code": "198765",
         "primary": true,
         "created": "2018-08-21T09:27:25.882898Z",
@@ -273,15 +271,13 @@ This endpoint retrieves the bank account with `id = {id}` if the logged in user 
 ### Create Bank Account
 
 ```shell
-curl "[BASE_URL]/user/bank-account/" \
+curl "[BASE_URL]/user/bank-accounts/" \
   -X POST \
   -H "Authorization: Token [TOKEN]" \
   -d '{ "name": "Mr T. McTester",
         "account_number": "00000000",
-        "type": "Savings",
-        "bank_name": "Nedbank",
-        "bank_code": "198765",
-        "branch_code": "198765"}'
+        "type": "savings",
+        "bank_name": "nedbank"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -295,9 +291,8 @@ curl "[BASE_URL]/user/bank-account/" \
       "primary": true,
       "name": "Mr T. McTester",
       "account_number": "00000000",
-      "type": "Savings",
+      "type": "savings",
       "bank_name": "Nedbank",
-      "bank_code": "198765",
       "branch_code": "198765",
       "created": "2018-09-14T13:19:00.549216Z",
       "updated": "2018-09-14T13:19:00.549257Z"
@@ -306,6 +301,10 @@ curl "[BASE_URL]/user/bank-account/" \
 ```
 
 This endpoint creates a bank account for the logged in user. When a new bank account is created it will by default be set as the primary account for that user.
+
+<aside class="notice">
+The bank `branch_code` will be set for each bank account based on the chosen bank's universal branch code.
+</aside>
 
 #### HTTP Request
 
@@ -317,24 +316,20 @@ Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `name` | Account name | String | Yes
 `account_number` | Account number | String | Yes
-`type` | Account type (Options are: `Cheque` or `Savings`) | String | Yes
-`bank_name` | Account bank (Options are: `Standard`, `Absa`, `FNB`, `Nedbank`, `Capitec`) | String | Yes
-`branch_code` | Bank branch code | String | Yes
-`bank_code` | Bank code | String | No
-`primary` | Defaults to True | String | No
+`type` | Account type (Options are: `cheque` or `savings`) | String | Yes
+`bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`) | String | Yes
+`primary` | Sets the account as the primary account. Defaults to True | String | No
 
 ### Update Bank Account
 
 ```shell
-curl "[BASE_URL]/user/bank-account/" \
+curl "[BASE_URL]/user/bank-accounts/{id}/" \
   -X PUT \
   -H "Authorization: Token [TOKEN]" \
   -d '{ "name": "Mr T. McTester",
         "account_number": "00000000",
-        "type": "Savings",
-        "bank_name": "Nedbank",
-        "bank_code": "198765",
-        "branch_code": "198765",
+        "type": "savings",
+        "bank_name": "nedbank",
         "primary": true,
       }'
 ```
@@ -365,7 +360,7 @@ It can be used to set a secondary Bank Account back to 'primary'.
 
 #### HTTP Request
 
-`POST /user/bank-accounts/{id}/`
+`PUT /user/bank-accounts/{id}/`
 
 #### URL Parameters
 
@@ -373,10 +368,8 @@ Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `name` | Account name | String | No
 `account_number` | Account number | String | No
-`type` | Account type (Options are: `Cheque` or `Savings`) | String | No
-`bank_name` | Account bank | String | No
-`branch_code` | Bank branch code | String | No
-`bank_code` | Bank code | String | No
+`type` | Account type (Options are: `cheque` or `savings`) | String | No
+`bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`) | String | No
 `primary` | Sets the account as the primary account | String | No
 
 

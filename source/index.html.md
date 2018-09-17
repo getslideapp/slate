@@ -317,7 +317,7 @@ Parameter | Description | Type | Required
 `name` | Account name | String | Yes
 `account_number` | Account number | String | Yes
 `type` | Account type (Options are: `cheque` or `savings`) | String | Yes
-`bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`) | String | Yes
+`bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`, `investec`) | String | Yes
 `primary` | Sets the account as the primary account. Defaults to True | String | No
 
 ### Update Bank Account
@@ -369,7 +369,7 @@ Parameter | Description | Type | Required
 `name` | Account name | String | No
 `account_number` | Account number | String | No
 `type` | Account type (Options are: `cheque` or `savings`) | String | No
-`bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`) | String | No
+`bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`, `investec`) | String | No
 `primary` | Sets the account as the primary account | String | No
 
 

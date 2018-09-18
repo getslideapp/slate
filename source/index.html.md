@@ -1,4 +1,4 @@
----
+{your_error_message}---
 title: Slide API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
@@ -23,16 +23,16 @@ search: true
 > Production base URL:
 
 ```shell
-https://[COMPANY].api.getslideapp.com/2
+https://{company}.api.getslideapp.com/2
 ```
 
 > Development base URL:
 
 ```shell
-https://dev.[COMPANY].api.getslideapp.com/2
+https://dev.{company}.api.getslideapp.com/2
 ```
 
-> Make sure to replace `[COMPANY]` with your Company Name and to use either of the above URLs as the `{base_url}`.
+> Make sure to replace `{company}` with your Company Name and to use either of the above URLs as the `{base_url}`.
 
 > The format of a standard success response is structured like this:
 
@@ -65,7 +65,7 @@ Requests made with test credentials never hit the banking networks and incur no 
 If anything is missing or seems incorrect, please check the [GitHub issues](https://github.com/getslideapp/slate/issues) for existing known issues or create a new issue.
 
 <aside class="notice">
-You must replace <code>[COMPANY]</code> in all API Requests with your Company Name.
+You must replace <code>{company}</code> in all API Requests with your Company Name.
 </aside>
 
 ## Endpoint Types
@@ -114,7 +114,7 @@ You must replace <code>{token}</code> with your personal API token.
 > We will make a request using this format:
 
 ```shell
-curl "[COMPANY_AUTHENTICATION_URL]" \
+curl "{company_authentication_url}" \
   -X GET \
   -H "Authorization: Token {token}"
 ```
@@ -143,7 +143,7 @@ curl "[COMPANY_AUTHENTICATION_URL]" \
 {
     "status": "error",
     "data": null,
-    "message": "[YOUR_ERROR_MESSAGE]"
+    "message": "{your_error_message}"
 }
 ```
 

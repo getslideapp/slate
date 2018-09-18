@@ -199,10 +199,10 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+      <script src="javascripts/all_nosearch.js"></script>
     <link href="images/favicon.png" rel="icon" type="image/png" />
   </head>
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         <!-- NAV -->
@@ -214,14 +214,21 @@
       <a href="https://getslideapp.com" target="_blank">
       <img src="images/logo_blue.png" class="logo" alt="Logo blue" />
     </a>
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">cURL</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#ruby" class="toc-h1 toc-link" data-title="- ruby">- ruby</a>
+          </li>
+          <li>
+            <a href="#python" class="toc-h1 toc-link" data-title="- python">- python</a>
+          </li>
+          <li>
+            <a href="#javascript" class="toc-h1 toc-link" data-title="- javascript">- javascript</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#search-true" class="toc-h2 toc-link" data-title="search: true">search: true</a>
+                  </li>
+              </ul>
+          </li>
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
@@ -242,7 +249,29 @@
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-user" class="toc-h2 toc-link" data-title="Get User">Get User</a>
+                    <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-user" class="toc-h3 toc-link" data-title="Users">Get User</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#bank-accounts" class="toc-h2 toc-link" data-title="Bank Accounts">Bank Accounts</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#list-bank-accounts" class="toc-h3 toc-link" data-title="Users">List Bank Accounts</a>
+                          </li>
+                          <li>
+                            <a href="#get-bank-account" class="toc-h3 toc-link" data-title="Users">Get Bank Account</a>
+                          </li>
+                          <li>
+                            <a href="#create-bank-account" class="toc-h3 toc-link" data-title="Users">Create Bank Account</a>
+                          </li>
+                          <li>
+                            <a href="#update-bank-account" class="toc-h3 toc-link" data-title="Users">Update Bank Account</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -256,10 +285,10 @@
                             <a href="#list-users" class="toc-h3 toc-link" data-title="Admin">List Users</a>
                           </li>
                           <li>
-                            <a href="#create-user" class="toc-h3 toc-link" data-title="Admin">Create User</a>
+                            <a href="#get-user-2" class="toc-h3 toc-link" data-title="Admin">Get User</a>
                           </li>
                           <li>
-                            <a href="#get-user-2" class="toc-h3 toc-link" data-title="Admin">Get User</a>
+                            <a href="#create-user" class="toc-h3 toc-link" data-title="Admin">Create User</a>
                           </li>
                           <li>
                             <a href="#update-user" class="toc-h3 toc-link" data-title="Admin">Update User</a>
@@ -268,32 +297,37 @@
                   </li>
               </ul>
           </li>
-          <li>
-            <a href="#errors-and-status-codes" class="toc-h1 toc-link" data-title="Errors and Status Codes">Errors and Status Codes</a>
-          </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a></li>
-            <li><a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a></li>
-            <li>v2.3.1-64-g1c2512e.0.1</li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
+        <p>{your_error_message}---
+title: Slide API Documentation</p>
+
+<p>language_tabs: # must be one of https://git.io/vQNgJ
+  - shell : cURL</p>
+<h1 id='ruby'>- ruby</h1><h1 id='python'>- python</h1><h1 id='javascript'>- javascript</h1>
+<p>toc_footers:
+  - <a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a>
+  - <a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a>
+  - v2.3.1-78-gcb4068e</p>
+
+<p>includes:
+  - errors</p>
+<h2 id='search-true'>search: true</h2><h1 id='introduction'>Introduction</h1>
 <blockquote>
 <p>Production base URL:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>https://[COMPANY].api.getslideapp.com/2
+<pre class="highlight shell tab-shell"><code>https://<span class="o">{</span>company<span class="o">}</span>.api.getslideapp.com/2
 </code></pre>
 <blockquote>
 <p>Development base URL:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>https://dev.[COMPANY].api.getslideapp.com/2
+<pre class="highlight shell tab-shell"><code>https://dev.<span class="o">{</span>company<span class="o">}</span>.api.getslideapp.com/2
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>[COMPANY]</code> with your Company Name and to use either of the above URLs as the <code>[BASE_URL]</code>.</p>
+<p>Make sure to replace <code>{company}</code> with your Company Name and to use either of the above URLs as the <code>{base_url}</code>.</p>
 
 <p>The format of a standard success response is structured like this:</p>
 </blockquote>
@@ -323,7 +357,7 @@
 <p>If anything is missing or seems incorrect, please check the <a href="https://github.com/getslideapp/slate/issues">GitHub issues</a> for existing known issues or create a new issue.</p>
 
 <aside class="notice">
-You must replace <code>[COMPANY]</code> in all API Requests with your Company Name.
+You must replace <code>{company}</code> in all API Requests with your Company Name.
 </aside>
 <h2 id='endpoint-types'>Endpoint Types</h2>
 <p>We service two different types of API endpoints.</p>
@@ -335,12 +369,12 @@ You must replace <code>[COMPANY]</code> in all API Requests with your Company Na
 <blockquote>
 <p>To check authorization, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/user/"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token [TOKEN]"</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>[TOKEN]</code> with your API token and <code>[BASE_URL]</code> with the desired base url.</p>
+<p>Make sure to replace <code>{token}</code> with your API token and <code>{base_url}</code> with the desired base url.</p>
 </blockquote>
 
 <p>Slide uses a token-based HTTP Authentication scheme.</p>
@@ -355,23 +389,23 @@ You must replace <code>[COMPANY]</code> in all API Requests with your Company Na
 
 <p>Slide expects the API token to be included in the HTTP Authorization header in all API requests to the server:</p>
 
-<p><code>Authorization: Token [TOKEN]</code></p>
+<p><code>Authorization: Token {token}</code></p>
 
 <p>You can obtain a new Slide API token and Company Name by emailing us at info@getslideapp.com.</p>
 
 <aside class="notice">
-You must replace <code>[TOKEN]</code> with your personal API token.
+You must replace <code>{token}</code> with your personal API token.
 </aside>
 <h3 id='external-user-authentication'>External User Authentication</h3>
 <blockquote>
 <p>We will make a request using this format:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"[COMPANY_AUTHENTICATION_URL]"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"{company_authentication_url}"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token [TOKEN]"</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
 </code></pre>
 <blockquote>
-<p>Where <code>[TOKEN]</code> is the authentication token received from the client.</p>
+<p>Where <code>{token}</code> is the authentication token received from the client.</p>
 
 <p>If authentication is successful, we expect a 200 response containing user data structured like this:</p>
 </blockquote>
@@ -393,7 +427,7 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_ERROR_MESSAGE]"</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{your_error_message}"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Either Slide can handle all the authentication for a company or the company can choose to handle their own user authentication. If Slide handles all the authentication, then Slide will authenticate all User API calls using the API token that the user receives when they log in.</p>
@@ -405,9 +439,11 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 <p>The company will respond to Slide either authenticating the User or not.</p>
 <h1 id='users'>Users</h1>
 <p>All actions are performed by registered users. The user endpoints allow a user to view or alter their information.</p>
-<h2 id='get-user'>Get User</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/user/"</span> <span class="se">\</span>
+<h2 id='user'>User</h2>
+<p>For user management of their own user profiles.</p>
+<h3 id='get-user'>Get User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token [TOKEN]"</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -431,13 +467,207 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 <p>This endpoint retrieves the profile details for the logged in user.</p>
 <h4 id='http-request'>HTTP Request</h4>
 <p><code>GET /user/</code></p>
+<h2 id='bank-accounts'>Bank Accounts</h2>
+<p>For user management of their own bank accounts.</p>
+<h3 id='list-bank-accounts'>List Bank Accounts</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/bank-accounts/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr T McTester"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cheque"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nedbank"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198765"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of all the bank accounts for the logged in user.</p>
+<h4 id='http-request-2'>HTTP Request</h4>
+<p><code>GET /user/bank-accounts/</code></p>
+<h3 id='get-bank-account'>Get Bank Account</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/bank-accounts/{id}/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr T McTester"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cheque"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nedbank"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198765"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the bank account with <code>id = {id}</code> if the logged in user is the resource owner, otherwise it returns a <code>404 Not Found</code>.</p>
+<h4 id='http-request-3'>HTTP Request</h4>
+<p><code>GET /user/bank-accounts/{id}/</code></p>
+<h3 id='create-bank-account'>Create Bank Account</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/bank-accounts/"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
+  -d <span class="s1">'{ "name": "Mr T. McTester",
+        "account_number": "00000000",
+        "type": "savings",
+        "bank_name": "nedbank"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr T. McTester"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"savings"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nedbank"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198765"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-14T13:19:00.549216Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-14T13:19:00.549257Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a bank account for the logged in user. When a new bank account is created it will by default be set as the primary account for that user.</p>
+
+<aside class="notice">
+The bank `branch_code` will be set for each bank account based on the chosen bank's universal branch code.
+</aside>
+<h4 id='http-request-4'>HTTP Request</h4>
+<p><code>POST /user/bank-accounts/</code></p>
+<h4 id='url-parameters'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Account name</td>
+<td>String</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>account_number</code></td>
+<td>Account number</td>
+<td>String</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Account type (Options are: <code>cheque</code> or <code>savings</code>)</td>
+<td>String</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>bank_name</code></td>
+<td>Account bank (Options are: <code>standard_bank</code>, <code>absa</code>, <code>fnb</code>, <code>nedbank</code>, <code>capitec</code>, <code>african_bank</code>, <code>investec</code>)</td>
+<td>String</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='update-bank-account'>Update Bank Account</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/bank-accounts/{id}/"</span> <span class="se">\</span>
+  -X PUT <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
+  -d <span class="s1">'{ "name": "Mr T. McTester",
+        "account_number": "00000000",
+        "type": "savings",
+        "bank_name": "nedbank",
+        "primary": true,
+      }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr T. McTester"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"savings"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nedbank"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198765"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198765"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-14T13:19:00.549216Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-14T13:19:00.549257Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the bank account with <code>id = {id}</code>, for the logged in user.
+It can be used to set a secondary Bank Account back to &#39;primary&#39;.</p>
+<h4 id='http-request-5'>HTTP Request</h4>
+<p><code>PUT /user/bank-accounts/{id}/</code></p>
+<h4 id='url-parameters-2'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Account name</td>
+<td>String</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>account_number</code></td>
+<td>Account number</td>
+<td>String</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Account type (Options are: <code>cheque</code> or <code>savings</code>)</td>
+<td>String</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>bank_name</code></td>
+<td>Account bank (Options are: <code>standard_bank</code>, <code>absa</code>, <code>fnb</code>, <code>nedbank</code>, <code>capitec</code>, <code>african_bank</code>, <code>investec</code>)</td>
+<td>String</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>primary</code></td>
+<td>Sets the account as the primary account</td>
+<td>String</td>
+<td>No</td>
+</tr>
+</tbody></table>
 <h1 id='admin'>Admin</h1>
 <p>Admin endpoints are a set of admin-only accessible endpoints that provide administrative functionality across a company.</p>
 <h2 id='users-2'>Users</h2>
 <p>The Admin user endpoints allows an admin user to view or alter user information the user&#39;s behalf.</p>
-<h3 id='list-users'>List Users</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/admin/users/"</span> <span class="se">\</span>
+<h3 id='list-users'>List Users</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token [TOKEN]"</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -459,15 +689,43 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a list of all users.</p>
-<h4 id='http-request-2'>HTTP Request</h4>
+<h4 id='http-request-6'>HTTP Request</h4>
 <p><code>GET /admin/users/</code></p>
-<h3 id='create-user'>Create User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/admin/users/"</span> <span class="se">\</span>
+<h3 id='get-user-2'>Get User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/{identifier}/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>{identifier}</code> with the User Id.</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230899032-f09832409-23580913"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a user.</p>
+<h4 id='http-request-7'>HTTP Request</h4>
+<p><code>GET /admin/users/{identifier}/</code></p>
+<h3 id='create-user'>Create User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token [TOKEN]"</span> <span class="se">\</span>
-  -d <span class="s1">'{"first_name": "Joe",
-       "last_name": "Shmoe",
+  -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
+  -d <span class="s1">'{"first_name": "Testy",
+       "last_name": "McTester",
        "mobile_number": "+27820000000",
-       "email": "example@email.com"}'</span>
+       "email": "testy@getslideapp.com"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -489,9 +747,9 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a user. When a new user is created they will by default be in the <code>user</code> group.</p>
-<h4 id='http-request-3'>HTTP Request</h4>
+<h4 id='http-request-8'>HTTP Request</h4>
 <p><code>POST /admin/users/</code></p>
-<h4 id='url-parameters'>URL Parameters</h4>
+<h4 id='url-parameters-3'>URL Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -524,49 +782,27 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 <td>String</td>
 <td>Yes</td>
 </tr>
+<tr>
+<td><code>groups</code></td>
+<td>User&#39;s group (Options are: <code>user</code> or <code>admin_user</code>)</td>
+<td>String</td>
+<td>No</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
 </aside>
-<h3 id='get-user-2'>Get User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/admin/users/[IDENTIFIER]/"</span> <span class="se">\</span>
-  -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token [TOKEN]"</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>[IDENTIFIER]</code> with the User Id.</p>
-
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230899032-f09832409-23580913"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a user.</p>
-<h4 id='http-request-4'>HTTP Request</h4>
-<p><code>GET /admin/users/[IDENTIFIER]/</code></p>
-<h3 id='update-user'>Update User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"[BASE_URL]/admin/users/[IDENTIFIER]/"</span> <span class="se">\</span>
+<h3 id='update-user'>Update User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/{identifier}/"</span> <span class="se">\</span>
   -X PUT <span class="se">\</span>
-  -H <span class="s2">"Authorization: Token [TOKEN]"</span> <span class="se">\</span>
-  -d <span class="s1">'{"first_name": "Joe",
-       "last_name": "Shmoe",
-       "mobile_number": "+27820000000",
-       "email": "example@email.com"}'</span>
+  -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
+  -d <span class="s1">'{"first_name": "Testy",
+       "last_name": "McTester",
+       "mobile_number": "+27821111112",
+       "email": "testy@getslideapp.com"}'</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>[IDENTIFIER]</code> with the User Id.</p>
+<p>Make sure to replace <code>{identifier}</code> with the User Id.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -587,9 +823,9 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates an existing user.</p>
-<h4 id='http-request-5'>HTTP Request</h4>
-<p><code>PUT /admin/users/[IDENTIFIER]/</code></p>
-<h4 id='url-parameters-2'>URL Parameters</h4>
+<h4 id='http-request-9'>HTTP Request</h4>
+<p><code>PUT /admin/users/{identifier}/</code></p>
+<h4 id='url-parameters-4'>URL Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -627,64 +863,9 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
 </aside>
-<h1 id='errors-and-status-codes'>Errors and Status Codes</h1>
-<!-- <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside> -->
-
-<p>Slide uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Slide&#39;s servers (these are rare).</p>
-
-<p>Some 4xx errors that could be handled programmatically (e.g., a card is declined) include an error code that briefly explains the error reported.</p>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK -- Everything worked as expected.</td>
-</tr>
-<tr>
-<td>201</td>
-<td>OK -- Created.</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- You do not have permission to access the desired resource.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified resource could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a resource with an invalid method.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re making too many requests! Slow down!</td>
-</tr>
-<tr>
-<td>500, 502, 503, 504</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-</tbody></table>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">cURL</a>
-          </div>
       </div>
     </div>
   </body>

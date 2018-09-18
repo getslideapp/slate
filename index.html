@@ -199,10 +199,10 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch.js"></script>
+      <script src="javascripts/all.js"></script>
     <link href="images/favicon.png" rel="icon" type="image/png" />
   </head>
-  <body class="index" data-languages="[]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         <!-- NAV -->
@@ -214,21 +214,14 @@
       <a href="https://getslideapp.com" target="_blank">
       <img src="images/logo_blue.png" class="logo" alt="Logo blue" />
     </a>
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">cURL</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
-          <li>
-            <a href="#ruby" class="toc-h1 toc-link" data-title="- ruby">- ruby</a>
-          </li>
-          <li>
-            <a href="#python" class="toc-h1 toc-link" data-title="- python">- python</a>
-          </li>
-          <li>
-            <a href="#javascript" class="toc-h1 toc-link" data-title="- javascript">- javascript</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#search-true" class="toc-h2 toc-link" data-title="search: true">search: true</a>
-                  </li>
-              </ul>
-          </li>
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
@@ -297,25 +290,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#errors-and-status-codes" class="toc-h1 toc-link" data-title="Errors and Status Codes">Errors and Status Codes</a>
+          </li>
       </ul>
+        <ul class="toc-footer">
+            <li><a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a></li>
+            <li><a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a></li>
+            <li>v2.3.1-79-g51ad871</li>
+        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <p>{your_error_message}---
-title: Slide API Documentation</p>
-
-<p>language_tabs: # must be one of https://git.io/vQNgJ
-  - shell : cURL</p>
-<h1 id='ruby'>- ruby</h1><h1 id='python'>- python</h1><h1 id='javascript'>- javascript</h1>
-<p>toc_footers:
-  - <a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a>
-  - <a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a>
-  - v2.3.1-78-gcb4068e</p>
-
-<p>includes:
-  - errors</p>
-<h2 id='search-true'>search: true</h2><h1 id='introduction'>Introduction</h1>
+        <h1 id='introduction'>Introduction</h1>
 <blockquote>
 <p>Production base URL:</p>
 </blockquote>
@@ -863,9 +851,64 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
 </aside>
+<h1 id='errors-and-status-codes'>Errors and Status Codes</h1>
+<!-- <aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside> -->
+
+<p>Slide uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Slide&#39;s servers (these are rare).</p>
+
+<p>Some 4xx errors that could be handled programmatically (e.g., a card is declined) include an error code that briefly explains the error reported.</p>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK -- Everything worked as expected.</td>
+</tr>
+<tr>
+<td>201</td>
+<td>OK -- Created.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- You do not have permission to access the desired resource.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified resource could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a resource with an invalid method.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re making too many requests! Slow down!</td>
+</tr>
+<tr>
+<td>500, 502, 503, 504</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">cURL</a>
+          </div>
       </div>
     </div>
   </body>

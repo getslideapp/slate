@@ -32,7 +32,7 @@ https://[COMPANY].api.getslideapp.com/2
 https://dev.[COMPANY].api.getslideapp.com/2
 ```
 
-> Make sure to replace `[COMPANY]` with your Company Name and to use either of the above URLs as the `[BASE_URL]`.
+> Make sure to replace `[COMPANY]` with your Company Name and to use either of the above URLs as the `{base_url}`.
 
 > The format of a standard success response is structured like this:
 
@@ -81,12 +81,12 @@ Company Admin Users: Requests by an administrator. The admin endpoints will allo
 > To check authorization, use this code:
 
 ```shell
-curl "[BASE_URL]/user/" \
+curl "{base_url}/user/" \
   -X GET \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token {token}"
 ```
 
-> Make sure to replace `[TOKEN]` with your API token and `[BASE_URL]` with the desired base url.
+> Make sure to replace `{token}` with your API token and `{base_url}` with the desired base url.
 
 Slide uses a token-based HTTP Authentication scheme.
 
@@ -100,12 +100,12 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail. 
 
 Slide expects the API token to be included in the HTTP Authorization header in all API requests to the server:
 
-`Authorization: Token [TOKEN]`
+`Authorization: Token {token}`
 
 You can obtain a new Slide API token and Company Name by emailing us at info@getslideapp.com.
 
 <aside class="notice">
-You must replace <code>[TOKEN]</code> with your personal API token.
+You must replace <code>{token}</code> with your personal API token.
 </aside>
 
 
@@ -116,10 +116,10 @@ You must replace <code>[TOKEN]</code> with your personal API token.
 ```shell
 curl "[COMPANY_AUTHENTICATION_URL]" \
   -X GET \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token {token}"
 ```
 
-> Where `[TOKEN]` is the authentication token received from the client.
+> Where `{token}` is the authentication token received from the client.
 
 > If authentication is successful, we expect a 200 response containing user data structured like this:
 
@@ -166,9 +166,9 @@ For user management of their own user profiles.
 ### Get User
 
 ```shell
-curl "[BASE_URL]/user/" \
+curl "{base_url}/user/" \
   -X GET \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token {token}"
 ```
 > The above command returns JSON structured like this:
 
@@ -204,9 +204,9 @@ For user management of their own bank accounts.
 ### List Bank Accounts
 
 ```shell
-curl "[BASE_URL]/user/bank-accounts/" \
+curl "{base_url}/user/bank-accounts/" \
   -X GET \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token {token}"
 ```
 
 > The above command returns JSON structured like this:
@@ -237,9 +237,9 @@ This endpoint retrieves a list of all the bank accounts for the logged in user.
 ### Get Bank Account
 
 ```shell
-curl "[BASE_URL]/user/bank-accounts/{id}/" \
+curl "{base_url}/user/bank-accounts/{id}/" \
   -X GET \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token {token}"
 ```
 
 > The above command returns JSON structured like this:
@@ -271,9 +271,9 @@ This endpoint retrieves the bank account with `id = {id}` if the logged in user 
 ### Create Bank Account
 
 ```shell
-curl "[BASE_URL]/user/bank-accounts/" \
+curl "{base_url}/user/bank-accounts/" \
   -X POST \
-  -H "Authorization: Token [TOKEN]" \
+  -H "Authorization: Token {token}" \
   -d '{ "name": "Mr T. McTester",
         "account_number": "00000000",
         "type": "savings",
@@ -292,7 +292,7 @@ curl "[BASE_URL]/user/bank-accounts/" \
       "name": "Mr T. McTester",
       "account_number": "00000000",
       "type": "savings",
-      "bank_name": "Nedbank",
+      "bank_name": "nedbank",
       "branch_code": "198765",
       "created": "2018-09-14T13:19:00.549216Z",
       "updated": "2018-09-14T13:19:00.549257Z"
@@ -318,14 +318,13 @@ Parameter | Description | Type | Required
 `account_number` | Account number | String | Yes
 `type` | Account type (Options are: `cheque` or `savings`) | String | Yes
 `bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`, `investec`) | String | Yes
-`primary` | Sets the account as the primary account. Defaults to True | String | No
 
 ### Update Bank Account
 
 ```shell
-curl "[BASE_URL]/user/bank-accounts/{id}/" \
+curl "{base_url}/user/bank-accounts/{id}/" \
   -X PUT \
-  -H "Authorization: Token [TOKEN]" \
+  -H "Authorization: Token {token}" \
   -d '{ "name": "Mr T. McTester",
         "account_number": "00000000",
         "type": "savings",
@@ -345,8 +344,8 @@ curl "[BASE_URL]/user/bank-accounts/{id}/" \
       "primary": true,
       "name": "Mr T. McTester",
       "account_number": "00000000",
-      "type": "Savings",
-      "bank_name": "Nedbank",
+      "type": "savings",
+      "bank_name": "nedbank",
       "bank_code": "198765",
       "branch_code": "198765",
       "created": "2018-09-14T13:19:00.549216Z",
@@ -384,9 +383,9 @@ The Admin user endpoints allows an admin user to view or alter user information 
 ### List Users
 
 ```shell
-curl "[BASE_URL]/admin/users/" \
+curl "{base_url}/admin/users/" \
   -X GET \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token {token}"
 ```
 
 > The above command returns JSON structured like this:
@@ -419,11 +418,11 @@ This endpoint retrieves a list of all users.
 ### Get User
 
 ```shell
-curl "[BASE_URL]/admin/users/[IDENTIFIER]/" \
+curl "{base_url}/admin/users/{identifier}/" \
   -X GET \
-  -H "Authorization: Token [TOKEN]"
+  -H "Authorization: Token {token}"
 ```
-> Make sure to replace `[IDENTIFIER]` with the User Id.
+> Make sure to replace `{identifier}` with the User Id.
 
 > The above command returns JSON structured like this:
 
@@ -449,19 +448,19 @@ This endpoint retrieves a user.
 
 #### HTTP Request
 
-`GET /admin/users/[IDENTIFIER]/`
+`GET /admin/users/{identifier}/`
 
 
 ### Create User
 
 ```shell
-curl "[BASE_URL]/admin/users/" \
+curl "{base_url}/admin/users/" \
   -X POST \
-  -H "Authorization: Token [TOKEN]" \
-  -d '{"first_name": "Joe",
-       "last_name": "Shmoe",
+  -H "Authorization: Token {token}" \
+  -d '{"first_name": "Testy",
+       "last_name": "McTester",
        "mobile_number": "+27820000000",
-       "email": "example@email.com"}'
+       "email": "testy@getslideapp.com"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -507,15 +506,15 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 ### Update User
 
 ```shell
-curl "[BASE_URL]/admin/users/[IDENTIFIER]/" \
+curl "{base_url}/admin/users/{identifier}/" \
   -X PUT \
-  -H "Authorization: Token [TOKEN]" \
-  -d '{"first_name": "Joe",
-       "last_name": "Shmoe",
-       "mobile_number": "+27820000000",
-       "email": "example@email.com"}'
+  -H "Authorization: Token {token}" \
+  -d '{"first_name": "Testy",
+       "last_name": "McTester",
+       "mobile_number": "+27821111112",
+       "email": "testy@getslideapp.com"}'
 ```
-> Make sure to replace `[IDENTIFIER]` with the User Id.
+> Make sure to replace `{identifier}` with the User Id.
 
 > The above command returns JSON structured like this:
 
@@ -541,7 +540,7 @@ This endpoint updates an existing user.
 
 #### HTTP Request
 
-`PUT /admin/users/[IDENTIFIER]/`
+`PUT /admin/users/{identifier}/`
 
 #### URL Parameters
 

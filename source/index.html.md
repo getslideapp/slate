@@ -213,7 +213,8 @@ curl "{base_url}/user/bank-accounts/" \
 
 ```json
 {
-    "data": {
+    "data": [
+      {
         "name": "Mr T McTester",
         "account_number": "000000000",
         "type": "cheque",
@@ -222,7 +223,8 @@ curl "{base_url}/user/bank-accounts/" \
         "primary": true,
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
-    },
+      }
+    ],
     "message": null,
     "status": "success"
 }
@@ -370,6 +372,251 @@ Parameter | Description | Type | Required
 `type` | Account type (Options are: `cheque` or `savings`) | String | No
 `bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`, `investec`) | String | No
 `primary` | Sets the account as the primary account | String | No
+
+
+<!-- ##################################################################################################################################################333 -->
+<!-- ##################################################################################################################################################333 -->
+<!-- ##################################################################################################################################################333 -->
+<!-- ##################################################################################################################################################333 -->
+
+## Cards
+
+For user management of their own credit cards.
+
+### List Cards
+
+```shell
+curl "{base_url}/user/cards/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "card_holder": "T McTester",
+            "primary": true,
+            "registration_status": "registered",
+            "verification_status": "pending",
+            "last_four_digits": "9013",
+            "expiry_year": "2018",
+            "expiry_month": "10",
+            "id": 21
+        },
+        {
+            "card_holder": "T McTester",
+            "primary": false,
+            "registration_status": "registered",
+            "verification_status": "pending",
+            "last_four_digits": "3018",
+            "expiry_year": "2018",
+            "expiry_month": "10",
+            "id": 17
+        }
+    ],
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves a list of all the cards registered for the logged in user.
+
+#### HTTP Request
+
+`GET /user/cards/`
+
+### Get Card
+
+```shell
+curl "{base_url}/user/cardss/{id}/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+          "card_holder": "T McTester",
+          "primary": false,
+          "registration_status": "registered",
+          "verification_status": "pending",
+          "last_four_digits": "3018",
+          "expiry_year": "2018",
+          "expiry_month": "10",
+          "id": 17
+      },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves the Card with `id = {id}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+#### HTTP Request
+
+`GET /user/cards/{id}/`
+
+
+### Register Card
+
+```shell
+curl "{base_url}/user/cards/" \
+  -X POST \
+  -H "Authorization: Token {token}" \
+  -d '{ "number": "1111222233334444",
+        "card_holder": "Mr T. McTester",
+        "expiry_year": "2018",
+        "expiry_month": "12",
+        "cvv": "123",
+      }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+        "card_holder": "T McTester",
+        "primary": true,
+        "registration_status": "registered",
+        "verification_status": "pending",
+        "last_four_digits": "4444",
+        "expiry_year": "2018",
+        "expiry_month": "12",
+        "id": 17
+    },
+  "message": "created",
+  "status": "success"
+}
+```
+
+This endpoint adds a card for the logged in user. When a new card is successfully registered it will by default be set as the primary card for that user.
+
+<aside class="notice">
+The card type will be set for each bank account based on the chosen bank's card. So the input of a card type is not necessary. Please also note that only valid Visa and Mastercard credit card numbers will be accepted.
+</aside>
+
+#### HTTP Request
+
+`POST /user/cards/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`number` | Card number | String (16 digit) | Yes
+`cvv` | CVV number | String (3 digit) | Yes
+`card_holder` | Card holder name | String | Yes
+`expiry_year` | Year of expiry date | String (4 digit) | Yes
+`expiry_month` | Month of expiry date | String (2 digit) | Yes
+
+### Unregister Card
+
+```shell
+curl "{base_url}/user/cards/{id}/" \
+  -X DEL \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "success",
+  "message": "Card successfully removed",
+  "data": null
+}
+```
+
+This endpoint will de-register the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+
+#### HTTP Request
+
+`DEL /user/cards/{id}/`
+
+
+### Verify Card
+
+```shell
+curl "{base_url}/user/cards/{id}/verify/" \
+  -X POST \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+      "threeDSecure": {
+          "transactionId": "mrQSPgcMvdWksnewrf342y1RfLEU=",
+          "paReq": "eJxVUttSwjAU/JUOH9AkrVDKHDID4igqTgUdn2N6gA6QlqTl4teblFbwbTd7rnsCH2uNOFmgrDRymKExYoVelg47UURpTIsOh2Q0xz2HA2qT5Yozn/oBkJbaJC3XQpUchNyPp2+cMQakwbBDPZ1wFoRALhCU2CEfC7UxqA+jpc6k8NoaQGoVZF6pUp95xCiQlkClt3xdloUZEHI8Hv3vpogvc/9HAHE6kOs8SeWQsfVOWcp3+n2Rrconiroc2994hjsvXx8+h0BcBKSiRB5Q1meUMo/1Bt1wEHaB1O8gdm4QbjW73gVD4VqMboTbB7CualSy3aNlgKciV2gjrI9/GFI0kifi/Igqq8zAW2yzFEdFEYRxt9vvURaz2NpYhwG5Lnf/5KyXpTU3CuOQ3tX219x1yqx1bqO6lSNAXAZpzkqao1v07zP8Ag+Os/4=",
+          "acsUrl": "https://acsabsatest.bankserv.co.za/mdpayacs/pareq"
+      },
+      "reference": "20886b2d-4cd5-4fa2-8a42-a02653abfa01",
+      "card_id": 26,
+      "confirmation_url": "{base_url}/2/user/card/confirm3ds/"
+  },
+  "message": "3D Secure authentication required",
+  "status": "success"
+}
+```
+
+This endpoint will initiate a 3DS verification for the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`. If the card does not require 3DS verification the card will be verified. Verification is required before the card can be used to make payments.
+
+
+#### HTTP Request
+
+`POST /user/cards/{id}/verify/`
+
+### Set Primary Card
+
+```shell
+curl "{base_url}/user/cards/{id}/set_primary/" \
+  -X POST \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+      "card_holder": "Mr Testy McTester",
+      "primary": true,
+      "registration_status": "registered",
+      "verification_status": "pending",
+      "last_four_digits": "9013",
+      "expiry_year": "2018",
+      "expiry_month": "10",
+      "id": 26
+  },
+  "message": null,
+  "status": "success"
+}
+```
+
+This endpoint will set the card with `id = {id}` as the primary card for the user (the card used to make payments), if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+
+#### HTTP Request
+
+`POST /user/cards/{id}/set_primary/`
+
+
+<!-- ##################################################################################################################################################333 -->
+<!-- ##################################################################################################################################################333 -->
+<!-- ##################################################################################################################################################333 -->
+<!-- ##################################################################################################################################################333 -->
+
+
+
 
 
 # Admin

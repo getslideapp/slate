@@ -378,6 +378,10 @@ Parameter | Description | Type | Required
 
 For user management of their own credit cards.
 
+An authenticated user can add, verify, view, remove and set an added card as primary (the card used for payments). Users can then use registered cards to make payments.
+
+For the case of a registered card which has not been verified, verification (via 3DSecure) will be required on a per payment basis. Cards can also be verified as a once off using the `verify` endpoint, to be used to make future payments without 3DS verification. See `Verify Card` for more information.
+
 ### List Cards
 
 ```shell
@@ -394,7 +398,6 @@ curl "{base_url}/user/cards/" \
         {
             "card_holder": "T McTester",
             "primary": true,
-            "registration_status": "registered",
             "verification_status": "pending",
             "last_four_digits": "9013",
             "expiry_year": "2018",
@@ -404,7 +407,6 @@ curl "{base_url}/user/cards/" \
         {
             "card_holder": "T McTester",
             "primary": false,
-            "registration_status": "registered",
             "verification_status": "pending",
             "last_four_digits": "3018",
             "expiry_year": "2018",
@@ -438,7 +440,6 @@ curl "{base_url}/user/cardss/{id}/" \
     "data": {
           "card_holder": "T McTester",
           "primary": false,
-          "registration_status": "registered",
           "verification_status": "pending",
           "last_four_digits": "3018",
           "expiry_year": "2018",
@@ -478,7 +479,6 @@ curl "{base_url}/user/cards/" \
   "data": {
         "card_holder": "T McTester",
         "primary": true,
-        "registration_status": "registered",
         "verification_status": "pending",
         "last_four_digits": "4444",
         "expiry_year": "2018",
@@ -563,8 +563,13 @@ curl "{base_url}/user/cards/{id}/verify/" \
 }
 ```
 
-This endpoint will initiate a 3DS verification for the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`. If the card does not require 3DS verification the card will be verified. Verification is required before the card can be used to make payments.
+This endpoint will initiate a 3DS verification for the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`. If the card does not require 3DS verification the card will be verified.
 
+This `verification` endpoint enables a card on the system to be verified once off and then used to make payments without further verification, for better end user experience. This setting can be used at the discretion of the client who may or may not pass it on to the user. Unverified cards attempting payments will require 3DS verification on a per payment basis for the payment to be processed.
+
+There are two `success` cases for the response, depending on whether the card requires 3DS verification or not. In the case where 3DS is not required the card is verified automatically and the response returns as per example given.
+
+In the case where 3DS is required, however, the client will be required to populate a form with the fields as populated in the response provided. An example of this form can be found `here`. Terence will guide you through the last step.
 
 #### HTTP Request
 
@@ -585,7 +590,6 @@ curl "{base_url}/user/cards/{id}/set_primary/" \
   "data": {
       "card_holder": "Mr Testy McTester",
       "primary": true,
-      "registration_status": "registered",
       "verification_status": "pending",
       "last_four_digits": "9013",
       "expiry_year": "2018",

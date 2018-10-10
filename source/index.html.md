@@ -544,7 +544,7 @@ curl "{base_url}/user/cards/{id}/verify/" \
   -H "Authorization: Token {token}"
 ```
 
-> The above command returns JSON structured like this:
+> The above command returns JSON structured like this, for a successful response on a card which requires 3DS verification:
 
 ```json
 {
@@ -562,6 +562,23 @@ curl "{base_url}/user/cards/{id}/verify/" \
   "status": "success"
 }
 ```
+
+> The above command returns JSON structured like this, for a successful response on a card which does NOT require 3DS verification:
+
+```json
+{
+  "data": {
+      "card_holder": "Mr Testy McTester",
+      "primary": true,
+      "verification_status": "verified",
+      "last_four_digits": "9013",
+      "expiry_year": "2018",
+      "expiry_month": "10",
+      "id": 26
+    },
+  "message": "Approved",
+  "status": "success"
+}
 
 This endpoint will initiate a 3DS verification for the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`. If the card does not require 3DS verification the card will be verified.
 

@@ -380,7 +380,15 @@ For user management of their own credit cards.
 
 An authenticated user can add, verify, view, remove and set an added card as primary (the card used for payments). Users can then use registered cards to make payments.
 
-For the case of a registered card which has not been verified, verification (via 3DSecure) will be required on a per payment basis. Cards can also be verified as a once off using the `verify` endpoint, to be used to make future payments without 3DS verification. See `Verify Card` for more information.
+For the case of a registered card which has not been verified, verification (via 3DSecure) will be required on a per payment basis. Cards can also be verified as a once off using the `verify` endpoint, to be used to make future payments without 3DS verification. See [Verify Card](#verify-card) for more information.
+
+A card can have one of three verification statuses as listed below:
+
+Status | Description
+--------- | -----------
+`pending` | The card has not yet been verified.
+`failed` | The card verification process failed.
+`verified` | The card has been successfully verified.
 
 ### List Cards
 
@@ -398,6 +406,7 @@ curl "{base_url}/user/cards/" \
         {
             "card_holder": "T McTester",
             "primary": true,
+            "card_type": "mastercard",
             "verification_status": "pending",
             "last_four_digits": "9013",
             "expiry_year": "2018",
@@ -407,6 +416,7 @@ curl "{base_url}/user/cards/" \
         {
             "card_holder": "T McTester",
             "primary": false,
+            "card_type": "mastercard",
             "verification_status": "pending",
             "last_four_digits": "3018",
             "expiry_year": "2018",
@@ -440,6 +450,7 @@ curl "{base_url}/user/cardss/{id}/" \
     "data": {
           "card_holder": "T McTester",
           "primary": false,
+          "card_type": "mastercard",
           "verification_status": "pending",
           "last_four_digits": "3018",
           "expiry_year": "2018",
@@ -477,6 +488,7 @@ curl "{base_url}/user/cards/" \
 ```json
 {
   "data": {
+        "card_type": "visa",
         "card_holder": "T McTester",
         "primary": true,
         "verification_status": "pending",
@@ -568,6 +580,7 @@ curl "{base_url}/user/cards/{id}/verify/" \
 ```json
 {
   "data": {
+      "card_type": "mastercard",
       "card_holder": "Mr Testy McTester",
       "primary": true,
       "verification_status": "verified",
@@ -579,18 +592,40 @@ curl "{base_url}/user/cards/{id}/verify/" \
   "message": "Approved",
   "status": "success"
 }
+```
 
-This endpoint will initiate a 3DS verification for the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`. If the card does not require 3DS verification the card will be verified.
+This endpoint will initiate a 3DSecure verification for the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`. If the card does not require 3DSecure verification the card will be verified.
 
-This `verification` endpoint enables a card on the system to be verified once off and then used to make payments without further verification, for better end user experience. This setting can be used at the discretion of the client who may or may not pass it on to the user. Unverified cards attempting payments will require 3DS verification on a per payment basis for the payment to be processed.
+This `verification` endpoint enables a card on the system to be verified once off and then used to make payments without further verification, for better end user experience. This setting can be used at the discretion of the client who may or may not pass it on to the user. Unverified cards attempting payments will require 3DSecure verification on a per payment basis for the payment to be processed.
 
-There are two `success` cases for the response, depending on whether the card requires 3DS verification or not. In the case where 3DS is not required the card is verified automatically and the response returns as per example given.
+There are two `success` cases for the response, depending on whether the card requires 3DSecure verification or not. In the case where 3DSecure is not required the card is verified automatically and the response returns as per example given.
 
-In the case where 3DS is required, however, the client will be required to populate a form with the fields as populated in the response provided. An example of this form can be found `here`. Terence will guide you through the last step.
+In the case where 3DSecure is required, however, the client will be required to submit a form with the fields populated from the response provided. An example of this form can be found below in the [Verify Form](#verify-form) Section. We'd be happy to guide you through thr final step.
 
 #### HTTP Request
 
 `POST /user/cards/{id}/verify/`
+
+#### Verify Form
+
+Upon receiving the response from the [Verify Card endpoint](#verify-card), the values should be used to populate the Verify Form in the client, which when submitted, will allow the user to enter their 3DSecure details.
+
+Once the 3DSecure form has been submitted by the user, they will be redirected to the `TermUrl`. To confirm the `verification_status` of the card, you can make a call to the [Get Card](#get-card) endpoint.
+
+<aside class="notice">
+Note that all all the variables are mapped directly to the response, except for `TermUrl`, which should take the value of `confirmation_url` from the response.
+</aside>
+
+> The html form that needs to be submitted by the client in order for the client to be able to complete the 3DSecure process.
+
+```html
+<form method="post" target="iframe" id="threedsForm" action="{{ acsUrl }}">
+    <input type=hidden name="PaReq" value="{{ paReq }}">
+    <input type=hidden name="TermUrl"
+           value="{{ termUrl }}">
+    <input type=hidden name="MD" value="{{ transactionId }}">
+</form>
+```
 
 ### Set Primary Card
 
@@ -605,6 +640,7 @@ curl "{base_url}/user/cards/{id}/set_primary/" \
 ```json
 {
   "data": {
+      "card_type": "mastercard",
       "card_holder": "Mr Testy McTester",
       "primary": true,
       "verification_status": "pending",

@@ -382,11 +382,12 @@ An authenticated user can add, verify, view, remove and set an added card as pri
 
 For the case of a registered card which has not been verified, verification (via 3DSecure) will be required on a per payment basis. Cards can also be verified as a once off using the `verify` endpoint, to be used to make future payments without 3DS verification. See [Verify Card](#verify-card) for more information.
 
-A card can have one of three verification statuses as listed below:
+A card can have one of four verification statuses as listed below:
 
 Status | Description
 --------- | -----------
-`pending` | The card has not yet been verified.
+`unverified` | Card verification has not been attempted.
+`pending` | The card verification process has been initiated, but has not been completed.
 `failed` | The card verification process failed.
 `verified` | The card has been successfully verified.
 

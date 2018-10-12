@@ -266,6 +266,32 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#cards" class="toc-h2 toc-link" data-title="Cards">Cards</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#test-cards" class="toc-h3 toc-link" data-title="Users">Test cards</a>
+                          </li>
+                          <li>
+                            <a href="#list-cards" class="toc-h3 toc-link" data-title="Users">List Cards</a>
+                          </li>
+                          <li>
+                            <a href="#get-card" class="toc-h3 toc-link" data-title="Users">Get Card</a>
+                          </li>
+                          <li>
+                            <a href="#register-card" class="toc-h3 toc-link" data-title="Users">Register Card</a>
+                          </li>
+                          <li>
+                            <a href="#unregister-card" class="toc-h3 toc-link" data-title="Users">Unregister Card</a>
+                          </li>
+                          <li>
+                            <a href="#verify-card" class="toc-h3 toc-link" data-title="Users">Verify Card</a>
+                          </li>
+                          <li>
+                            <a href="#set-primary-card" class="toc-h3 toc-link" data-title="Users">Set Primary Card</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -297,7 +323,7 @@
         <ul class="toc-footer">
             <li><a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a></li>
             <li><a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a></li>
-            <li>v2.3.1-79-g51ad871</li>
+            <li>v2.3.1-87-g43aac4f</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -465,7 +491,8 @@ You must replace <code>{token}</code> with your personal API token.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr T McTester"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cheque"</span><span class="p">,</span><span class="w">
@@ -474,7 +501,8 @@ You must replace <code>{token}</code> with your personal API token.
         </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -649,6 +677,317 @@ It can be used to set a secondary Bank Account back to &#39;primary&#39;.</p>
 <td>No</td>
 </tr>
 </tbody></table>
+<h2 id='cards'>Cards</h2>
+<p>For user management of their own credit cards.</p>
+
+<p>An authenticated user can add, verify, view, remove and set an added card as primary (the card used for payments). Users can then use registered cards to make payments.</p>
+
+<p>For the case of a registered card which has not been verified, verification (via 3DSecure) will be required on a per payment basis. Cards can also be verified as a once off using the <code>verify</code> endpoint, to be used to make future payments without 3DS verification. See <a href="#verify-card">Verify Card</a> for more information.</p>
+
+<p>A card can have one of four verification statuses as listed below:</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>unverified</code></td>
+<td>Card verification has not been attempted.</td>
+</tr>
+<tr>
+<td><code>pending</code></td>
+<td>The card verification process has been initiated, but has not been completed.</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td>The card verification process failed.</td>
+</tr>
+<tr>
+<td><code>verified</code></td>
+<td>The card has been successfully verified.</td>
+</tr>
+</tbody></table>
+<h3 id='test-cards'>Test cards</h3>
+<p>These test cards are provided for testing and are liable to be changed or updated regularly. Please check here for the latest cards and please let us know if they are no longer working.</p>
+
+<table><thead>
+<tr>
+<th>Number</th>
+<th>Type</th>
+<th>Expiry Date</th>
+<th>CVV</th>
+<th>3DS Password</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>4038 2200 0035 3021</td>
+<td>visa</td>
+<td>10/18</td>
+<td>698</td>
+<td>test123</td>
+</tr>
+<tr>
+<td>4038 2200 0024 9013</td>
+<td>visa</td>
+<td>10/18</td>
+<td>819</td>
+<td>test123</td>
+</tr>
+<tr>
+<td>5471 2090 2407 1017</td>
+<td>mastercard</td>
+<td>11/19</td>
+<td>710</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id='list-cards'>List Cards</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cards/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T McTester"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9013"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T McTester"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3018"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of all the cards registered for the logged in user.</p>
+<h4 id='http-request-6'>HTTP Request</h4>
+<p><code>GET /user/cards/</code></p>
+<h3 id='get-card'>Get Card</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cardss/{id}/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T McTester"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3018"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the Card with <code>id = {id}</code> if the logged in user is the resource owner, otherwise it returns a <code>404 Not Found</code>.</p>
+<h4 id='http-request-7'>HTTP Request</h4>
+<p><code>GET /user/cards/{id}/</code></p>
+<h3 id='register-card'>Register Card</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cards/"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
+  -d <span class="s1">'{ "number": "1111222233334444",
+        "card_holder": "Mr T. McTester",
+        "expiry_year": "2018",
+        "expiry_month": "12",
+        "cvv": "123",
+      }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T McTester"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4444"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint adds a card for the logged in user. When a new card is successfully registered it will by default be set as the primary card for that user.</p>
+
+<aside class="notice">
+The card type will be set for each bank account based on the chosen bank's card. So the input of a card type is not necessary. Please also note that only valid Visa and Mastercard credit card numbers will be accepted.
+</aside>
+<h4 id='http-request-8'>HTTP Request</h4>
+<p><code>POST /user/cards/</code></p>
+<h4 id='url-parameters-3'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>number</code></td>
+<td>Card number</td>
+<td>String (16 digit)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>cvv</code></td>
+<td>CVV number</td>
+<td>String (3 digit)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>card_holder</code></td>
+<td>Card holder name</td>
+<td>String</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>expiry_year</code></td>
+<td>Year of expiry date</td>
+<td>String (4 digit)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>expiry_month</code></td>
+<td>Month of expiry date</td>
+<td>String (2 digit)</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='unregister-card'>Unregister Card</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cards/{id}/"</span> <span class="se">\</span>
+  -X DEL <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card successfully removed"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint will de-register the card with <code>id = {id}</code>, if the logged in user is the resource owner, otherwise it returns a <code>404 Not Found</code>.</p>
+<h4 id='http-request-9'>HTTP Request</h4>
+<p><code>DEL /user/cards/{id}/</code></p>
+<h3 id='verify-card'>Verify Card</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cards/{id}/verify/"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this, for a successful response on a card which requires 3DS verification:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"threeDSecure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mrQSPgcMvdWksnewrf342y1RfLEU="</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eJxVUttSwjAU/JUOH9AkrVDKHDID4igqTgUdn2N6gA6QlqTl4teblFbwbTd7rnsCH2uNOFmgrDRymKExYoVelg47UURpTIsOh2Q0xz2HA2qT5Yozn/oBkJbaJC3XQpUchNyPp2+cMQakwbBDPZ1wFoRALhCU2CEfC7UxqA+jpc6k8NoaQGoVZF6pUp95xCiQlkClt3xdloUZEHI8Hv3vpogvc/9HAHE6kOs8SeWQsfVOWcp3+n2Rrconiroc2994hjsvXx8+h0BcBKSiRB5Q1meUMo/1Bt1wEHaB1O8gdm4QbjW73gVD4VqMboTbB7CualSy3aNlgKciV2gjrI9/GFI0kifi/Igqq8zAW2yzFEdFEYRxt9vvURaz2NpYhwG5Lnf/5KyXpTU3CuOQ3tX219x1yqx1bqO6lSNAXAZpzkqao1v07zP8Ag+Os/4="</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"acsUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://acsabsatest.bankserv.co.za/mdpayacs/pareq"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20886b2d-4cd5-4fa2-8a42-a02653abfa01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"card_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confirmation_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{base_url}/2/user/card/confirm3ds/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3D Secure authentication required"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this, for a successful response on a card which does NOT require 3DS verification:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr Testy McTester"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9013"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Approved"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint will initiate a 3DSecure verification for the card with <code>id = {id}</code>, if the logged in user is the resource owner, otherwise it returns a <code>404 Not Found</code>. If the card does not require 3DSecure verification the card will be verified.</p>
+
+<p>This <code>verification</code> endpoint enables a card on the system to be verified once off and then used to make payments without further verification, for better end user experience. This setting can be used at the discretion of the client who may or may not pass it on to the user. Unverified cards attempting payments will require 3DSecure verification on a per payment basis for the payment to be processed.</p>
+
+<p>There are two <code>success</code> cases for the response, depending on whether the card requires 3DSecure verification or not. In the case where 3DSecure is not required the card is verified automatically and the response returns as per example given.</p>
+
+<p>In the case where 3DSecure is required, however, the client will be required to submit a form with the fields populated from the response provided. An example of this form can be found below in the <a href="#verify-form">Verify Form</a> Section. We&#39;d be happy to guide you through thr final step.</p>
+<h4 id='http-request-10'>HTTP Request</h4>
+<p><code>POST /user/cards/{id}/verify/</code></p>
+<h4 id='verify-form'>Verify Form</h4>
+<p>Upon receiving the response from the <a href="#verify-card">Verify Card endpoint</a>, the values should be used to populate the Verify Form in the client, which when submitted, will allow the user to enter their 3DSecure details.</p>
+
+<p>Once the 3DSecure form has been submitted by the user, they will be redirected to the <code>TermUrl</code>. To confirm the <code>verification_status</code> of the card, you can make a call to the <a href="#get-card">Get Card</a> endpoint.</p>
+
+<aside class="notice">
+Note that all all the variables are mapped directly to the response, except for `TermUrl`, which should take the value of `confirmation_url` from the response.
+</aside>
+
+<blockquote>
+<p>The html form that needs to be submitted by the client in order for the client to be able to complete the 3DSecure process.</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">target=</span><span class="s">"iframe"</span> <span class="na">id=</span><span class="s">"threedsForm"</span> <span class="na">action=</span><span class="s">"{{ acsUrl }}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">hidden</span> <span class="na">name=</span><span class="s">"PaReq"</span> <span class="na">value=</span><span class="s">"{{ paReq }}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">hidden</span> <span class="na">name=</span><span class="s">"TermUrl"</span>
+           <span class="na">value=</span><span class="s">"{{ termUrl }}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">hidden</span> <span class="na">name=</span><span class="s">"MD"</span> <span class="na">value=</span><span class="s">"{{ transactionId }}"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre><h3 id='set-primary-card'>Set Primary Card</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cards/{id}/set_primary/"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr Testy McTester"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9013"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint will set the card with <code>id = {id}</code> as the primary card for the user (the card used to make payments), if the logged in user is the resource owner, otherwise it returns a <code>404 Not Found</code>.</p>
+<h4 id='http-request-11'>HTTP Request</h4>
+<p><code>POST /user/cards/{id}/set_primary/</code></p>
 <h1 id='admin'>Admin</h1>
 <p>Admin endpoints are a set of admin-only accessible endpoints that provide administrative functionality across a company.</p>
 <h2 id='users-2'>Users</h2>
@@ -677,7 +1016,7 @@ It can be used to set a secondary Bank Account back to &#39;primary&#39;.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a list of all users.</p>
-<h4 id='http-request-6'>HTTP Request</h4>
+<h4 id='http-request-12'>HTTP Request</h4>
 <p><code>GET /admin/users/</code></p>
 <h3 id='get-user-2'>Get User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/{identifier}/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
@@ -705,7 +1044,7 @@ It can be used to set a secondary Bank Account back to &#39;primary&#39;.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a user.</p>
-<h4 id='http-request-7'>HTTP Request</h4>
+<h4 id='http-request-13'>HTTP Request</h4>
 <p><code>GET /admin/users/{identifier}/</code></p>
 <h3 id='create-user'>Create User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
@@ -735,9 +1074,9 @@ It can be used to set a secondary Bank Account back to &#39;primary&#39;.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a user. When a new user is created they will by default be in the <code>user</code> group.</p>
-<h4 id='http-request-8'>HTTP Request</h4>
+<h4 id='http-request-14'>HTTP Request</h4>
 <p><code>POST /admin/users/</code></p>
-<h4 id='url-parameters-3'>URL Parameters</h4>
+<h4 id='url-parameters-4'>URL Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -811,9 +1150,9 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates an existing user.</p>
-<h4 id='http-request-9'>HTTP Request</h4>
+<h4 id='http-request-15'>HTTP Request</h4>
 <p><code>PUT /admin/users/{identifier}/</code></p>
-<h4 id='url-parameters-4'>URL Parameters</h4>
+<h4 id='url-parameters-5'>URL Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>

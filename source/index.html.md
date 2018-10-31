@@ -855,3 +855,158 @@ Parameter | Description | Type | Required
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
 </aside>
+
+## Transactions
+
+The Admin transaction endpoints allows an admin user to view or perform a transaction on the user's behalf.
+
+### List Deposits
+
+```shell
+curl "{base_url}/admin/deposits/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+ADD IN THE RESPONSE HERE
+```
+
+This endpoint retrieves a list of all deposits.
+
+#### HTTP Request
+
+`GET /admin/deposits/`
+
+### List Transfers
+
+```shell
+curl "{base_url}/admin/transfers/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+ADD IN THE RESPONSE HERE
+```
+
+This endpoint retrieves a list of all transfers.
+
+#### HTTP Request
+
+`GET /admin/transfers/`
+
+### List Withdrawals
+
+```shell
+curl "{base_url}/admin/withdrawals/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+ADD IN THE RESPONSE HERE
+```
+
+This endpoint retrieves a list of all withdrawals.
+
+#### HTTP Request
+
+`GET /admin/withdrawals/`
+
+### Create Deposit
+
+```shell
+curl "{base_url}/admin/deposits/" \
+  -X POST \
+  -H "Authorization: Token {token}" \
+  -d '{"user": "23370a53-c1bb-4da7-8236-6071afad43a6",
+       "amount": 5}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+NEED TO ADD IN THE RESPONSE
+```
+
+This endpoint creates a deposit transaction for the specified user.
+
+#### HTTP Request
+
+`POST /admin/deposits/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`user` | User's identifier | String | Yes
+`amount` | Deposit amount (cents) | Integer | Yes
+
+### Create Transfer
+
+```shell
+curl "{base_url}/admin/transfers/" \
+  -X POST \
+  -H "Authorization: Token {token}" \
+  -d '{"user": "23370a53-c1bb-4da7-8236-6071afad43a6",
+       "amount": 5,
+       "recipient": "ee603b92-a79c-4f28-8fb2-a7d97d8a5b8b",
+       "note": "Test transfer"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+NEED TO ADD IN THE RESPONSE
+```
+
+This endpoint creates a transfer transaction from the specified user to the specified recipient.
+
+#### HTTP Request
+
+`POST /admin/transfers/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`user` | User's identifier | String | Yes
+`amount` | Deposit amount (cents) | Integer | Yes
+`recipient` | Recipient's identifier | String | Yes
+`note` | Transfer note | String | Yes
+
+### Create Withdrawal
+
+```shell
+curl "{base_url}/admin/withdrawals/" \
+  -X POST \
+  -H "Authorization: Token {token}" \
+  -d '{"user": "23370a53-c1bb-4da7-8236-6071afad43a6",
+       "amount": 5}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+NEED TO ADD IN THE RESPONSE
+```
+
+This endpoint creates a withdrawal transaction for the specified user.
+
+#### HTTP Request
+
+`POST /admin/withdrawals/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`user` | User's identifier | String | Yes
+`amount` | Withdrawal amount (cents) | Integer | Yes

@@ -448,7 +448,7 @@ This endpoint retrieves a list of all the cards registered for the logged in use
 ### Get Card
 
 ```shell
-curl "{base_url}/user/cardss/{id}/" \
+curl "{base_url}/user/cards/{id}/" \
   -X GET \
   -H "Authorization: Token {token}"
 ```
@@ -1070,6 +1070,198 @@ This endpoint retrieves a list of all withdrawals.
 #### HTTP Request
 
 `GET /admin/withdrawals/`
+
+### Get Deposit
+
+```shell
+curl "{base_url}/admin/deposits/{identifier}/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "68796fab-7edb-413c-9881-55e1101d9777",
+        "user": {
+            "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+            "first_name": "Testy",
+            "last_name": "McTester",
+            "email": "testy@getslideapp.com",
+            "mobile_number": "+27821111112",
+            "company": "slide_dev",
+            "groups": "user",
+            "created": "2018-09-30T15:53:37.012334Z",
+            "updated": "2018-10-31T09:48:38.299689Z"
+        },
+        "amount": 40,
+        "total_amount_charged": 49,
+        "currency": "ZAR",
+        "created": "2018-10-31T14:20:47.628274Z",
+        "updated": "2018-10-31T14:21:24.875560Z",
+        "status": "Complete",
+        "charges": [
+            {
+                "type": "user",
+                "identifier": "729c086e-1dab-4f39-9679-1cdaee6f5c06",
+                "amount": 9,
+                "flat_fee_charge": 5,
+                "percentage_rate_charge": 4,
+                "currency": "ZAR",
+                "created": "2018-10-31T14:20:48.095841Z",
+                "updated": "2018-10-31T14:21:38.732972Z",
+                "status": "Complete"
+            }
+        ]
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves the Deposit with `identifier = {identifier}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+#### HTTP Request
+
+`GET /admin/deposits/{identifier}/`
+
+### Get Transfer
+
+```shell
+curl "{base_url}/admin/transfers/{identifier}/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "a56b9f50-81b7-4de6-8111-550686b997f9",
+        "user": {
+            "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+            "first_name": "Testy",
+            "last_name": "McTester",
+            "email": "testy@getslideapp.com",
+            "mobile_number": "+27821111112",
+            "company": "slide_dev",
+            "groups": "user",
+            "created": "2018-09-30T15:53:37.012334Z",
+            "updated": "2018-10-31T09:48:38.299689Z"
+        },
+        "recipient": {
+            "identifier": "899b55e1-65a9-4969-b282-b8f0ok01f76b",
+            "first_name": "Ray",
+            "last_name": "Serpent",
+            "email": "ray@getslideapp.com",
+            "mobile_number": null,
+            "company": "slide",
+            "groups": "user",
+            "created": "2018-07-24T10:50:42.364399Z",
+            "updated": "2018-07-24T10:50:48.329165Z"
+        },
+        "note": "testy",
+        "amount": 50,
+        "total_amount_charged": 65,
+        "total_amount_received": 45,
+        "currency": "ZAR",
+        "created": "2018-10-31T13:55:34.418860Z",
+        "updated": "2018-10-31T13:56:01.651581Z",
+        "status": "Complete",
+        "charges": [
+            {
+                "type": "recipient",
+                "identifier": "b16e0f99-7ae2-46fe-b375-194a90a0f23c",
+                "amount": 5,
+                "flat_fee_charge": 0,
+                "percentage_rate_charge": 5,
+                "currency": "ZAR",
+                "created": "2018-10-31T13:55:34.530633Z",
+                "updated": "2018-10-31T13:56:07.719340Z",
+                "status": "Complete"
+            },
+            {
+                "type": "user",
+                "identifier": "0a56cea7-9d57-4fe8-8f8d-8e22aeb8174f",
+                "amount": 15,
+                "flat_fee_charge": 10,
+                "percentage_rate_charge": 5,
+                "currency": "ZAR",
+                "created": "2018-10-31T13:55:34.497813Z",
+                "updated": "2018-10-31T13:56:19.209375Z",
+                "status": "Complete"
+            }
+        ]
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves the Transfer with `identifier = {identifier}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+#### HTTP Request
+
+`GET /admin/transfers/{identifier}/`
+
+### Get Withdrawal
+
+```shell
+curl "{base_url}/admin/withdrawals/{identifier}/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "90123aaf-cb6c-4435-aa78-c093de616d84",
+        "user": {
+            "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+            "first_name": "Testy",
+            "last_name": "McTester",
+            "email": "testy@getslideapp.com",
+            "mobile_number": "+27821111112",
+            "company": "slide_dev",
+            "groups": "user",
+            "created": "2018-09-30T15:53:37.012334Z",
+            "updated": "2018-10-31T09:48:38.299689Z"
+        },
+        "amount": 100,
+        "total_amount_charged": 115,
+        "currency": "ZAR",
+        "created": "2018-10-31T14:08:08.021608Z",
+        "updated": "2018-10-31T14:08:50.753947Z",
+        "status": "Complete",
+        "charges": [
+            {
+                "type": "user",
+                "identifier": "9947b78a-a7d0-4da6-a7ce-f2a447a732a0",
+                "amount": 15,
+                "flat_fee_charge": 5,
+                "percentage_rate_charge": 10,
+                "currency": "ZAR",
+                "created": "2018-10-31T14:08:08.119462Z",
+                "updated": "2018-10-31T14:09:02.457248Z",
+                "status": "Complete"
+            }
+        ]
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves the Withdrawal with `identifier = {identifier}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+#### HTTP Request
+
+`GET /admin/withdrawals/{identifier}/`
 
 ### Create Deposit
 

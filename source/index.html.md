@@ -397,9 +397,8 @@ These test cards are provided for testing and are liable to be changed or update
 
 Number | Type | Expiry Date | CVV | 3DS Password
 --------- | -------- | -------- | ----- | -----
-4038 2200 0035 3021	| visa |	10/18	| 698	| test123
-4038 2200 0024 9013	| visa | 10/18	| 819	| test123
 5471 2090 2407 1017	| mastercard | 11/19 | 710 | -
+5339 1600 0060 8011 |	mastercard | 12/20 | 802 | -
 
 ### List Cards
 

@@ -34,7 +34,7 @@ https://dev.{company}.api.getslideapp.com/2
 
 > Make sure to replace `{company}` with your Company Name and to use either of the above URLs as the `{base_url}`.
 
-> The format of a standard success response is structured like this:
+> The format of a standard success response data is structured like this:
 
 ```json
 {
@@ -46,7 +46,7 @@ https://dev.{company}.api.getslideapp.com/2
 }
 ```
 
-> The format of a standard error response is structured like this:
+> The format of a standard error response data is structured like this:
 
 ```json
 {
@@ -72,9 +72,9 @@ You must replace <code>{company}</code> in all API Requests with your Company Na
 
 We service two different types of API endpoints.
 
-Users: Requests that we receive directly from the client are essentially a user interacting with the service. Users will be able to view their own data or make transactions on their own behalf.
+Users: Requests that we receive directly from the client are essentially a user interacting with the service. Users will be able to view their own data or make transactions on their own behalf. Users are authenticated as per the [User Authentication](#user-authentication) below.
 
-Company Admin Users: Requests by an administrator. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company.
+Company Admin Users: Requests by an administrator. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company. Admin Users are authenticated as per the [Admin Authentication](#admin-authentication) below.
 
 ## Authentication
 

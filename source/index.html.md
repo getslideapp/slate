@@ -34,7 +34,7 @@ https://dev.{company}.api.getslideapp.com/2
 
 > Make sure to replace `{company}` with your Company Name and to use either of the above URLs as the `{base_url}`.
 
-> The format of a standard success response is structured like this:
+> The format of a standard success response data is structured like this:
 
 ```json
 {
@@ -46,7 +46,7 @@ https://dev.{company}.api.getslideapp.com/2
 }
 ```
 
-> The format of a standard error response is structured like this:
+> The format of a standard error response data is structured like this:
 
 ```json
 {
@@ -72,9 +72,9 @@ You must replace <code>{company}</code> in all API Requests with your Company Na
 
 We service two different types of API endpoints.
 
-Users: Requests that we receive directly from the client are essentially a user interacting with the service. Users will be able to view their own data or make transactions on their own behalf.
+Users: Requests that we receive directly from the client are essentially a user interacting with the service. Users will be able to view their own data or make transactions on their own behalf. Users are authenticated as per the [User Authentication](#user-authentication) below.
 
-Company Admin Users: Requests by an administrator. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company.
+Company Admin Users: Requests by an administrator. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company. Admin Users are authenticated as per the [Admin Authentication](#admin-authentication) below.
 
 ## Authentication
 
@@ -280,6 +280,7 @@ This endpoint retrieves the bank account with `id = {id}` if the logged in user 
 ```shell
 curl "{base_url}/user/bank-accounts/" \
   -X POST \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
   -d '{ "name": "Mr T. McTester",
         "account_number": "00000000",
@@ -331,6 +332,7 @@ Parameter | Description | Type | Required
 ```shell
 curl "{base_url}/user/bank-accounts/{id}/" \
   -X PUT \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
   -d '{ "name": "Mr T. McTester",
         "account_number": "00000000",
@@ -489,6 +491,7 @@ This endpoint retrieves the Card with `id = {id}` if the logged in user is the r
 ```shell
 curl "{base_url}/user/cards/" \
   -X POST \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
   -d '{ "number": "1111222233334444",
         "card_holder": "Mr T. McTester",
@@ -568,6 +571,7 @@ This endpoint will de-register the card with `id = {id}`, if the logged in user 
 ```shell
 curl "{base_url}/user/cards/{id}/verify/" \
   -X POST \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}"
 ```
 
@@ -647,6 +651,7 @@ Note that all all the variables are mapped directly to the response, except for 
 ```shell
 curl "{base_url}/user/cards/{id}/set_primary/" \
   -X POST \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}"
 ```
 
@@ -761,6 +766,7 @@ This endpoint retrieves a user.
 ```shell
 curl "{base_url}/admin/users/" \
   -X POST \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
   -d '{"first_name": "Testy",
        "last_name": "McTester",
@@ -813,6 +819,7 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 ```shell
 curl "{base_url}/admin/users/{identifier}/" \
   -X PUT \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
   -d '{"first_name": "Testy",
        "last_name": "McTester",
@@ -1273,6 +1280,7 @@ This endpoint retrieves the Withdrawal with `identifier = {identifier}` if the l
 ```shell
 curl "{base_url}/admin/deposits/" \
   -X POST \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
   -d '{
       "user": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
@@ -1340,6 +1348,7 @@ Parameter | Description | Type | Required
 ```shell
 curl "{base_url}/admin/transfers/" \
   -X POST \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
   -d '{"user": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
        "amount": 50,
@@ -1433,6 +1442,7 @@ Parameter | Description | Type | Required
 ```shell
 curl "{base_url}/admin/withdrawals/" \
   -X POST \
+  -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
   -d '{"user": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
        "amount": 100}'

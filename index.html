@@ -358,7 +358,7 @@
         <ul class="toc-footer">
             <li><a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a></li>
             <li><a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a></li>
-            <li>v2.3.1-96-gedde475</li>
+            <li>v2.3.1-99-g8dbc057</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -378,7 +378,7 @@
 <blockquote>
 <p>Make sure to replace <code>{company}</code> with your Company Name and to use either of the above URLs as the <code>{base_url}</code>.</p>
 
-<p>The format of a standard success response is structured like this:</p>
+<p>The format of a standard success response data is structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -389,7 +389,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>The format of a standard error response is structured like this:</p>
+<p>The format of a standard error response data is structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
@@ -411,9 +411,9 @@ You must replace <code>{company}</code> in all API Requests with your Company Na
 <h2 id='endpoint-types'>Endpoint Types</h2>
 <p>We service two different types of API endpoints.</p>
 
-<p>Users: Requests that we receive directly from the client are essentially a user interacting with the service. Users will be able to view their own data or make transactions on their own behalf.</p>
+<p>Users: Requests that we receive directly from the client are essentially a user interacting with the service. Users will be able to view their own data or make transactions on their own behalf. Users are authenticated as per the <a href="#user-authentication">User Authentication</a> below.</p>
 
-<p>Company Admin Users: Requests by an administrator. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company.</p>
+<p>Company Admin Users: Requests by an administrator. The admin endpoints will allow Company Admin Users to retrieve data or perform transactions on behalf of users within their company. Admin Users are authenticated as per the <a href="#admin-authentication">Admin Authentication</a> below.</p>
 <h2 id='authentication'>Authentication</h2>
 <blockquote>
 <p>To check authorization, use this code:</p>
@@ -574,6 +574,7 @@ You must replace <code>{token}</code> with your personal API token.
 <p><code>GET /user/bank-accounts/{id}/</code></p>
 <h3 id='create-bank-account'>Create Bank Account</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/bank-accounts/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{ "name": "Mr T. McTester",
         "account_number": "00000000",
@@ -642,6 +643,7 @@ The bank `branch_code` will be set for each bank account based on the chosen ban
 </tbody></table>
 <h3 id='update-bank-account'>Update Bank Account</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/bank-accounts/{id}/"</span> <span class="se">\</span>
   -X PUT <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{ "name": "Mr T. McTester",
         "account_number": "00000000",
@@ -837,6 +839,7 @@ It can be used to set a secondary Bank Account back to &#39;primary&#39;.</p>
 <p><code>GET /user/cards/{id}/</code></p>
 <h3 id='register-card'>Register Card</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cards/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{ "number": "1111222233334444",
         "card_holder": "Mr T. McTester",
@@ -928,6 +931,7 @@ The card type will be set for each bank account based on the chosen bank's card.
 <p><code>DEL /user/cards/{id}/</code></p>
 <h3 id='verify-card'>Verify Card</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cards/{id}/verify/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
 </code></pre>
 <blockquote>
@@ -995,6 +999,7 @@ Note that all all the variables are mapped directly to the response, except for 
 <span class="nt">&lt;/form&gt;</span>
 </code></pre><h3 id='set-primary-card'>Set Primary Card</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/user/cards/{id}/set_primary/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
 </code></pre>
 <blockquote>
@@ -1078,6 +1083,7 @@ Note that all all the variables are mapped directly to the response, except for 
 <p><code>GET /admin/users/{identifier}/</code></p>
 <h3 id='create-user'>Create User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{"first_name": "Testy",
        "last_name": "McTester",
@@ -1152,6 +1158,7 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 </aside>
 <h3 id='update-user'>Update User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/{identifier}/"</span> <span class="se">\</span>
   -X PUT <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{"first_name": "Testy",
        "last_name": "McTester",
@@ -1579,6 +1586,7 @@ under the <b>charges</b> field in the response.
 <p><code>GET /admin/withdrawals/{identifier}/</code></p>
 <h3 id='create-deposit'>Create Deposit</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{
       "user": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
@@ -1653,6 +1661,7 @@ under the <b>charges</b> field in the response.
 </tbody></table>
 <h3 id='create-transfer'>Create Transfer</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/transfers/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{"user": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
        "amount": 50,
@@ -1763,6 +1772,7 @@ under the <b>charges</b> field in the response.
 </tbody></table>
 <h3 id='create-withdrawal'>Create Withdrawal</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/withdrawals/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{"user": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
        "amount": 100}'</span>

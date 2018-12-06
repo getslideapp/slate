@@ -220,12 +220,14 @@ curl "{base_url}/user/bank-accounts/" \
 {
     "data": [
       {
+        "id": 4,
         "name": "Mr T McTester",
         "account_number": "000000000",
         "type": "cheque",
         "bank_name": "nedbank",
         "branch_code": "198765",
         "primary": true,
+
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
       }
@@ -254,6 +256,7 @@ curl "{base_url}/user/bank-accounts/{id}/" \
 ```json
 {
     "data": {
+        "id": 4,
         "name": "Mr T McTester",
         "account_number": "000000000",
         "type": "cheque",

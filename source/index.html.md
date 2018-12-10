@@ -218,20 +218,23 @@ curl "{base_url}/user/bank-accounts/" \
 
 ```json
 {
-    "data": [
-      {
-        "id": 4,
-        "name": "Mr T McTester",
-        "account_number": "000000000",
-        "type": "cheque",
-        "bank_name": "nedbank",
-        "branch_code": "198765",
-        "primary": true,
+    "data": {
+      "results": [
+        {
+          "id": 4,
+          "name": "Mr T McTester",
+          "account_number": "000000000",
+          "type": "cheque",
+          "bank_name": "nedbank",
+          "branch_code": "198765",
+          "primary": true,
 
-        "created": "2018-08-21T09:27:25.882898Z",
-        "updated": "2018-08-29T16:58:54.647283Z"
-      }
-    ],
+          "created": "2018-08-21T09:27:25.882898Z",
+          "updated": "2018-08-29T16:58:54.647283Z"
+        }
+      ],  
+      "total": 1
+    },
     "message": null,
     "status": "success"
 }
@@ -422,28 +425,31 @@ curl "{base_url}/user/cards/" \
 
 ```json
 {
-    "data": [
-        {
-            "card_holder": "T McTester",
-            "primary": true,
-            "card_type": "mastercard",
-            "verification_status": "pending",
-            "last_four_digits": "9013",
-            "expiry_year": "2018",
-            "expiry_month": "10",
-            "id": 21
-        },
-        {
-            "card_holder": "T McTester",
-            "primary": false,
-            "card_type": "mastercard",
-            "verification_status": "pending",
-            "last_four_digits": "3018",
-            "expiry_year": "2018",
-            "expiry_month": "10",
-            "id": 17
-        }
-    ],
+    "data": {
+        "results": [
+            {
+              "card_holder": "T McTester",
+              "primary": true,
+              "card_type": "mastercard",
+              "verification_status": "pending",
+              "last_four_digits": "9013",
+              "expiry_year": "2018",
+              "expiry_month": "10",
+              "id": 21
+            },
+            {
+              "card_holder": "T McTester",
+              "primary": false,
+              "card_type": "mastercard",
+              "verification_status": "pending",
+              "last_four_digits": "3018",
+              "expiry_year": "2018",
+              "expiry_month": "10",
+              "id": 17
+            }
+          ],  
+       "total": 2    
+    },
     "message": null,
     "status": "success"
 }
@@ -706,6 +712,8 @@ curl "{base_url}/admin/users/" \
 ```json
 {
     "data": {
+      "results": [
+        {
         "identifier": "230899032-f09832409-23580913",
         "first_name": "Testy",
         "last_name": "McTester",
@@ -715,6 +723,9 @@ curl "{base_url}/admin/users/" \
         "group": "user",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
+        }
+      ],
+      "total": 1  
     },
     "message": null,
     "status": "success"
@@ -742,16 +753,16 @@ curl "{base_url}/admin/users/{identifier}/" \
 ```json
 {
     "data": {
-        "identifier": "230899032-f09832409-23580913",
-        "first_name": "Testy",
-        "last_name": "McTester",
-        "email": "testy@getslideapp.com",
-        "mobile_number": "+27821111112",
-        "company": "slide",
-        "group": "user",
-        "created": "2018-08-21T09:27:25.882898Z",
-        "updated": "2018-08-29T16:58:54.647283Z"
-    },
+          "identifier": "230899032-f09832409-23580913",
+          "first_name": "Testy",
+          "last_name": "McTester",
+          "email": "testy@getslideapp.com",
+          "mobile_number": "+27821111112",
+          "company": "slide",
+          "group": "user",
+          "created": "2018-08-21T09:27:25.882898Z",
+          "updated": "2018-08-29T16:58:54.647283Z"
+        },
     "message": null,
     "status": "success"
 }
@@ -901,42 +912,45 @@ curl "{base_url}/admin/deposits/" \
 {
     "status": "success",
     "message": null,
-    "data": [
-        {
-            "identifier": "68796fab-7edb-413c-9881-55e1101d9777",
-            "user": {
-                "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
-                "first_name": "Testy",
-                "last_name": "McTester",
-                "email": "testy@getslideapp.com",
-                "mobile_number": "+27821111112",
-                "company": "slide_dev",
-                "groups": "user",
-                "created": "2018-09-30T15:53:37.012334Z",
-                "updated": "2018-10-31T09:48:38.299689Z"
-            },
-            "amount": 40,
-            "total_amount_charged": 49,
-            "currency": "ZAR",
-            "created": "2018-10-31T14:20:47.628274Z",
-            "updated": "2018-10-31T14:21:24.875560Z",
-            "status": "Complete",
-            "charges": [
-                {
-                    "type": "user",
-                    "identifier": "729c086e-1dab-4f39-9679-1cdaee6f5c06",
-                    "amount": 9,
-                    "flat_fee_charge": 5,
-                    "percentage_rate_charge": 4,
-                    "currency": "ZAR",
-                    "created": "2018-10-31T14:20:48.095841Z",
-                    "updated": "2018-10-31T14:21:38.732972Z",
-                    "status": "Complete"
-                }
-            ]
+    "data": {
+        "results": [
+          {
+              "identifier": "68796fab-7edb-413c-9881-55e1101d9777",
+              "user": {
+                  "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+                  "first_name": "Testy",
+                  "last_name": "McTester",
+                  "email": "testy@getslideapp.com",
+                  "mobile_number": "+27821111112",
+                  "company": "slide_dev",
+                  "groups": "user",
+                  "created": "2018-09-30T15:53:37.012334Z",
+                  "updated": "2018-10-31T09:48:38.299689Z"
+              },
+              "amount": 40,
+              "total_amount_charged": 49,
+              "currency": "ZAR",
+              "created": "2018-10-31T14:20:47.628274Z",
+              "updated": "2018-10-31T14:21:24.875560Z",
+              "status": "Complete",
+              "charges": [
+                  {
+                      "type": "user",
+                      "identifier": "729c086e-1dab-4f39-9679-1cdaee6f5c06",
+                      "amount": 9,
+                      "flat_fee_charge": 5,
+                      "percentage_rate_charge": 4,
+                      "currency": "ZAR",
+                      "created": "2018-10-31T14:20:48.095841Z",
+                      "updated": "2018-10-31T14:21:38.732972Z",
+                      "status": "Complete"
+                  }
+              ]
         }
-      ]  
+      ],
+      "total": 1
     }
+}
 ```
 
 This endpoint retrieves a list of all deposits.
@@ -959,66 +973,69 @@ curl "{base_url}/admin/transfers/" \
 {
     "status": "success",
     "message": null,
-    "data": [
-        {
-            "identifier": "a56b9f50-81b7-4de6-8111-550686b997f9",
-            "user": {
-                "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
-                "first_name": "Testy",
-                "last_name": "McTester",
-                "email": "testy@getslideapp.com",
-                "mobile_number": "+27821111112",
-                "company": "slide_dev",
-                "groups": "user",
-                "created": "2018-09-30T15:53:37.012334Z",
-                "updated": "2018-10-31T09:48:38.299689Z"
-            },
-            "recipient": {
-                "identifier": "899b55e1-65a9-4969-b282-b8f0ok01f76b",
-                "first_name": "Ray",
-                "last_name": "Serpent",
-                "email": "ray@getslideapp.com",
-                "mobile_number": null,
-                "company": "slide",
-                "groups": "user",
-                "created": "2018-07-24T10:50:42.364399Z",
-                "updated": "2018-07-24T10:50:48.329165Z"
-            },
-            "note": "testy",
-            "amount": 50,
-            "total_amount_charged": 65,
-            "total_amount_received": 45,
-            "currency": "ZAR",
-            "created": "2018-10-31T13:55:34.418860Z",
-            "updated": "2018-10-31T13:56:01.651581Z",
-            "status": "Complete",
-            "charges": [
-                {
-                    "type": "recipient",
-                    "identifier": "b16e0f99-7ae2-46fe-b375-194a90a0f23c",
-                    "amount": 5,
-                    "flat_fee_charge": 0,
-                    "percentage_rate_charge": 5,
-                    "currency": "ZAR",
-                    "created": "2018-10-31T13:55:34.530633Z",
-                    "updated": "2018-10-31T13:56:07.719340Z",
-                    "status": "Complete"
-                },
-                {
-                    "type": "user",
-                    "identifier": "0a56cea7-9d57-4fe8-8f8d-8e22aeb8174f",
-                    "amount": 15,
-                    "flat_fee_charge": 10,
-                    "percentage_rate_charge": 5,
-                    "currency": "ZAR",
-                    "created": "2018-10-31T13:55:34.497813Z",
-                    "updated": "2018-10-31T13:56:19.209375Z",
-                    "status": "Complete"
-                }
-            ]
-        }
-      ]
+    "data": {
+      "results": [
+          {
+              "identifier": "a56b9f50-81b7-4de6-8111-550686b997f9",
+              "user": {
+                  "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+                  "first_name": "Testy",
+                  "last_name": "McTester",
+                  "email": "testy@getslideapp.com",
+                  "mobile_number": "+27821111112",
+                  "company": "slide_dev",
+                  "groups": "user",
+                  "created": "2018-09-30T15:53:37.012334Z",
+                  "updated": "2018-10-31T09:48:38.299689Z"
+              },
+              "recipient": {
+                  "identifier": "899b55e1-65a9-4969-b282-b8f0ok01f76b",
+                  "first_name": "Ray",
+                  "last_name": "Serpent",
+                  "email": "ray@getslideapp.com",
+                  "mobile_number": null,
+                  "company": "slide",
+                  "groups": "user",
+                  "created": "2018-07-24T10:50:42.364399Z",
+                  "updated": "2018-07-24T10:50:48.329165Z"
+              },
+              "note": "testy",
+              "amount": 50,
+              "total_amount_charged": 65,
+              "total_amount_received": 45,
+              "currency": "ZAR",
+              "created": "2018-10-31T13:55:34.418860Z",
+              "updated": "2018-10-31T13:56:01.651581Z",
+              "status": "Complete",
+              "charges": [
+                  {
+                      "type": "recipient",
+                      "identifier": "b16e0f99-7ae2-46fe-b375-194a90a0f23c",
+                      "amount": 5,
+                      "flat_fee_charge": 0,
+                      "percentage_rate_charge": 5,
+                      "currency": "ZAR",
+                      "created": "2018-10-31T13:55:34.530633Z",
+                      "updated": "2018-10-31T13:56:07.719340Z",
+                      "status": "Complete"
+                  },
+                  {
+                      "type": "user",
+                      "identifier": "0a56cea7-9d57-4fe8-8f8d-8e22aeb8174f",
+                      "amount": 15,
+                      "flat_fee_charge": 10,
+                      "percentage_rate_charge": 5,
+                      "currency": "ZAR",
+                      "created": "2018-10-31T13:55:34.497813Z",
+                      "updated": "2018-10-31T13:56:19.209375Z",
+                      "status": "Complete"
+                  }
+              ]
+        }      
+      ],
+      "total": 1
     }
+}
 
 ```
 
@@ -1042,41 +1059,44 @@ curl "{base_url}/admin/withdrawals/" \
 {
     "status": "success",
     "message": null,
-    "data": [
-        {
-            "identifier": "90123aaf-cb6c-4435-aa78-c093de616d84",
-            "user": {
-                "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
-                "first_name": "Testy",
-                "last_name": "McTester",
-                "email": "testy@getslideapp.com",
-                "mobile_number": "+27821111112",
-                "company": "slide_dev",
-                "groups": "user",
-                "created": "2018-09-30T15:53:37.012334Z",
-                "updated": "2018-10-31T09:48:38.299689Z"
-            },
-            "amount": 100,
-            "total_amount_charged": 115,
-            "currency": "ZAR",
-            "created": "2018-10-31T14:08:08.021608Z",
-            "updated": "2018-10-31T14:08:50.753947Z",
-            "status": "Complete",
-            "charges": [
-                {
-                    "type": "user",
-                    "identifier": "9947b78a-a7d0-4da6-a7ce-f2a447a732a0",
-                    "amount": 15,
-                    "flat_fee_charge": 5,
-                    "percentage_rate_charge": 10,
-                    "currency": "ZAR",
-                    "created": "2018-10-31T14:08:08.119462Z",
-                    "updated": "2018-10-31T14:09:02.457248Z",
-                    "status": "Complete"
-                }
-            ]
-        }
-      ]
+    "data": {
+        "results": [
+          {
+              "identifier": "90123aaf-cb6c-4435-aa78-c093de616d84",
+              "user": {
+                  "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+                  "first_name": "Testy",
+                  "last_name": "McTester",
+                  "email": "testy@getslideapp.com",
+                  "mobile_number": "+27821111112",
+                  "company": "slide_dev",
+                  "groups": "user",
+                  "created": "2018-09-30T15:53:37.012334Z",
+                  "updated": "2018-10-31T09:48:38.299689Z"
+              },
+              "amount": 100,
+              "total_amount_charged": 115,
+              "currency": "ZAR",
+              "created": "2018-10-31T14:08:08.021608Z",
+              "updated": "2018-10-31T14:08:50.753947Z",
+              "status": "Complete",
+              "charges": [
+                  {
+                      "type": "user",
+                      "identifier": "9947b78a-a7d0-4da6-a7ce-f2a447a732a0",
+                      "amount": 15,
+                      "flat_fee_charge": 5,
+                      "percentage_rate_charge": 10,
+                      "currency": "ZAR",
+                      "created": "2018-10-31T14:08:08.119462Z",
+                      "updated": "2018-10-31T14:09:02.457248Z",
+                      "status": "Complete"
+                  }
+              ]
+          }
+        ],
+        "total": 1
+      }
     }
 ```
 

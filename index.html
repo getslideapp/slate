@@ -358,7 +358,7 @@
         <ul class="toc-footer">
             <li><a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a></li>
             <li><a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a></li>
-            <li>v2.3.1-100-gc76343f</li>
+            <li>v2.3.1-104-ga42f6e4</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -528,20 +528,23 @@ You must replace <code>{token}</code> with your personal API token.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr T McTester"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cheque"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nedbank"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198765"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr T McTester"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cheque"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nedbank"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198765"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
 
-        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">  
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -786,28 +789,31 @@ It can be used to set a secondary Bank Account back to &#39;primary&#39;.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T McTester"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9013"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T McTester"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3018"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T McTester"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9013"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"card_holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T McTester"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"card_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"verification_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"last_four_digits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3018"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"expiry_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"expiry_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">  
+       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">    
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1039,6 +1045,8 @@ Note that all all the variables are mapped directly to the response, except for 
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
         </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230899032-f09832409-23580913"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
@@ -1048,6 +1056,9 @@ Note that all all the variables are mapped directly to the response, except for 
         </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
@@ -1067,16 +1078,16 @@ Note that all all the variables are mapped directly to the response, except for 
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230899032-f09832409-23580913"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230899032-f09832409-23580913"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1225,6 +1236,12 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 <td>String</td>
 <td>No</td>
 </tr>
+<tr>
+<td><code>groups</code></td>
+<td>User&#39;s group (Options are: <code>user</code> or <code>admin_user</code>)</td>
+<td>String</td>
+<td>No</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -1254,42 +1271,45 @@ under the <b>charges</b> field in the response.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68796fab-7edb-413c-9881-55e1101d9777"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:20:47.628274Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:24.875560Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"729c086e-1dab-4f39-9679-1cdaee6f5c06"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:20:48.095841Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:38.732972Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68796fab-7edb-413c-9881-55e1101d9777"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:20:47.628274Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:24.875560Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"729c086e-1dab-4f39-9679-1cdaee6f5c06"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:20:48.095841Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:38.732972Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">  
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a list of all deposits.</p>
 <h4 id='http-request-16'>HTTP Request</h4>
@@ -1304,66 +1324,69 @@ under the <b>charges</b> field in the response.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a56b9f50-81b7-4de6-8111-550686b997f9"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"899b55e1-65a9-4969-b282-b8f0ok01f76b"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ray"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serpent"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ray@getslideapp.com"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:42.364399Z"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:48.329165Z"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"total_amount_received"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:55:34.418860Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:56:01.651581Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recipient"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b16e0f99-7ae2-46fe-b375-194a90a0f23c"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:55:34.530633Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:56:07.719340Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a56cea7-9d57-4fe8-8f8d-8e22aeb8174f"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:55:34.497813Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:56:19.209375Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a56b9f50-81b7-4de6-8111-550686b997f9"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"899b55e1-65a9-4969-b282-b8f0ok01f76b"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ray"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serpent"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ray@getslideapp.com"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:42.364399Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:48.329165Z"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total_amount_received"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:55:34.418860Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:56:01.651581Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recipient"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b16e0f99-7ae2-46fe-b375-194a90a0f23c"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:55:34.530633Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:56:07.719340Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a56cea7-9d57-4fe8-8f8d-8e22aeb8174f"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:55:34.497813Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:56:19.209375Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">      
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p>This endpoint retrieves a list of all transfers.</p>
@@ -1379,41 +1402,44 @@ under the <b>charges</b> field in the response.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90123aaf-cb6c-4435-aa78-c093de616d84"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:08:08.021608Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:08:50.753947Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9947b78a-a7d0-4da6-a7ce-f2a447a732a0"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:08:08.119462Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:09:02.457248Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90123aaf-cb6c-4435-aa78-c093de616d84"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:08:08.021608Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:08:50.753947Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9947b78a-a7d0-4da6-a7ce-f2a447a732a0"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:08:08.119462Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:09:02.457248Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a list of all withdrawals.</p>

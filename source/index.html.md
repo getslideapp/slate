@@ -228,7 +228,7 @@ curl "{base_url}/user/bank-accounts/" \
           "bank_name": "nedbank",
           "branch_code": "198765",
           "primary": true,
-
+          "identifier": "395554a4-6d14-41f8-92f2-c23db3ab3e45",
           "created": "2018-08-21T09:27:25.882898Z",
           "updated": "2018-08-29T16:58:54.647283Z"
         }
@@ -249,7 +249,7 @@ This endpoint retrieves a list of all the bank accounts for the logged in user.
 ### Get Bank Account
 
 ```shell
-curl "{base_url}/user/bank-accounts/{id}/" \
+curl "{base_url}/user/bank-accounts/{identifier}/" \
   -X GET \
   -H "Authorization: Token {token}"
 ```
@@ -266,6 +266,7 @@ curl "{base_url}/user/bank-accounts/{id}/" \
         "bank_name": "nedbank",
         "branch_code": "198765",
         "primary": true,
+        "identifier": "395554a4-6d14-41f8-92f2-c23db3ab3e45",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },
@@ -274,11 +275,13 @@ curl "{base_url}/user/bank-accounts/{id}/" \
 }
 ```
 
-This endpoint retrieves the bank account with `id = {id}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+This endpoint retrieves the bank account with `identifier = {identifier}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+Note that `id` can also be used in place of `identifier`.
 
 #### HTTP Request
 
-`GET /user/bank-accounts/{id}/`
+`GET /user/bank-accounts/{identifier}/`
 
 
 ### Create Bank Account
@@ -308,6 +311,7 @@ curl "{base_url}/user/bank-accounts/" \
       "type": "savings",
       "bank_name": "nedbank",
       "branch_code": "198765",
+      "identifier": "395554a4-6d14-41f8-92f2-c23db3ab3e45",
       "created": "2018-09-14T13:19:00.549216Z",
       "updated": "2018-09-14T13:19:00.549257Z"
   }
@@ -336,7 +340,7 @@ Parameter | Description | Type | Required
 ### Update Bank Account
 
 ```shell
-curl "{base_url}/user/bank-accounts/{id}/" \
+curl "{base_url}/user/bank-accounts/{identifier}/" \
   -X PUT \
   -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
@@ -363,18 +367,21 @@ curl "{base_url}/user/bank-accounts/{id}/" \
       "bank_name": "nedbank",
       "bank_code": "198765",
       "branch_code": "198765",
+      "identifier": "395554a4-6d14-41f8-92f2-c23db3ab3e45",
       "created": "2018-09-14T13:19:00.549216Z",
       "updated": "2018-09-14T13:19:00.549257Z"
   }
 }
 ```
 
-This endpoint updates the bank account with `id = {id}`, for the logged in user.
+This endpoint updates the bank account with `identifier = {identifier}`, for the logged in user.
 It can be used to set a secondary Bank Account back to 'primary'.
+
+Note that `id` can also be used in place of `identifier`.
 
 #### HTTP Request
 
-`PUT /user/bank-accounts/{id}/`
+`PUT /user/bank-accounts/{identifier}/`
 
 #### URL Parameters
 
@@ -435,6 +442,7 @@ curl "{base_url}/user/cards/" \
               "last_four_digits": "9013",
               "expiry_year": "2018",
               "expiry_month": "10",
+              "identifier": "992c19df-c084-499d-8743-b9e70fee258b",
               "id": 21
             },
             {
@@ -445,6 +453,7 @@ curl "{base_url}/user/cards/" \
               "last_four_digits": "3018",
               "expiry_year": "2018",
               "expiry_month": "10",
+              "identifier": "91a7d739-075c-4896-8090-44a196a1c319",
               "id": 17
             }
           ],  
@@ -464,7 +473,7 @@ This endpoint retrieves a list of all the cards registered for the logged in use
 ### Get Card
 
 ```shell
-curl "{base_url}/user/cards/{id}/" \
+curl "{base_url}/user/cards/{identifier}/" \
   -X GET \
   -H "Authorization: Token {token}"
 ```
@@ -481,6 +490,7 @@ curl "{base_url}/user/cards/{id}/" \
           "last_four_digits": "3018",
           "expiry_year": "2018",
           "expiry_month": "10",
+          "identifier": "91a7d739-075c-4896-8090-44a196a1c319",
           "id": 17
       },
     "message": null,
@@ -488,11 +498,13 @@ curl "{base_url}/user/cards/{id}/" \
 }
 ```
 
-This endpoint retrieves the Card with `id = {id}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+This endpoint retrieves the Card with `identifier = {identifier}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+
+Note that `id` can also be used in place of `identifier`.
 
 #### HTTP Request
 
-`GET /user/cards/{id}/`
+`GET /user/cards/{identifier}/`
 
 
 ### Register Card
@@ -522,6 +534,7 @@ curl "{base_url}/user/cards/" \
         "last_four_digits": "4444",
         "expiry_year": "2018",
         "expiry_month": "12",
+        "identifier": "91a7d739-075c-4896-8090-44a196a1c319",
         "id": 17
     },
   "message": "created",
@@ -552,7 +565,7 @@ Parameter | Description | Type | Required
 ### Unregister Card
 
 ```shell
-curl "{base_url}/user/cards/{id}/" \
+curl "{base_url}/user/cards/{identifier}/" \
   -X DEL \
   -H "Authorization: Token {token}"
 ```
@@ -567,18 +580,19 @@ curl "{base_url}/user/cards/{id}/" \
 }
 ```
 
-This endpoint will de-register the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+This endpoint will de-register the card with `identifier = {identifier}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
 
+Note that `id` can also be used in place of `identifier`.
 
 #### HTTP Request
 
-`DEL /user/cards/{id}/`
+`DEL /user/cards/{identifier}/`
 
 
 ### Verify Card
 
 ```shell
-curl "{base_url}/user/cards/{id}/verify/" \
+curl "{base_url}/user/cards/{identifier}/verify/" \
   -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Token {token}"
@@ -615,6 +629,7 @@ curl "{base_url}/user/cards/{id}/verify/" \
       "last_four_digits": "9013",
       "expiry_year": "2018",
       "expiry_month": "10",
+      "identifier": "992c19df-c084-499d-8743-b9e70fee258b",
       "id": 26
     },
   "message": "Approved",
@@ -622,17 +637,21 @@ curl "{base_url}/user/cards/{id}/verify/" \
 }
 ```
 
-This endpoint will initiate a 3DSecure verification for the card with `id = {id}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`. If the card does not require 3DSecure verification the card will be verified.
+This endpoint will initiate a 3DSecure verification for the card with `identifier = {identifier}`, if the logged in user is the resource owner, otherwise it returns a `404 Not Found`. If the card does not require 3DSecure verification the card will be verified.
+
+Note that `id` can also be used in place of `identifier`.
 
 This `verification` endpoint enables a card on the system to be verified once off and then used to make payments without further verification, for better end user experience. This setting can be used at the discretion of the client who may or may not pass it on to the user. Unverified cards attempting payments will require 3DSecure verification on a per payment basis for the payment to be processed.
 
 There are two `success` cases for the response, depending on whether the card requires 3DSecure verification or not. In the case where 3DSecure is not required the card is verified automatically and the response returns as per example given.
 
-In the case where 3DSecure is required, however, the client will be required to submit a form with the fields populated from the response provided. An example of this form can be found below in the [Verify Form](#verify-form) Section. We'd be happy to guide you through thr final step.
+In the case where 3DSecure is required, however, the client will be required to submit a form with the fields populated from the response provided. An example of this form can be found below in the [Verify Form](#verify-form) Section. We'd be happy to guide you through the final step.
 
 #### HTTP Request
 
-`POST /user/cards/{id}/verify/`
+`POST /user/cards/{identifier}/verify/`
+
+Note that `id` can also be used in place of `identifier`.
 
 #### Verify Form
 
@@ -658,7 +677,7 @@ Note that all all the variables are mapped directly to the response, except for 
 ### Set Primary Card
 
 ```shell
-curl "{base_url}/user/cards/{id}/set_primary/" \
+curl "{base_url}/user/cards/{identifier}/set_primary/" \
   -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Token {token}"
@@ -676,6 +695,7 @@ curl "{base_url}/user/cards/{id}/set_primary/" \
       "last_four_digits": "9013",
       "expiry_year": "2018",
       "expiry_month": "10",
+      "identifier": "992c19df-c084-499d-8743-b9e70fee258b",
       "id": 26
   },
   "message": null,
@@ -683,12 +703,13 @@ curl "{base_url}/user/cards/{id}/set_primary/" \
 }
 ```
 
-This endpoint will set the card with `id = {id}` as the primary card for the user (the card used to make payments), if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+This endpoint will set the card with `id = {identifier}` as the primary card for the user (the card used to make payments), if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
 
+Note that `id` can also be used in place of `identifier`.
 
 #### HTTP Request
 
-`POST /user/cards/{id}/set_primary/`
+`POST /user/cards/{identifier}/set_primary/`
 
 
 # Admin

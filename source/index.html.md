@@ -385,6 +385,33 @@ Parameter | Description | Type | Required
 `primary` | Sets the account as the primary account | String | No
 
 
+
+### Delete Bank Account
+
+```shell
+curl "{base_url}/user/bank-accounts/{identifier}/" \
+  -X DELETE \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "success",
+  "message": "deleted"
+}
+```
+
+This endpoint deletes the bank account with `identifier = {identifier}`, for the logged in user.
+It will automatically set the most recent remaining bank account to the primary account, if it exists.
+
+#### HTTP Request
+
+`DELETE /user/bank-accounts/{identifier}/`
+
+
 ## Cards
 
 For user management of their own credit cards.

@@ -344,12 +344,7 @@ curl "{base_url}/user/bank-accounts/{identifier}/" \
   -X PUT \
   -H "Content-Type: application/json" \
   -H "Authorization: Token {token}" \
-  -d '{ "name": "Mr T. McTester",
-        "account_number": "00000000",
-        "type": "savings",
-        "bank_name": "nedbank",
-        "primary": true,
-      }'
+  -d '{"primary": true}'
 ```
 
 > The above command returns JSON structured like this:
@@ -387,10 +382,6 @@ Note that `id` can also be used in place of `identifier`.
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
-`name` | Account name | String | No
-`account_number` | Account number | String | No
-`type` | Account type (Options are: `cheque` or `savings`) | String | No
-`bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`, `investec`) | String | No
 `primary` | Sets the account as the primary account | String | No
 
 
@@ -902,6 +893,33 @@ Parameter | Description | Type | Required
 <aside class="notice">
 Formatting of `mobile_number` is such that it should be exactly 11 characters in length (9 integers prepended by `+27`).
 </aside>
+
+### Delete User
+
+```shell
+curl "{base_url}/admin/users/{identifier}/" \
+  -X DELETE \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token {token}" \
+
+```
+> Make sure to replace `{identifier}` with the User Id.
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "message": "deleted",
+    "status": "success"
+}
+```
+
+This endpoint deletes an existing user.
+
+#### HTTP Request
+
+`DELETE /admin/users/{identifier}/`
+
 
 ## Transactions
 

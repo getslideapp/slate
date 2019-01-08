@@ -337,14 +337,16 @@ Parameter | Description | Type | Required
 `type` | Account type (Options are: `cheque` or `savings`) | String | Yes
 `bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`, `investec`) | String | Yes
 
-### Update Bank Account
+
+
+
+### Set Primary Bank Account
 
 ```shell
-curl "{base_url}/user/bank-accounts/{identifier}/" \
-  -X PUT \
+curl "{base_url}/user/bank-accounts/{identifier}/set_primary/" \
+  -X POST \
   -H "Content-Type: application/json" \
-  -H "Authorization: Token {token}" \
-  -d '{"primary": true}'
+  -H "Authorization: Token {token}"
 ```
 
 > The above command returns JSON structured like this:
@@ -352,7 +354,7 @@ curl "{base_url}/user/bank-accounts/{identifier}/" \
 ```json
 {
   "status": "success",
-  "message": "created",
+  "message": null,
   "data": {
       "id": 4,
       "primary": true,
@@ -369,20 +371,14 @@ curl "{base_url}/user/bank-accounts/{identifier}/" \
 }
 ```
 
-This endpoint updates the bank account with `identifier = {identifier}`, for the logged in user.
-It can be used to set a secondary Bank Account back to 'primary'.
+This endpoint sets the bank account with `identifier = {identifier}` to primary, for the logged in user.
+All other existing bank accounts for this user will have their `primary` status set to `false`.
 
 Note that `id` can also be used in place of `identifier`.
 
 #### HTTP Request
 
-`PUT /user/bank-accounts/{identifier}/`
-
-#### URL Parameters
-
-Parameter | Description | Type | Required
---------- | ----------- | -----| --------
-`primary` | Sets the account as the primary account | String | No
+`POST /user/bank-accounts/{identifier}/set_primary/`
 
 
 

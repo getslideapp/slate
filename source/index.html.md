@@ -1580,3 +1580,59 @@ Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `user` | User's identifier | String | Yes
 `amount` | Withdrawal amount (cents) | Integer | Yes
+
+
+## Fees
+
+The Admin transaction endpoints allows an admin user to create, update and delete fees.
+
+
+### Create Fee
+
+```shell
+curl "{base_url}/admin/fees/" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token {token}" \
+  -d '{"description": "Fee description",
+        "active": true,
+        "tx_type": "withdrawal",
+        "paying_party": "user",
+        "flat_fee": 5,
+        "percentage_rate": 3.5}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "message": "created",
+    "status": "success",
+    "data": {
+        "active": true,
+        "description": "Fee description",
+        "flat_fee": 5,
+        "identifier": "bbabebdf-4693-4d37-9d09-5c7a32bffb28",
+        "paying_party": "user",
+        "percentage_rate": 3.5,
+        "tx_type": "withdrawal"
+    },
+}
+```
+
+This endpoint creates a fee.
+
+#### HTTP Request
+
+`POST /admin/fees/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`description` | Fee description | String | Yes
+`active` | Active status | Boolean | Yes
+`tx_type` | Transaction type | String | Yes
+`paying_party` | Party fee is charged to | String | Yes
+`flat_fee` | Flat fee (cents) | Integer | Yes
+`percentage_rate` | Percentage rate fee (%) | Float | Yes

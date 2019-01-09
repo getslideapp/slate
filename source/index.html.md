@@ -1586,6 +1586,13 @@ Parameter | Description | Type | Required
 
 The Admin transaction endpoints allows an admin user to create, update and delete fees.
 
+<aside class="notice">
+<strong>A note about company fees</strong>
+<br /><br />
+Fees set for the company are not able to be created or updated via the API endpoints.
+<br /><br />
+</aside>
+
 
 ### Create Fee
 
@@ -1632,7 +1639,58 @@ Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `description` | Fee description | String | Yes
 `active` | Active status | Boolean | Yes
-`tx_type` | Transaction type | String | Yes
-`paying_party` | Party fee is charged to | String | Yes
+`tx_type` | Transaction type (Options are: withdrawal, deposit or transfer) | String | Yes
+`paying_party` | Party fee is charged to (Options are: user or recipient) | String | Yes
 `flat_fee` | Flat fee (cents) | Integer | Yes
 `percentage_rate` | Percentage rate fee (%) | Float | Yes
+
+
+### Update Fee
+
+```shell
+curl "{base_url}/admin/fees/{identifier}/" \
+  -X PUT \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token {token}" \
+  -d '{"description": "Fee test description",
+        "active": true,
+        "tx_type": "withdrawal",
+        "paying_party": "user",
+        "flat_fee": 2,
+        "percentage_rate": 2.1}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "message": null,
+    "status": "success",
+    "data": {
+        "active": true,
+        "description": "Fee description",
+        "flat_fee": 2,
+        "identifier": "bbabebdf-4693-4d37-9d09-5c7a32bffb28",
+        "paying_party": "user",
+        "percentage_rate": 2.1,
+        "tx_type": "withdrawal"
+    },
+}
+```
+
+This endpoint updates a fee.
+
+#### HTTP Request
+
+`PUT /admin/fees/{identifier}/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`description` | Fee description | String | No
+`active` | Active status | Boolean | No
+`tx_type` | Transaction type (Options are: withdrawal, deposit or transfer) | String | No
+`paying_party` | Party fee is charged to (Options are: user or recipient) | String | No
+`flat_fee` | Flat fee (cents) | Integer | No
+`percentage_rate` | Percentage rate fee (%) | Float | No

@@ -1590,7 +1590,6 @@ The Admin transaction endpoints allows an admin user to create, update and delet
 <strong>A note about company fees</strong>
 <br /><br />
 Fees set for the company are not able to be created or updated via the API endpoints.
-<br /><br />
 </aside>
 
 

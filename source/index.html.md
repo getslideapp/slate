@@ -1584,7 +1584,7 @@ Parameter | Description | Type | Required
 
 ## Fees
 
-The Admin transaction endpoints allows an admin user to create, update and delete fees.
+The Admin transaction endpoints allows an admin user to create and update fees charged to their users.
 
 <aside class="notice">
 <strong>A note about company fees</strong>

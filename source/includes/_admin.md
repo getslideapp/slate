@@ -877,6 +877,7 @@ curl "{base_url}/admin/fees/" \
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
     "message": "created",
@@ -889,7 +890,7 @@ curl "{base_url}/admin/fees/" \
         "paying_party": "user",
         "percentage_rate": 3.5,
         "tx_type": "withdrawal"
-    },
+    }
 }
 ```
 
@@ -927,6 +928,7 @@ curl "{base_url}/admin/fees/{identifier}/" \
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
     "message": null,
@@ -939,7 +941,7 @@ curl "{base_url}/admin/fees/{identifier}/" \
         "paying_party": "user",
         "percentage_rate": 2.1,
         "tx_type": "withdrawal"
-    },
+    }
 }
 ```
 

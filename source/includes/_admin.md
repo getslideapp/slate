@@ -848,3 +848,116 @@ Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `user` | User's identifier | String | Yes
 `amount` | Withdrawal amount (cents) | Integer | Yes
+
+
+## Fees
+
+The Admin transaction endpoints allows an admin user to create and update fees charged to their users.
+
+<aside class="notice">
+<strong>A note about company fees</strong>
+<br /><br />
+Fees set for the company are not able to be created or updated via the API endpoints.
+</aside>
+
+
+### Create Fee
+
+```shell
+curl "{base_url}/admin/fees/" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token {token}" \
+  -d '{"description": "Fee description",
+        "active": true,
+        "tx_type": "withdrawal",
+        "paying_party": "user",
+        "flat_fee": 5,
+        "percentage_rate": 3.5}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "message": "created",
+    "status": "success",
+    "data": {
+        "active": true,
+        "description": "Fee description",
+        "flat_fee": 5,
+        "identifier": "bbabebdf-4693-4d37-9d09-5c7a32bffb28",
+        "paying_party": "user",
+        "percentage_rate": 3.5,
+        "tx_type": "withdrawal"
+    }
+}
+```
+
+This endpoint creates a fee.
+
+#### HTTP Request
+
+`POST /admin/fees/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`description` | Fee description | String | Yes
+`active` | Active status | Boolean | Yes
+`tx_type` | Transaction type (Options are: withdrawal, deposit or transfer) | String | Yes
+`paying_party` | Party fee is charged to (Options are: user or recipient) | String | Yes
+`flat_fee` | Flat fee (cents) | Integer | Yes
+`percentage_rate` | Percentage rate fee (%) | Float | Yes
+
+
+### Update Fee
+
+```shell
+curl "{base_url}/admin/fees/{identifier}/" \
+  -X PUT \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token {token}" \
+  -d '{"description": "Fee test description",
+        "active": true,
+        "tx_type": "withdrawal",
+        "paying_party": "user",
+        "flat_fee": 2,
+        "percentage_rate": 2.1}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "message": null,
+    "status": "success",
+    "data": {
+        "active": true,
+        "description": "Fee description",
+        "flat_fee": 2,
+        "identifier": "bbabebdf-4693-4d37-9d09-5c7a32bffb28",
+        "paying_party": "user",
+        "percentage_rate": 2.1,
+        "tx_type": "withdrawal"
+    }
+}
+```
+
+This endpoint updates a fee.
+
+#### HTTP Request
+
+`PUT /admin/fees/{identifier}/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`description` | Fee description | String | No
+`active` | Active status | Boolean | No
+`tx_type` | Transaction type (Options are: withdrawal, deposit or transfer) | String | No
+`paying_party` | Party fee is charged to (Options are: user or recipient) | String | No
+`flat_fee` | Flat fee (cents) | Integer | No
+`percentage_rate` | Percentage rate fee (%) | Float | No

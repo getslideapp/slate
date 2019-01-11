@@ -175,54 +175,6 @@ Parameter | Description | Type | Required
 `type` | Account type (Options are: `cheque` or `savings`) | String | Yes
 `bank_name` | Account bank (Options are: `standard_bank`, `absa`, `fnb`, `nedbank`, `capitec`, `african_bank`, `investec`) | String | Yes
 
-### Update Bank Account
-
-```shell
-curl "{base_url}/user/bank-accounts/{identifier}/" \
-  -X PUT \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Token {token}" \
-  -d '{"primary": true}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": "success",
-  "message": "created",
-  "data": {
-      "id": 4,
-      "primary": true,
-      "name": "Mr T. McTester",
-      "account_number": "00000000",
-      "type": "savings",
-      "bank_name": "nedbank",
-      "bank_code": "198765",
-      "branch_code": "198765",
-      "identifier": "395554a4-6d14-41f8-92f2-c23db3ab3e45",
-      "created": "2018-09-14T13:19:00.549216Z",
-      "updated": "2018-09-14T13:19:00.549257Z"
-  }
-}
-```
-
-This endpoint updates the bank account with `identifier = {identifier}`, for the logged in user.
-It can be used to set a secondary Bank Account back to 'primary'.
-
-Note that `id` can also be used in place of `identifier`.
-
-#### HTTP Request
-
-`PUT /user/bank-accounts/{identifier}/`
-
-#### URL Parameters
-
-Parameter | Description | Type | Required
---------- | ----------- | -----| --------
-`primary` | Sets the account as the primary account | String | No
-
-
 
 ### Delete Bank Account
 
@@ -248,6 +200,48 @@ It will automatically set the most recent remaining bank account to the primary 
 #### HTTP Request
 
 `DELETE /user/bank-accounts/{identifier}/`
+
+### Set Primary Bank Account
+
+```shell
+curl "{base_url}/user/bank-accounts/{identifier}/set_primary/" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "success",
+  "message": null,
+  "data": {
+      "id": 4,
+      "primary": true,
+      "name": "Mr T. McTester",
+      "account_number": "00000000",
+      "type": "savings",
+      "bank_name": "nedbank",
+      "bank_code": "198765",
+      "branch_code": "198765",
+      "identifier": "395554a4-6d14-41f8-92f2-c23db3ab3e45",
+      "created": "2018-09-14T13:19:00.549216Z",
+      "updated": "2018-09-14T13:19:00.549257Z"
+  }
+}
+```
+
+This endpoint sets the bank account with `identifier = {identifier}` to primary, for the logged in user.
+All other existing bank accounts for this user will have their `primary` status set to `false`.
+
+Note that `id` can also be used in place of `identifier`.
+
+#### HTTP Request
+
+`POST /user/bank-accounts/{identifier}/set_primary/`
+
+
 
 ## Cards
 

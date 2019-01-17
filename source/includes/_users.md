@@ -266,7 +266,8 @@ These test cards are provided for testing and are liable to be changed or update
 
 Number | Type | Expiry Date | CVV | 3DS Password
 --------- | -------- | -------- | ----- | -----
-5286 2500 0306 1012	| mastercard | 09/19 | 742 | test123
+5239 0900 0011 6015	| mastercard | 04/22 | 722 | test123
+5286 2500 0002 5044	| mastercard | 08/20 | 188 | test123
 
 ### List Cards
 

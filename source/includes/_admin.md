@@ -604,7 +604,7 @@ curl "{base_url}/admin/transactions/{identifier}" \
 }
 ```
 
-This endpoint retrieves a specific transaction of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
+This endpoint retrieves a specific transaction with `identifier = {identifier}` of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
 The type of the transaction is specified in the `type` field of the object.
 
 #### HTTP Request

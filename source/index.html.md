@@ -17,6 +17,7 @@ includes:
   - users
   - admin
   - errors
+  - changelog
 
 search: true
 ---

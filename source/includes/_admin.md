@@ -311,7 +311,7 @@ curl "{base_url}/admin/transactions/" \
 }
 ```
 
-This endpoint retrieves a list of all transactions of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
+This endpoint retrieves a list of all transactions of any of the following types: `deposit`, `withdrawal` and `transfer`.
 The type of each transaction is specified in the `type` field of the object.
 
 #### HTTP Request
@@ -539,9 +539,9 @@ This endpoint retrieves a list of all withdrawals.
 ### Get Transaction
 
 ```shell
-curl "{base_url}/admin/transactions/{identifier}" \
+curl "{base_url}/admin/transactions/{identifier}/" \
   -X GET \
-  -H "Authorization: Token {token}"'
+  -H "Authorization: Token {token}"
 ```
 
 > The above command returns JSON structured like this:
@@ -604,7 +604,7 @@ curl "{base_url}/admin/transactions/{identifier}" \
 }
 ```
 
-This endpoint retrieves a specific transaction with `identifier = {identifier}` of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
+This endpoint retrieves a specific transaction with `identifier = {identifier}` of any of the following types: `deposit`, `withdrawal` and `transfer`.
 The type of the transaction is specified in the `type` field of the object.
 
 #### HTTP Request

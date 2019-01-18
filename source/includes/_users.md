@@ -565,7 +565,7 @@ Note that `id` can also be used in place of `identifier`.
 
 For user management of their transactions.
 
-This endpoint returns transactions of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
+This endpoint returns transactions of any of the following types: `deposit`, `withdrawal` and `transfer`.
 
 ### List Transactions
 
@@ -644,7 +644,7 @@ curl "{base_url}/user/transactions/" \
 }
 ```
 
-This endpoint retrieves a list of all transactions of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
+This endpoint retrieves a list of all transactions of any of the following types: `deposit`, `withdrawal` and `transfer`.
 The type of each transaction is specified in the `type` field of the object.
 
 #### HTTP Request
@@ -663,9 +663,9 @@ Parameter | Description | Type | Required
 ### Get Transaction
 
 ```shell
-curl "{base_url}/user/transactions/{identifier}" \
+curl "{base_url}/user/transactions/{identifier}/" \
   -X GET \
-  -H "Authorization: Token {token}"'
+  -H "Authorization: Token {token}"
 ```
 
 > The above command returns JSON structured like this:
@@ -728,7 +728,7 @@ curl "{base_url}/user/transactions/{identifier}" \
 }
 ```
 
-This endpoint retrieves a specific transaction with `identifier = {identifier}` of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
+This endpoint retrieves a specific transaction with `identifier = {identifier}` of any of the following types: `deposit`, `withdrawal` and `transfer`.
 If the logged in user is not the resource owner, it returns a `404 Not Found`.
 The type of the transaction is specified in the `type` field of the object.
 

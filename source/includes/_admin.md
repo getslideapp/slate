@@ -233,6 +233,100 @@ under the <b>charges</b> field in the response.
 </aside>
 
 
+
+### List Transactions
+
+```shell
+curl "{base_url}/admin/transactions/" \
+  -X GET \
+  -H "Authorization: Token {token}" \
+  -d '{
+       "page": 1,
+       "page_size": 50
+     }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+        "count": 55,
+        "next": "{base_url}/admin/transactions/?page=2?page_size=50",
+        "previous": null,
+        "results": [
+            {
+                "user": {
+                    "identifier": "652f3dd5-d00f-48d2-9c37-0779d55bee37",
+                    "first_name": "Testy",
+                    "last_name": "McTester",
+                    "email": "testy@getslideapp.com",
+                    "mobile_number": "+27811223321",
+                    "company": "slide_dev",
+                    "groups": "user",
+                    "type": null,
+                    "status": "active",
+                    "created": "2018-12-04T11:14:51.924388Z",
+                    "updated": "2019-01-17T10:06:46.021888Z"
+                },
+                "recipient": {
+                    "identifier": "9fa066cd-cd6c-47db-a8de-ff64942343df",
+                    "first_name": "Testy 2",
+                    "last_name": "McTester 2",
+                    "email": "testy2@getslideapp.com",
+                    "mobile_number": "+27811223325",
+                    "company": "slide_dev",
+                    "groups": "user",
+                    "type": null,
+                    "status": "active",
+                    "created": "2018-12-04T11:17:37.522889Z",
+                    "updated": "2018-12-13T13:12:55.896326Z"
+                },
+                "identifier": "217b5bd1-f28b-4869-a922-ed0c31c2ae61",
+                "total_amount_charged": 100,
+                "amount": 99,
+                "currency": "ZAR",
+                "created": "2019-01-11T08:40:45.514764Z",
+                "updated": "2019-01-17T09:36:17.609090Z",
+                "status": "Complete",
+                "total_amount_received": 99,
+                "note": null,
+                "charges": [
+                    {
+                        "type": "user",
+                        "identifier": "652f3dd5-d00f-48d2-9c37-0779d55bee37",
+                        "amount": 1,
+                        "flat_fee_charge": 1,
+                        "percentage_rate_charge": 0,
+                        "currency": "ZAR",
+                        "created": "2019-01-11T08:40:45.514764Z",
+                        "updated": "2019-01-11T08:45:20.876294Z",
+                        "status": "Complete"
+                    }
+                  ],
+                "type": "transfer"
+            },
+      ],
+    }
+}
+```
+
+This endpoint retrieves a list of all transactions of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
+The type of each transaction is specified in the `type` field of the object.
+
+#### HTTP Request
+
+`GET /admin/transactions/`
+
+#### URL Parameters
+This endpoint supports pagination, with the following parameters available for use:
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`page` | Page to retrieve | Integer | No
+`page_size` | Amount of results per page | Integer | No
+
+
 ### List Deposits
 
 ```shell
@@ -440,6 +534,83 @@ This endpoint retrieves a list of all withdrawals.
 #### HTTP Request
 
 `GET /admin/withdrawals/`
+
+
+### Get Transaction
+
+```shell
+curl "{base_url}/admin/transactions/{identifier}" \
+  -X GET \
+  -H "Authorization: Token {token}"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "success",
+    "message": null,
+    "data": {
+        "user": {
+            "identifier": "652f3dd5-d00f-48d2-9c37-0779d55bee37",
+            "first_name": "Testy",
+            "last_name": "McTester",
+            "email": "testy@getslideapp.com",
+            "mobile_number": "+27811223321",
+            "company": "slide_dev",
+            "groups": "user",
+            "type": null,
+            "status": "active",
+            "created": "2018-12-04T11:14:51.924388Z",
+            "updated": "2019-01-17T10:06:46.021888Z"
+        },
+        "recipient": {
+            "identifier": "9fa066cd-cd6c-47db-a8de-ff64942343df",
+            "first_name": "Testy 2",
+            "last_name": "McTester 2",
+            "email": "testy2@getslideapp.com",
+            "mobile_number": "+27811223325",
+            "company": "slide_dev",
+            "groups": "user",
+            "type": null,
+            "status": "active",
+            "created": "2018-12-04T11:17:37.522889Z",
+            "updated": "2018-12-13T13:12:55.896326Z"
+        },
+        "identifier": "217b5bd1-f28b-4869-a922-ed0c31c2ae61",
+        "total_amount_charged": 100,
+        "amount": 99,
+        "currency": "ZAR",
+        "created": "2019-01-11T08:40:45.514764Z",
+        "updated": "2019-01-17T09:36:17.609090Z",
+        "status": "Complete",
+        "total_amount_received": 99,
+        "note": null,
+        "charges": [
+            {
+                "type": "user",
+                "identifier": "652f3dd5-d00f-48d2-9c37-0779d55bee37",
+                "amount": 1,
+                "flat_fee_charge": 1,
+                "percentage_rate_charge": 0,
+                "currency": "ZAR",
+                "created": "2019-01-11T08:40:45.514764Z",
+                "updated": "2019-01-11T08:45:20.876294Z",
+                "status": "Complete"
+            }
+          ],
+        "type": "transfer"
+    }
+}
+```
+
+This endpoint retrieves a specific transaction of any of the following types: `Deposit`, `Withdrawal` and `Transfer`.
+The type of the transaction is specified in the `type` field of the object.
+
+#### HTTP Request
+
+`GET /admin/transactions/{identifier}/`
+
 
 ### Get Deposit
 

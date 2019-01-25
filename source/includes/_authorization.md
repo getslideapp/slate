@@ -44,8 +44,6 @@ curl "{base_url}/auth/register/" \
 }
 ```
 
-This endpoint retrieves the profile details for the logged in user.
-
 #### HTTP Request
 
 `POST /auth/register/`

@@ -10,6 +10,8 @@
 - Documentation for new API endpoints.
 - Settings to allow international phone number registration.
 - New automated unit tests for improved code coverage.
+- Added transaction endpoint for admins and users to retrieve transactions, of any type.
+- Added pagination support for the new transaction endpoints.
 
 #### Changed
 - Phone number validation now uses the libphonenumber library.
@@ -18,3 +20,6 @@
 
 #### Removed
 - Removed API endpoint for updating bank accounts.
+
+#### Fixed
+- Fixed a bug where transactions could not be paged on the dashboard

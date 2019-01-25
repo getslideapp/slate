@@ -17,7 +17,6 @@
 - Phone number validation now uses the libphonenumber library.
 - All phone numbers must be in international format, i.e. prepended with +COUNTRY_CODE (e.g. +27 for ZA).
 - Rehive library was updated from version 1.1.9 to 1.1.12
-- Dashboard now displays transaction data from Slide Link (previously Rehive)
 
 #### Removed
 - Removed API endpoint for updating bank accounts.

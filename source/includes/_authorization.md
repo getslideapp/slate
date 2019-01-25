@@ -18,7 +18,9 @@ curl "{base_url}/auth/register/" \
         "password2:" "password",      
       }'
 ```
+
 > The above command returns JSON structured like this:
+
 ```json
 {
     "status": "success",
@@ -76,7 +78,9 @@ curl "{base_url}/auth/register/" \
         "password": "password"  
       }'
 ```
+
 > The above command returns JSON structured like this:
+
 ```json
 {
     "status": "success",

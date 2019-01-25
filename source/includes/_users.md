@@ -682,6 +682,8 @@ curl "{base_url}/user/deposits/" \
                 "mobile_number": "+27821111112",
                 "company": "slide_dev",
                 "groups": "user",
+                "type": null,
+                "status": "active",
                 "created": "2018-09-30T15:53:37.012334Z",
                 "updated": "2018-10-31T09:48:38.299689Z"
             },
@@ -736,6 +738,8 @@ curl "{base_url}/user/transfers/" \
                 "mobile_number": "+27821111112",
                 "company": "slide_dev",
                 "groups": "user",
+                "type": null,
+                "status": "active",
                 "created": "2018-09-30T15:53:37.012334Z",
                 "updated": "2018-10-31T09:48:38.299689Z"
             },
@@ -747,6 +751,8 @@ curl "{base_url}/user/transfers/" \
                 "mobile_number": null,
                 "company": "slide",
                 "groups": "user",
+                "type": null,
+                "status": "active",
                 "created": "2018-07-24T10:50:42.364399Z",
                 "updated": "2018-07-24T10:50:48.329165Z"
             },
@@ -817,6 +823,8 @@ curl "{base_url}/user/withdrawals/" \
                 "mobile_number": "+27821111112",
                 "company": "slide_dev",
                 "groups": "user",
+                "type": null,
+                "status": "active",
                 "created": "2018-09-30T15:53:37.012334Z",
                 "updated": "2018-10-31T09:48:38.299689Z"
             },
@@ -869,6 +877,8 @@ curl "{base_url}/admin/deposits/{identifier}/" \
             "mobile_number": "+27821111112",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -976,7 +986,6 @@ The type of the transaction is specified in the `type` field of the object.
 
 `GET /user/transactions/{identifier}/`
 
-
 ### Get Transfer
 
 ```shell
@@ -998,6 +1007,8 @@ curl "{base_url}/user/transfers/{identifier}/" \
             "mobile_number": "+27821111112",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -1009,6 +1020,8 @@ curl "{base_url}/user/transfers/{identifier}/" \
             "mobile_number": null,
             "company": "slide",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-07-24T10:50:42.364399Z",
             "updated": "2018-07-24T10:50:48.329165Z"
         },
@@ -1077,6 +1090,8 @@ curl "{base_url}/user/withdrawals/{identifier}/" \
             "mobile_number": "+27821111112",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -1137,6 +1152,8 @@ curl "{base_url}/admin/deposits/" \
             "mobile_number": "+27654329999",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1197,6 +1214,8 @@ curl "{base_url}/user/transfers/" \
             "mobile_number": "+27654329999",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1207,7 +1226,9 @@ curl "{base_url}/user/transfers/" \
             "email": "agent.smith@matrix.com",
             "mobile_number": null,
             "company": "slide_dev",
-            "groups": "false",
+            "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-07-24T10:50:42.364399Z",
             "updated": "2018-07-24T10:50:48.329165Z"
         },
@@ -1287,6 +1308,8 @@ curl "{base_url}/user/withdrawals/" \
             "mobile_number": "+27654329999",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },

@@ -27,7 +27,9 @@ curl "{base_url}/admin/users/" \
         "email": "testy@getslideapp.com",
         "mobile_number": "+27821111112",
         "company": "slide",
-        "group": "user",
+        "groups": "user",
+        "type": null,
+        "status": "active",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
         }
@@ -66,7 +68,9 @@ curl "{base_url}/admin/users/{identifier}/" \
           "email": "testy@getslideapp.com",
           "mobile_number": "+27821111112",
           "company": "slide",
-          "group": "user",
+          "groups": "user",
+          "type": null,
+          "status": "active",
           "created": "2018-08-21T09:27:25.882898Z",
           "updated": "2018-08-29T16:58:54.647283Z"
         },
@@ -106,7 +110,9 @@ curl "{base_url}/admin/users/" \
         "email": "testy@getslideapp.com",
         "mobile_number": "+27821111112",
         "company": "slide",
-        "group": "user",
+        "groups": "user",
+        "type": null,
+        "status": "active",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },
@@ -160,7 +166,9 @@ curl "{base_url}/admin/users/{identifier}/" \
         "email": "testy@getslideapp.com",
         "mobile_number": "+27821111112",
         "company": "slide",
-        "group": "user",
+        "groups": "user",
+        "type": null,
+        "status": "active",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },

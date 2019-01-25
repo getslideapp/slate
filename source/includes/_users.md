@@ -667,6 +667,7 @@ curl "{base_url}/user/deposits/" \
   -H "Authorization: Token {token}"
 ```
 > The above command returns JSON structured like this:
+
 ```json
 {
     "status": "success",
@@ -723,6 +724,7 @@ curl "{base_url}/user/transfers/" \
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
     "status": "success",
@@ -808,6 +810,7 @@ curl "{base_url}/user/withdrawals/" \
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
     "status": "success",
@@ -865,6 +868,7 @@ curl "{base_url}/admin/deposits/{identifier}/" \
   -H "Authorization: Token {token}"
 ```
 > The above command returns JSON structured like this:
+
 ```json
 {
     "data": {
@@ -995,6 +999,7 @@ curl "{base_url}/user/transfers/{identifier}/" \
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
     "data": {
@@ -1078,6 +1083,7 @@ curl "{base_url}/user/withdrawals/{identifier}/" \
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
     "data": {
@@ -1138,6 +1144,7 @@ curl "{base_url}/admin/deposits/" \
      }'
 ```
 > The above command returns JSON structured like this:
+
 ```json
 {
   "status": "success",
@@ -1201,6 +1208,7 @@ curl "{base_url}/user/transfers/" \
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
     "message": "created",
@@ -1294,6 +1302,7 @@ curl "{base_url}/user/withdrawals/" \
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
     "status": "success",

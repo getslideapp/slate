@@ -17,8 +17,8 @@
 - User login endpoints.
 - `type` field to the `User` model.
 - `status` field to the `User` model.
-- User Transfer endpoints for create, list and get transfer.
-- User Withdrawal endpoints for create, list and get transfer.
+- User Transfer endpoints for create, list and get transfers.
+- User Withdrawal endpoints for create, list and get withdrawals.
 
 #### Changed
 - Phone number validation now uses the libphonenumber library.

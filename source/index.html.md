@@ -14,6 +14,7 @@ toc_footers:
 
 includes:
   - introduction
+  - authorization
   - users
   - admin
   - errors

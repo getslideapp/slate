@@ -27,7 +27,9 @@ curl "{base_url}/admin/users/" \
         "email": "testy@getslideapp.com",
         "mobile_number": "+27821111112",
         "company": "slide",
-        "group": "user",
+        "groups": "user",
+        "type": null,
+        "status": "active",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
         }
@@ -66,7 +68,9 @@ curl "{base_url}/admin/users/{identifier}/" \
           "email": "testy@getslideapp.com",
           "mobile_number": "+27821111112",
           "company": "slide",
-          "group": "user",
+          "groups": "user",
+          "type": null,
+          "status": "active",
           "created": "2018-08-21T09:27:25.882898Z",
           "updated": "2018-08-29T16:58:54.647283Z"
         },
@@ -106,7 +110,9 @@ curl "{base_url}/admin/users/" \
         "email": "testy@getslideapp.com",
         "mobile_number": "+27821111112",
         "company": "slide",
-        "group": "user",
+        "groups": "user",
+        "type": null,
+        "status": "active",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },
@@ -160,7 +166,9 @@ curl "{base_url}/admin/users/{identifier}/" \
         "email": "testy@getslideapp.com",
         "mobile_number": "+27821111112",
         "company": "slide",
-        "group": "user",
+        "groups": "user",
+        "type": null,
+        "status": "active",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },
@@ -353,6 +361,8 @@ curl "{base_url}/admin/deposits/" \
                   "mobile_number": "+27821111112",
                   "company": "slide_dev",
                   "groups": "user",
+                  "type": null,
+                  "status": "active",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -414,6 +424,8 @@ curl "{base_url}/admin/transfers/" \
                   "mobile_number": "+27821111112",
                   "company": "slide_dev",
                   "groups": "user",
+                  "type": null,
+                  "status": "active",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -425,6 +437,8 @@ curl "{base_url}/admin/transfers/" \
                   "mobile_number": null,
                   "company": "slide",
                   "groups": "user",
+                  "type": null,
+                  "status": "active",
                   "created": "2018-07-24T10:50:42.364399Z",
                   "updated": "2018-07-24T10:50:48.329165Z"
               },
@@ -500,6 +514,8 @@ curl "{base_url}/admin/withdrawals/" \
                   "mobile_number": "+27821111112",
                   "company": "slide_dev",
                   "groups": "user",
+                  "type": null,
+                  "status": "active",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -634,6 +650,8 @@ curl "{base_url}/admin/deposits/{identifier}/" \
             "mobile_number": "+27821111112",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -690,6 +708,8 @@ curl "{base_url}/admin/transfers/{identifier}/" \
             "mobile_number": "+27821111112",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -701,6 +721,8 @@ curl "{base_url}/admin/transfers/{identifier}/" \
             "mobile_number": null,
             "company": "slide",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-07-24T10:50:42.364399Z",
             "updated": "2018-07-24T10:50:48.329165Z"
         },
@@ -770,6 +792,8 @@ curl "{base_url}/admin/withdrawals/{identifier}/" \
             "mobile_number": "+27821111112",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -833,6 +857,8 @@ curl "{base_url}/admin/deposits/" \
             "mobile_number": "+27654329999",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -900,6 +926,8 @@ curl "{base_url}/admin/transfers/" \
             "mobile_number": "+27654329999",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -910,7 +938,9 @@ curl "{base_url}/admin/transfers/" \
             "email": "agent.smith@matrix.com",
             "mobile_number": null,
             "company": "slide_dev",
-            "groups": "false",
+            "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-07-24T10:50:42.364399Z",
             "updated": "2018-07-24T10:50:48.329165Z"
         },
@@ -993,6 +1023,8 @@ curl "{base_url}/admin/withdrawals/" \
             "mobile_number": "+27654329999",
             "company": "slide_dev",
             "groups": "user",
+            "type": null,
+            "status": "active",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },

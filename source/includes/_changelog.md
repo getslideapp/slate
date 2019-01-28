@@ -1,16 +1,5 @@
 # Changelog
 
-## [25-01-2019]
-
-#### Added
-- User registration endpoints
-- User login endpoints
-- `type` field to the `User` model
-- `status` field to the `User` model
-- User Transfer endpoints for create, list and get transfer
-- User Withdrawal endpoints for create, list and get transfer
-
-
 ## [Unreleased]
 
 #### Added

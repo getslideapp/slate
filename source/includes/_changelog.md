@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [2.5.0] - 2019-01-28
+
 #### Added
 - Admin API endpoints for companies to create and update their fees.
 - Admin API endpoint to delete a user.
@@ -21,7 +23,6 @@
 #### Changed
 - Phone number validation now uses the libphonenumber library.
 - All phone numbers must be in international format, i.e. prepended with +COUNTRY_CODE (e.g. +27 for ZA).
-- Rehive library was updated from version 1.1.9 to 1.1.12
 
 #### Removed
 - Removed API endpoint for updating bank accounts.

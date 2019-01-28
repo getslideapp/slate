@@ -13,12 +13,12 @@
 - New automated unit tests for improved code coverage.
 - Transaction endpoint for admins and users to retrieve transactions, of any type.
 - Pagination support for the new transaction endpoints.
-- User registration endpoints
-- User login endpoints
-- `type` field to the `User` model
-- `status` field to the `User` model
-- User Transfer endpoints for create, list and get transfer
-- User Withdrawal endpoints for create, list and get transfer
+- User registration endpoints.
+- User login endpoints.
+- `type` field to the `User` model.
+- `status` field to the `User` model.
+- User Transfer endpoints for create, list and get transfer.
+- User Withdrawal endpoints for create, list and get transfer.
 
 #### Changed
 - Phone number validation now uses the libphonenumber library.
@@ -29,3 +29,4 @@
 
 #### Fixed
 - Fixed a bug where transactions could not be paged on the dashboard
+- Fixed a bug preventing cards from being registered due to the formatting of the expiry month field.  

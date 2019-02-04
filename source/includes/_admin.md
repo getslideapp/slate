@@ -47,6 +47,13 @@ This endpoint retrieves a list of all users.
 
 `GET /admin/users/`
 
+#### URL Parameters
+This endpoint supports pagination, with the following parameters available for use:
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`page` | Page to retrieve | Integer | No
+`page_size` | Amount of results per page | Integer | No
 
 ### Get User
 

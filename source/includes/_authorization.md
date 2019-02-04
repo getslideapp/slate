@@ -117,3 +117,108 @@ Parameter | Description | Type | Required
 <aside class="notice">
 The session duration, if not set, will default to 10 hours. A session duration of 0 will set an infinite token duration.
 </aside>
+
+
+## Tokens
+
+For users management of their own tokens.
+
+### List Tokens
+
+```shell
+curl "{base_url}/auth/tokens/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+        "results": [
+            {
+                "expires": 1549388725521,
+                "token_key": "0e6c6d0f"
+            },
+            {
+                "expires": null,
+                "token_key": "dc064946"
+            },
+            {
+                "expires": 1549386279025,
+                "token_key": "248eccda"
+            },
+            {
+                "expires": null,
+                "token_key": "de905029"
+            }
+        ],
+        "total": 4
+    }
+}
+```
+
+This endpoint retrieves a list of all tokens for the user.
+
+#### HTTP Request
+
+`GET /auth/tokens/`
+
+
+### Create Token
+
+```shell
+curl "{base_url}/auth/tokens/" \
+  -X POST \
+  -H "Authorization: Token {token}" \
+  -d '{"password": "securepassword123"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+        "token": "caa03205daa9e7044b139b4127edf8898034199678ca82a8715afbd9c7b65a67"
+    }
+}
+```
+
+This endpoint creates a new permanent token for the user.
+
+#### HTTP Request
+
+`POST /auth/tokens/`
+
+#### URL Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`password` | User's password for authentication | String | Yes
+
+
+
+### Delete Token
+
+```shell
+curl "{base_url}/auth/tokens/{identifier}/" \
+  -X DELETE \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "success",
+    "message": "deleted",
+    "data": null
+}
+```
+
+This endpoint deletes a token for the user where `{identifier}` is the `token_key` returned in the GET response.
+
+#### HTTP Request
+
+`DELETE /auth/tokens/{identifier}/`

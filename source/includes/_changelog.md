@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+#### Added
+- Token endpoint for users to list, create and delete their tokens
+- Pagination added to the `/admin/users/` endpoint
+
 ## [2.5.0] - 2019-01-28
 
 #### Added

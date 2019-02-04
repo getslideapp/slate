@@ -179,9 +179,11 @@ curl "{base_url}/auth/tokens/" \
 
 ```json
 {
-  "data": {
-        "token": "caa03205daa9e7044b139b4127edf8898034199678ca82a8715afbd9c7b65a67"
-    }
+    "data": {
+        "token": "e7009c3bc9ec601bb4ca0bbfd24fa899a793ff5630d851ff2aa13bf104baf140"
+    },
+    "status": "success",
+    "message": "created"
 }
 ```
 

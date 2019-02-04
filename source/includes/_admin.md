@@ -1055,14 +1055,145 @@ Parameter | Description | Type | Required
 
 ## Fees
 
-The Admin transaction endpoints allows an admin user to create and update fees charged to their users.
+The Admin transaction endpoints allows an admin user to view, create and update fees charged to their users.
 
 <aside class="notice">
 <strong>A note about company fees</strong>
 <br /><br />
-Fees set for the company are not able to be created or updated via the API endpoints.
+Fees set for the company are not able to be viewed but not created nor updated via the API endpoints.
 </aside>
 
+### List Fees
+
+```shell
+curl "{base_url}/admin/fees/" \
+  -X GET \
+  -H "Authorization: Token {token}" \
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "total": 8,
+        "results": [
+            {
+                "description": "Deposit Fee",
+                "active": false,
+                "tx_type": "deposit",
+                "paying_party": "recipient",
+                "flat_fee": 3,
+                "percentage_rate": 0.5,
+                "identifier": "75f3184f-5370-4c08-8c93-d399bad2bec4"
+            },
+            {
+                "description": "Transfer Recipient Fee",
+                "active": false,
+                "tx_type": "transfer",
+                "paying_party": "recipient",
+                "flat_fee": 0,
+                "percentage_rate": 0.9,
+                "identifier": "ec243d2b-e569-43f5-9006-560946f3dbce"
+            },
+            {
+                "description": "Transfer Company Fee",
+                "active": false,
+                "tx_type": "transfer",
+                "paying_party": "company",
+                "flat_fee": 2,
+                "percentage_rate": 0.5,
+                "identifier": "c4e0b3a2-3b5e-4e4c-a596-87b90d1d843e"
+            },
+            {
+                "description": "Transfer Sender Fee",
+                "active": false,
+                "tx_type": "transfer",
+                "paying_party": "user",
+                "flat_fee": 1,
+                "percentage_rate": 1,
+                "identifier": "10403bc5-29f6-493b-8158-bfbc3f91f8ae"
+            },
+            {
+                "description": "withdrawal Company Fee",
+                "active": false,
+                "tx_type": "withdrawal",
+                "paying_party": "company",
+                "flat_fee": 1,
+                "percentage_rate": 1,
+                "identifier": "bf894445-981c-47fd-9f16-4f4af06007c4"
+            },
+            {
+                "description": "withdrawal Fee",
+                "active": false,
+                "tx_type": "withdrawal",
+                "paying_party": "user",
+                "flat_fee": 2,
+                "percentage_rate": 1,
+                "identifier": "e618a867-24b8-44dc-a8cb-7c6b6a5fc3a5"
+            },
+            {
+                "description": "Deposit Company Fee",
+                "active": false,
+                "tx_type": "deposit",
+                "paying_party": "company",
+                "flat_fee": 2,
+                "percentage_rate": 1.5,
+                "identifier": "89d9af37-2ecc-42f3-b25a-122ba83a173e"
+            },
+            {
+                "description": "Deposit Fee",
+                "active": false,
+                "tx_type": "deposit",
+                "paying_party": "user",
+                "flat_fee": 2,
+                "percentage_rate": 1,
+                "identifier": "51900bae-af02-4f04-b589-cf8fe7ed45c1"
+            }
+        ]
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves a list of all fees.
+
+#### HTTP Request
+
+`GET /admin/fees/`
+
+### Get Fee
+
+```shell
+curl "{base_url}/admin/fees/{identifier}/" \
+  -X GET \
+  -H "Authorization: Token {token}" \
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "description": "Deposit Company Fee",
+        "active": false,
+        "tx_type": "deposit",
+        "paying_party": "company",
+        "flat_fee": 2,
+        "percentage_rate": 1.5,
+        "identifier": "89d9af37-2ecc-42f3-b25a-122ba83a173e"
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves a specific fee with identifier = {identifier}.
+
+#### HTTP Request
+
+`GET /admin/fees/{identifier}/`
 
 ### Create Fee
 

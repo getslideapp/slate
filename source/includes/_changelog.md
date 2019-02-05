@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+#### Added
+- Token endpoint for users to list, create and delete their tokens
+- Pagination added to the `/admin/users/` endpoint
+
 ## [2.5.0] - 2019-01-28
 
 #### Added
@@ -15,8 +19,7 @@
 - Pagination support for the new transaction endpoints.
 - User registration endpoints.
 - User login endpoints.
-- `type` field to the `User` model.
-- `status` field to the `User` model.
+- `type` and `status` fields now included in user responses.
 - User Transfer endpoints for create, list and get transfers.
 - User Withdrawal endpoints for create, list and get withdrawals.
 

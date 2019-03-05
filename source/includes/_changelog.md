@@ -2,9 +2,6 @@
 
 ## [unreleased]
 
-#### Added
-- Transaction aggregation endpoint.
-
 #### Fixed
 - Registering a user via the `/auth/register` endpoint no longer returns a 400 if the `groups` field is included in the POST payload.
 
@@ -13,6 +10,7 @@
 #### Added
 - Token endpoint for users to list, create and delete their tokens.
 - Pagination added to the `GET /admin/users/` endpoint.
+- Transaction aggregation endpoint.
 
 #### Fixed
 - Fixed a bug preventing the card confirm 3ds page from displaying.

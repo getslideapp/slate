@@ -250,6 +250,20 @@
                   <li>
                     <a href="#authorization-login" class="toc-h2 toc-link" data-title="Login">Login</a>
                   </li>
+                  <li>
+                    <a href="#authorization-tokens" class="toc-h2 toc-link" data-title="Tokens">Tokens</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#authorization-tokens-list-tokens" class="toc-h3 toc-link" data-title="Authorization">List Tokens</a>
+                          </li>
+                          <li>
+                            <a href="#authorization-tokens-create-token" class="toc-h3 toc-link" data-title="Authorization">Create Token</a>
+                          </li>
+                          <li>
+                            <a href="#authorization-tokens-delete-token" class="toc-h3 toc-link" data-title="Authorization">Delete Token</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -370,6 +384,9 @@
                             <a href="#admin-transactions-list-transactions" class="toc-h3 toc-link" data-title="Admin">List Transactions</a>
                           </li>
                           <li>
+                            <a href="#admin-transactions-aggregate-transactions" class="toc-h3 toc-link" data-title="Admin">Aggregate Transactions</a>
+                          </li>
+                          <li>
                             <a href="#admin-transactions-list-deposits" class="toc-h3 toc-link" data-title="Admin">List Deposits</a>
                           </li>
                           <li>
@@ -427,7 +444,10 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#changelog-unreleased" class="toc-h2 toc-link" data-title="[Unreleased]">[Unreleased]</a>
+                    <a href="#changelog-unreleased" class="toc-h2 toc-link" data-title="[unreleased]">[unreleased]</a>
+                  </li>
+                  <li>
+                    <a href="#changelog-2-7-0-2019-03-05" class="toc-h2 toc-link" data-title="[2.7.0] - 2019-03-05">[2.7.0] - 2019-03-05</a>
                   </li>
                   <li>
                     <a href="#changelog-2-5-0-2019-01-28" class="toc-h2 toc-link" data-title="[2.5.0] - 2019-01-28">[2.5.0] - 2019-01-28</a>
@@ -438,7 +458,7 @@
         <ul class="toc-footer">
             <li><a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a></li>
             <li><a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a></li>
-            <li>v2.3.1-152-g108735e</li>
+            <li>v2.3.1-167-g3c5ea08</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -728,8 +748,105 @@ The session duration, if not set, will default to 10 hours. A session duration o
 </tbody></table>
 
 <aside class="notice">
-The session duration, if not set, will default to 10 hours. A session duration of 0 will set an infinite token duration.
+The session duration, if not set, will default to 10 hours. A session duration of 0 will create a token without an expiry.
 </aside>
+<h2 id='authorization-tokens'>Tokens</h2>
+<p>For users management of their own tokens.</p>
+<h3 id='authorization-tokens-list-tokens'>List Tokens</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/auth/tokens/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1549388725521</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"token_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e6c6d0f"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"token_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc064946"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">1549386279025</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"token_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"248eccda"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"expires"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"token_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de905029"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of all tokens for the user.</p>
+<h4 id='authorization-tokens-list-tokens-http-request'>HTTP Request</h4>
+<p><code>GET /auth/tokens/</code></p>
+<h3 id='authorization-tokens-create-token'>Create Token</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/auth/tokens/"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
+  -d <span class="s1">'{"password": "securepassword123"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7009c3bc9ec601bb4ca0bbfd24fa899a793ff5630d851ff2aa13bf104baf140"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a new permanent token for the user.</p>
+<h4 id='authorization-tokens-create-token-http-request'>HTTP Request</h4>
+<p><code>POST /auth/tokens/</code></p>
+<h4 id='authorization-tokens-create-token-url-parameters'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>password</code></td>
+<td>User&#39;s password for authentication</td>
+<td>String</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Sets the token duration period in milliseconds</td>
+<td>Int</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The duration, if not set, will default to 10 hours. A duration of 0 will create a token without an expiry.
+</aside>
+<h3 id='authorization-tokens-delete-token'>Delete Token</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/auth/tokens/{token_key}/"</span> <span class="se">\</span>
+  -X DELETE <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deleted"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a token for the user where <code>{token_key}</code> is the key of the token that is to be deleted.</p>
+<h4 id='authorization-tokens-delete-token-http-request'>HTTP Request</h4>
+<p><code>DELETE /auth/tokens/{token_key}/</code></p>
 <h1 id='users'>Users</h1>
 <p>All actions are performed by registered users. The user endpoints allow a user to view or alter their information.</p>
 <h2 id='users-user'>User</h2>
@@ -2068,6 +2185,30 @@ Parameter | Description | Type | Required
 <p>This endpoint retrieves a list of all users.</p>
 <h4 id='admin-users-list-users-http-request'>HTTP Request</h4>
 <p><code>GET /admin/users/</code></p>
+<h4 id='admin-users-list-users-url-parameters'>URL Parameters</h4>
+<p>This endpoint supports pagination, with the following parameters available for use:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Page to retrieve</td>
+<td>Integer</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td>Amount of results per page</td>
+<td>Integer</td>
+<td>No</td>
+</tr>
+</tbody></table>
 <h3 id='admin-users-get-user'>Get User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/{identifier}/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
@@ -2387,6 +2528,78 @@ The type of each transaction is specified in the <code>type</code> field of the 
 <td>No</td>
 </tr>
 </tbody></table>
+<h3 id='admin-transactions-aggregate-transactions'>Aggregate Transactions</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/transactions/aggregate/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deposits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">17543</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"transfers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">113</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">17528</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"withdrawals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">169</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">16900</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1549162892</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deposits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">168</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">25020</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"transfers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">8826</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"withdrawals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">109</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10900</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1549249292</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deposits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"transfers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"withdrawals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1549335692</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of aggregated transaction objects, for the past 30 days, for all of the following types: <code>deposit</code>, <code>withdrawal</code> and <code>transfer</code>.</p>
+
+<p>Each object in the list represents a period of one day, and the date (in UNIX epoch format) is indicated in the <code>date</code> field of each object.
+Each object in the list is split into three child objects, one for each type of transaction: <code>deposit</code>, <code>withdrawal</code> and <code>transfer</code>.</p>
+
+<p><code>count</code> represents the aggregated count of that object for the given period, i.e. <code>count: 30</code> in a <code>deposits</code> object indicates there were 30 deposit for that day.</p>
+
+<p><code>amount</code> represents the aggregated amount of that object in cents for the given period, i.e. <code>amount: 525</code> in a <code>transfers</code> object indicates the sum of all the transfers for that day was 525 cents.</p>
+<h4 id='admin-transactions-aggregate-transactions-http-request'>HTTP Request</h4>
+<p><code>GET /admin/transactions/aggregate/</code></p>
 <h3 id='admin-transactions-list-deposits'>List Deposits</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
@@ -3407,7 +3620,21 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>Internal Server Error -- We had a problem with our server. Try again later.</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1><h2 id='changelog-unreleased'>[Unreleased]</h2><h2 id='changelog-2-5-0-2019-01-28'>[2.5.0] - 2019-01-28</h2><h4 id='changelog-2-5-0-2019-01-28-update-fee-added'>Added</h4>
+<h1 id='changelog'>Changelog</h1><h2 id='changelog-unreleased'>[unreleased]</h2><h4 id='changelog-unreleased-update-fee-fixed'>Fixed</h4>
+<ul>
+<li>Registering a user via the <code>/auth/register</code> endpoint no longer returns a 400 if the <code>groups</code> field is included in the POST payload.</li>
+</ul>
+<h2 id='changelog-2-7-0-2019-03-05'>[2.7.0] - 2019-03-05</h2><h4 id='changelog-2-7-0-2019-03-05-update-fee-added'>Added</h4>
+<ul>
+<li>Token endpoint for users to list, create and delete their tokens.</li>
+<li>Pagination added to the <code>GET /admin/users/</code> endpoint.</li>
+<li>Transaction aggregation endpoint.</li>
+</ul>
+<h4 id='changelog-2-7-0-2019-03-05-update-fee-fixed'>Fixed</h4>
+<ul>
+<li>Fixed a bug preventing the card confirm 3ds page from displaying.</li>
+</ul>
+<h2 id='changelog-2-5-0-2019-01-28'>[2.5.0] - 2019-01-28</h2><h4 id='changelog-2-5-0-2019-01-28-update-fee-added'>Added</h4>
 <ul>
 <li>Admin API endpoints for companies to create and update their fees.</li>
 <li>Admin API endpoint to delete a user.</li>
@@ -3419,8 +3646,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <li>Pagination support for the new transaction endpoints.</li>
 <li>User registration endpoints.</li>
 <li>User login endpoints.</li>
-<li><code>type</code> field to the <code>User</code> model.</li>
-<li><code>status</code> field to the <code>User</code> model.</li>
+<li><code>type</code> and <code>status</code> fields now included in user responses.</li>
 <li>User Transfer endpoints for create, list and get transfers.</li>
 <li>User Withdrawal endpoints for create, list and get withdrawals.</li>
 </ul>

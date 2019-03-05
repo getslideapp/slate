@@ -1,15 +1,14 @@
 # Changelog
 
-## [2.7.0] - 2019-03-06
+## [unreleased]
 
 #### Added
 - Transaction aggregation endpoint.
-- Documentation for transaction aggregation endpoint.
 
 #### Fixed
 - Registering a user via the `/auth/register` endpoint no longer returns a 400 if the `groups` field is included in the POST payload.
 
-## [2.6.0] - 2019-03-05
+## [2.7.0] - 2019-03-05
 
 #### Added
 - Token endpoint for users to list, create and delete their tokens.

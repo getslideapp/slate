@@ -115,7 +115,7 @@ Parameter | Description | Type | Required
 `session_duration` | Sets the token duration period in milliseconds | Int | No
 
 <aside class="notice">
-The session duration, if not set, will default to 10 hours. A session duration of 0 will set an infinite token duration.
+The session duration, if not set, will default to 10 hours. A session duration of 0 will create a token without an expiry.
 </aside>
 
 
@@ -198,13 +198,16 @@ This endpoint creates a new permanent token for the user.
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `password` | User's password for authentication | String | Yes
+`duration` |  Sets the token duration period in milliseconds | Int | Yes
 
-
+<aside class="notice">
+The duration, if not set, will default to 10 hours. A duration of 0 will create a token without an expiry.
+</aside>
 
 ### Delete Token
 
 ```shell
-curl "{base_url}/auth/tokens/{identifier}/" \
+curl "{base_url}/auth/tokens/{token_key}/" \
   -X DELETE \
   -H "Authorization: Token {token}"
 ```
@@ -219,8 +222,8 @@ curl "{base_url}/auth/tokens/{identifier}/" \
 }
 ```
 
-This endpoint deletes a token for the user where `{identifier}` is the `token_key` returned in the GET response.
+This endpoint deletes a token for the user where `{token_key}` is the key of the token that is to be deleted.
 
 #### HTTP Request
 
-`DELETE /auth/tokens/{identifier}/`
+`DELETE /auth/tokens/{token_key}/`

@@ -342,6 +342,91 @@ Parameter | Description | Type | Required
 `page_size` | Amount of results per page | Integer | No
 
 
+### Aggregate Transactions
+
+```shell
+curl "{base_url}/admin/transactions/aggregate/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "message": null,
+    "data": {
+        "results": [
+            {
+                "deposits": {
+                    "count": 118,
+                    "amount": 17543
+                },
+                "transfers": {
+                    "count": 113,
+                    "amount": 17528
+                },
+                "withdrawals": {
+                    "count": 169,
+                    "amount": 16900
+                },
+                "date": 1549162892
+            },
+            {
+                "deposits": {
+                    "count": 168,
+                    "amount": 25020
+                },
+                "transfers": {
+                    "count": 57,
+                    "amount": 8826
+                },
+                "withdrawals": {
+                    "count": 109,
+                    "amount": 10900
+                },
+                "date": 1549249292
+            },
+            {
+                "deposits": {
+                    "count": 0,
+                    "amount": 0
+                },
+                "transfers": {
+                    "count": 0,
+                    "amount": 0
+                },
+                "withdrawals": {
+                    "count": 0,
+                    "amount": 0
+                },
+                "date": 1549335692
+            },
+            ...
+        ]
+    },
+    "status": "success"
+}
+```
+
+This endpoint retrieves a list of aggregated transaction objects, for the past 30 days, for all of the following types: `deposit`, `withdrawal` and `transfer`.
+
+Each object in the list represents a period of one day, and the date (in UNIX epoch format) is indicated in the `date` field of each object.
+Each object in the list is split into three child objects, one for each type of transaction: `deposit`, `withdrawal` and `transfer`.
+
+`count` represents the aggregated count of that object for the given period, i.e. `count: 30` in a `deposits` object indicates there were 30 deposit for that day.
+
+`amount` represents the aggregated amount of that object in cents for the given period, i.e. `amount: 525` in a `transfers` object indicates the sum of all the transfers for that day was 525 cents.
+
+#### HTTP Request
+
+`GET /admin/transactions/aggregate/`
+
+
+
+
+
+
 ### List Deposits
 
 ```shell

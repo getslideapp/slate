@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.5.2] - 2019-03-05
+## [2.6.0] - 2019-03-05
 
 #### Added
 - Token endpoint for users to list, create and delete their tokens.

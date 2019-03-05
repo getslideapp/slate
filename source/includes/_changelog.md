@@ -1,10 +1,13 @@
 # Changelog
 
-## [Unreleased]
+## [2.5.2] - 2019-03-05
 
 #### Added
-- Token endpoint for users to list, create and delete their tokens
-- Pagination added to the `GET /admin/users/` endpoint
+- Token endpoint for users to list, create and delete their tokens.
+- Pagination added to the `GET /admin/users/` endpoint.
+
+#### Fixed
+- Fixed a bug preventing the card confirm 3ds page from displaying.
 
 ## [2.5.0] - 2019-01-28
 

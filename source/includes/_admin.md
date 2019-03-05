@@ -415,7 +415,7 @@ Each object in the list represents a period of one day, and the date (in UNIX ep
 Each object in the list is split into three child objects, one for each type of transaction: `deposit`, `withdrawal` and `transfer`.
 
 `count` represents the aggregated count of that object for the given period, i.e. `count: 30` in a `deposits` object indicates there were 30 deposit objects for that day.
-`amount` represents the aggregated amount of that object for the given period, i.e. `amount: 525.00` in a `transfers` object indicates the sum of all the transfers for that day was 525.00.
+`amount` represents the aggregated amount of that object in cents for the given period, i.e. `amount: 525` in a `transfers` object indicates the sum of all the transfers for that day was 525 cents.
 
 #### HTTP Request
 

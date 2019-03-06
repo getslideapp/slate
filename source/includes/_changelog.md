@@ -4,6 +4,7 @@
 
 #### Fixed
 - Registering a user via the `/auth/register` endpoint no longer returns a 400 if the `groups` field is included in the POST payload.
+- Fixed a bug causing withdrawals to timeout. 
 
 ## [2.7.0] - 2019-03-05
 

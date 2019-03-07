@@ -348,10 +348,11 @@ This endpoint supports filtering, with the following query parameters available 
 Parameter | Description | Type | Example
 --------- | ----------- | -----| --------|
 `type` | Type of transaction | String | transfer
-`user` | Transaction initiated by user (identifier) | String | 652f3dd5-d00f-48d2-9c37-0779d55bee37
-`recipient` | Transaction received by user (identifier) | String | 652f3dd5-d00f-48d2-9c37-0779d55bee37
+`user` | Transaction initiated by user (identifier, email or mobile) | String | 652f3dd5-d00f-48d2-9c37-0779d55bee37, or testy@getslideapp.com, or 27835786801 (no + symbol)
+`recipient` | Transaction received by user (identifier, email or mobile) | String | 652f3dd5-d00f-48d2-9c37-0779d55bee37, or testy@getslideapp.com, or 27835786801 (no + symbol)
 `amount__gt` | Only return transactions where the amount is greater than this value | Integer | 200
 `amount__lt` | Only return transactions where the amount is less than this value | Integer | 300
+`amount__exact` | Only return transactions where the amount is equal to this value | Integer | 250
 `created__gt` | Only return transactions created after this date, in the UNIX timestamp format | Float | 1551778187.0
 `created__lt` | Only return transactions created before this date, in the UNIX timestamp format | Float | 1551778287.0
 

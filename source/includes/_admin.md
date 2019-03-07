@@ -45,7 +45,7 @@ This endpoint retrieves a list of all users.
 
 #### HTTP Request
 
-`GET /admin/users/`
+`GET /admin/users/?first_name=john&email=johndoe@getslideapp.com`
 
 #### URL Parameters
 This endpoint supports pagination, with the following parameters available for use:
@@ -54,6 +54,21 @@ Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `page` | Page to retrieve | Integer | No
 `page_size` | Amount of results per page | Integer | No
+
+
+#### Filter Parameters
+This endpoint supports filtering, with the following query parameters available for use:
+
+Parameter | Description | Type | Example
+--------- | ----------- | -----| --------|
+`identifier` | User's identifier | String | 652f3dd5-d00f-48d2-9c37-0779d55bee37
+`first_name` | User's first name | String | John
+`last_name` | User's last name | String | Doe
+`email` | User's email | String | johndoe@getslideapp.com
+`mobile_number` | User's mobile number | String | 27835786801
+`status` | User's status | String | Active
+`groups` | The group the user belongs to | String | user
+
 
 ### Get User
 

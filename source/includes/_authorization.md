@@ -52,12 +52,12 @@ curl "{base_url}/auth/register/" \
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
-`first_name` | User's first name | String | Yes
-`last_name` | User's last name| String | Yes
 `email` | User's email address | String | Yes
-`mobile_number` | User's mobile number | String | No
 `password1` | User selected password | String | Yes
 `password2` | Password confirmation | String | Yes
+`first_name` | User's first name | String | No
+`last_name` | User's last name| String | No
+`mobile_number` | User's mobile number | String | No
 `session_duration` | Sets the token duration period in milliseconds | Int | No
 
 <aside class="notice">

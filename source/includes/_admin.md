@@ -128,7 +128,8 @@ curl "{base_url}/admin/users/" \
 }
 ```
 
-This endpoint creates a user. When a new user is created they will by default be in the `user` group.
+This endpoint creates a user. When a new user is created they will by default be in the `user` group. Their
+status defaults to `active` if none is specified.
 
 #### HTTP Request
 
@@ -138,10 +139,11 @@ This endpoint creates a user. When a new user is created they will by default be
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
-`first_name` | User's first name | String | Yes
-`last_name` | User's last name | String | Yes
-`mobile_number` | User's mobile number | String | Yes
 `email` | User's email address | String | Yes
+`first_name` | User's first name | String | No
+`last_name` | User's last name | String | No
+`mobile_number` | User's mobile number | String | No
+`status` | User's status (Options are: `pending`, `active`, or `inactive`) | String | No
 `groups` | User's group (Options are: `user` or `admin_user`) | String | No
 
 <aside class="notice">
@@ -194,10 +196,11 @@ This endpoint updates an existing user.
 
 Parameter | Description | Type | Required
 --------- | ----------- | ---- | --------
+`email` | User's email address | String | No
 `first_name` | User's first name | String | No
 `last_name` | User's last name | String | No
 `mobile_number` | User's mobile number | String | No
-`email` | User's email address | String | No
+`status` | User's status (Options are: `pending`, `active`, or `inactive`) | String | No
 `groups` | User's group (Options are: `user` or `admin_user`) | String | No
 
 <aside class="notice">

@@ -4,13 +4,14 @@
 
 #### Added
 - Included status in `POST /admin/users/` and `PUT /admin/users/{identifier}/` endpoints docs with the options `pending`, `active` and `inactive`.
+- Filtering support added to the `GET /admin/users/` endpoint
 
 #### Changed
-- Changed `first_name` and `last_name` to NOT be required for `POST /auth/register/` and `POST /admin/users/` endpoints. 
+- Changed `first_name` and `last_name` to NOT be required for `POST /auth/register/` and `POST /admin/users/` endpoints.
 
 #### Fixed
 - Registering a user via the `/auth/register` endpoint no longer returns a 400 if the `groups` field is included in the POST payload.
-- Fixed a bug causing withdrawals to timeout. 
+- Fixed a bug causing withdrawals to timeout.
 
 ## [2.7.0] - 2019-03-05
 

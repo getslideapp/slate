@@ -47,7 +47,7 @@ This endpoint retrieves a list of all users.
 
 `GET /admin/users/`
 
-#### URL Parameters
+#### Pagination Parameters
 This endpoint supports pagination, with the following parameters available for use:
 
 Parameter | Description | Type | Required
@@ -135,7 +135,7 @@ status defaults to `active` if none is specified.
 
 `POST /admin/users/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -192,7 +192,7 @@ This endpoint updates an existing user.
 
 `PUT /admin/users/{identifier}/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | ---- | --------
@@ -255,7 +255,7 @@ under the <b>charges</b> field in the response.
 ### List Transactions
 
 ```shell
-curl "{base_url}/admin/transactions/" \
+curl "{base_url}/admin/transactions/?amount__gt=200" \
   -X GET \
   -H "Authorization: Token {token}" \
   -d '{
@@ -336,13 +336,28 @@ The type of each transaction is specified in the `type` field of the object.
 
 `GET /admin/transactions/`
 
-#### URL Parameters
+#### Pagination Parameters
 This endpoint supports pagination, with the following parameters available for use:
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `page` | Page to retrieve | Integer | No
 `page_size` | Amount of results per page | Integer | No
+
+
+#### Filter Parameters
+This endpoint supports filtering, with the following query parameters available for use:
+
+Parameter | Description | Type | Accepted Values
+--------- | ----------- | -----| --------|
+`type` | Type of transaction | String | `transfer`, `withdrawal`, `deposit`, `card_deposit` or `bank_eft_deposit`
+`user` | User initiating transaction | String | User's `identifier`, `email` or `mobile_number` (Omit `+` symbol)
+`recipient` | User receiving transfer | String | Recipient's `identifier`, `email` or `mobile_number` (Omit `+` symbol)
+`amount__gt` | Only return transactions where the amount is greater than this value, in cents | Integer | N/A
+`amount__lt` | Only return transactions where the amount is less than this value, in cents | Integer | N/A
+`amount__exact` | Only return transactions where the amount is equal to this value, in cents | Integer | N/A
+`created__gt` | Only return transactions created after this date, in the UNIX timestamp format | Float | N/A
+`created__lt` | Only return transactions created before this date, in the UNIX timestamp format | Float | N/A
 
 
 ### Aggregate Transactions
@@ -986,7 +1001,7 @@ This endpoint creates a deposit transaction for the specified user.
 
 `POST /admin/deposits/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -1082,7 +1097,7 @@ This endpoint creates a transfer transaction from the specified user to the spec
 
 `POST /admin/transfers/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -1140,7 +1155,7 @@ This endpoint creates a withdrawal transaction for the specified user.
 
 `POST /admin/withdrawals/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -1329,7 +1344,7 @@ This endpoint creates a fee.
 
 `POST /admin/fees/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -1380,7 +1395,7 @@ This endpoint updates a fee.
 
 `PUT /admin/fees/{identifier}/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------

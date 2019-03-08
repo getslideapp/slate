@@ -12,6 +12,9 @@
 - Registering a user via the `/auth/register` endpoint no longer returns a 400 if the `groups` field is included in the POST payload.
 - Fixed a bug causing withdrawals to timeout. 
 
+#### Added
+- Filtering support added to the `/admin/transactions/` endpoint
+
 ## [2.7.0] - 2019-03-05
 
 #### Added

@@ -166,7 +166,7 @@ The bank `branch_code` will be set for each bank account based on the chosen ban
 
 `POST /user/bank-accounts/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -401,7 +401,7 @@ The card type will be set for each bank account based on the chosen bank's card.
 
 `POST /user/cards/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -651,7 +651,7 @@ The type of each transaction is specified in the `type` field of the object.
 
 `GET /user/transactions/`
 
-#### URL Parameters
+#### POST Parameters
 This endpoint supports pagination, with the following parameters available for use:
 
 Parameter | Description | Type | Required
@@ -1189,7 +1189,7 @@ curl "{base_url}/admin/deposits/" \
 This endpoint creates a deposit transaction for the specified user.
 #### HTTP Request
 `POST /admin/deposits/`
-#### URL Parameters
+#### POST Parameters
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `user` | User's identifier | String | Yes
@@ -1283,7 +1283,7 @@ This endpoint creates a transfer transaction from the specified user to the spec
 
 `POST /user/transfers/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -1339,7 +1339,7 @@ This endpoint creates a withdrawal transaction for the specified user.
 
 `POST /user/withdrawals/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------

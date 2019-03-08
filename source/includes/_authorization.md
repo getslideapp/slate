@@ -48,7 +48,7 @@ curl "{base_url}/auth/register/" \
 
 `POST /auth/register/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -106,7 +106,7 @@ curl "{base_url}/auth/register/" \
 
 `POST /auth/login/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
@@ -193,7 +193,7 @@ This endpoint creates a new permanent token for the user.
 
 `POST /auth/tokens/`
 
-#### URL Parameters
+#### POST Parameters
 
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------

@@ -59,16 +59,19 @@ Parameter | Description | Type | Required
 #### Filter Parameters
 This endpoint supports filtering, with the following query parameters available for use:
 
-Parameter | Description | Type | Accepted Values
---------- | ----------- | -----| --------|
-`identifier` | User's `identifier` | String | N/A
-`first_name` | User's `first_name` | String | N/A
-`last_name` | User's `last_name` | String | N/A
-`email` | User's `email` | String | N/A
-`mobile_number` | User's `mobile_number` | String | Omit `+` symbol
-`status` | User's status | String | `pending`, `active`, or `inactive`
-`groups` | The group the user belongs to | String | `user` or `admin_user`
+Parameter | Description | Type
+--------- | ----------- | -----
+`identifier` | User's `identifier` | String
+`first_name` | User's `first_name` | String
+`last_name` | User's `last_name` | String
+`email` | User's `email` | String
+`mobile_number` | User's `mobile_number` | String
+`status` | User's status (Options are: `pending`, `active`, or `inactive`) | String
+`groups` | User's group (Options are: `user` or `admin_user`) | String  
 
+<aside class="notice">
+When filtering using arguments that contain special characters, the special characters should be URL encoded. For example, + should be replaced with %2B when filtering on email or mobile_number.
+</aside>
 
 ### Get User
 
@@ -363,17 +366,20 @@ Parameter | Description | Type | Required
 #### Filter Parameters
 This endpoint supports filtering, with the following query parameters available for use:
 
-Parameter | Description | Type | Accepted Values
---------- | ----------- | -----| --------|
-`type` | Type of transaction | String | `transfer`, `withdrawal`, `deposit`, `card_deposit` or `bank_eft_deposit`
-`user` | User initiating transaction | String | User's `identifier`, `email` or `mobile_number` (Omit `+` symbol)
-`recipient` | User receiving transfer | String | Recipient's `identifier`, `email` or `mobile_number` (Omit `+` symbol)
-`amount__gt` | Only return transactions where the amount is greater than this value, in cents | Integer | N/A
-`amount__lt` | Only return transactions where the amount is less than this value, in cents | Integer | N/A
-`amount__exact` | Only return transactions where the amount is equal to this value, in cents | Integer | N/A
-`created__gt` | Only return transactions created after this date, in the UNIX timestamp format | Float | N/A
-`created__lt` | Only return transactions created before this date, in the UNIX timestamp format | Float | N/A
+Parameter | Description | Type
+--------- | ----------- | -----
+`type` | Type of transaction (Options are: `transfer`, `withdrawal`, `deposit`, `card_deposit` or `bank_eft_deposit`) | String
+`user` | User initiating transaction. Can filter on a user's `identifier`, `email` or `mobile_number` | String
+`recipient` | User receiving transfer. Can filter on a recipient's `identifier`, `email` or `mobile_number` | String
+`amount__gt` | Only return transactions where the amount is greater than this value, in cents | Integer
+`amount__lt` | Only return transactions where the amount is less than this value, in cents | Integer
+`amount__exact` | Only return transactions where the amount is equal to this value, in cents | Integer
+`created__gt` | Only return transactions created after this date, in the UNIX timestamp format | Float
+`created__lt` | Only return transactions created before this date, in the UNIX timestamp format | Float
 
+<aside class="notice">
+When filtering using arguments that contain special characters, the special characters should be URL encoded. For example, + should be replaced with %2B when filtering on email or mobile_number.
+</aside>
 
 ### Aggregate Transactions
 

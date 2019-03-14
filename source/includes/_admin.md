@@ -30,6 +30,7 @@ curl "{base_url}/admin/users/" \
         "groups": "user",
         "type": null,
         "status": "active",
+        "reference_number": "sld-a1b2",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
         }
@@ -96,6 +97,7 @@ curl "{base_url}/admin/users/{identifier}/" \
           "groups": "user",
           "type": null,
           "status": "active",
+          "reference_number": "sld-a1b2",
           "created": "2018-08-21T09:27:25.882898Z",
           "updated": "2018-08-29T16:58:54.647283Z"
         },
@@ -138,6 +140,7 @@ curl "{base_url}/admin/users/" \
         "groups": "user",
         "type": null,
         "status": "active",
+        "reference_number": "sld-a1b2",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },
@@ -196,6 +199,7 @@ curl "{base_url}/admin/users/{identifier}/" \
         "groups": "user",
         "type": null,
         "status": "active",
+        "reference_number": "sld-a1b2",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },
@@ -302,6 +306,7 @@ curl "{base_url}/admin/transactions/?amount__gt=200" \
                     "groups": "user",
                     "type": null,
                     "status": "active",
+                    "reference_number": "sld-a1b2",
                     "created": "2018-12-04T11:14:51.924388Z",
                     "updated": "2019-01-17T10:06:46.021888Z"
                 },
@@ -315,6 +320,7 @@ curl "{base_url}/admin/transactions/?amount__gt=200" \
                     "groups": "user",
                     "type": null,
                     "status": "active",
+                    "reference_number": "sld-a1b2",
                     "created": "2018-12-04T11:17:37.522889Z",
                     "updated": "2018-12-13T13:12:55.896326Z"
                 },
@@ -494,6 +500,7 @@ curl "{base_url}/admin/deposits/" \
                   "groups": "user",
                   "type": null,
                   "status": "active",
+                  "reference_number": "sld-a1b2",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -557,6 +564,7 @@ curl "{base_url}/admin/transfers/" \
                   "groups": "user",
                   "type": null,
                   "status": "active",
+                  "reference_number": "sld-a1b2",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -570,6 +578,7 @@ curl "{base_url}/admin/transfers/" \
                   "groups": "user",
                   "type": null,
                   "status": "active",
+                  "reference_number": "sld-a1b2",
                   "created": "2018-07-24T10:50:42.364399Z",
                   "updated": "2018-07-24T10:50:48.329165Z"
               },
@@ -647,6 +656,7 @@ curl "{base_url}/admin/withdrawals/" \
                   "groups": "user",
                   "type": null,
                   "status": "active",
+                  "reference_number": "sld-a1b2",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -708,6 +718,7 @@ curl "{base_url}/admin/transactions/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-12-04T11:14:51.924388Z",
             "updated": "2019-01-17T10:06:46.021888Z"
         },
@@ -721,6 +732,7 @@ curl "{base_url}/admin/transactions/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-12-04T11:17:37.522889Z",
             "updated": "2018-12-13T13:12:55.896326Z"
         },
@@ -783,6 +795,7 @@ curl "{base_url}/admin/deposits/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -841,6 +854,7 @@ curl "{base_url}/admin/transfers/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -854,6 +868,7 @@ curl "{base_url}/admin/transfers/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-07-24T10:50:42.364399Z",
             "updated": "2018-07-24T10:50:48.329165Z"
         },
@@ -925,6 +940,7 @@ curl "{base_url}/admin/withdrawals/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -990,6 +1006,7 @@ curl "{base_url}/admin/deposits/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1059,6 +1076,7 @@ curl "{base_url}/admin/transfers/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1072,6 +1090,7 @@ curl "{base_url}/admin/transfers/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-07-24T10:50:42.364399Z",
             "updated": "2018-07-24T10:50:48.329165Z"
         },
@@ -1156,6 +1175,7 @@ curl "{base_url}/admin/withdrawals/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },

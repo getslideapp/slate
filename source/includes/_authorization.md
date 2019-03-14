@@ -37,6 +37,7 @@ curl "{base_url}/auth/register/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2019-01-25T12:28:37.605119Z",
             "updated": "2019-01-25T12:28:37.605138Z"
         }
@@ -95,6 +96,7 @@ curl "{base_url}/auth/register/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2019-01-25T12:28:37.605119Z",
             "updated": "2019-01-25T12:28:37.605138Z"
         }

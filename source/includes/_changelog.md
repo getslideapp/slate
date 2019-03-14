@@ -6,9 +6,16 @@
 - Included status in `POST /admin/users/` and `PUT /admin/users/{identifier}/` endpoints docs with the options `pending`, `active` and `inactive`.
 - Filtering support added to the `GET /admin/users/` endpoint
 - Filtering support added to the `GET /admin/transactions/` endpoint
+- `type` to user and transaction responses
+- `reference-number` to the user model and user responses
+- Create Bank EFT deposits at `POST /admin/deposits/bank-eft/`
+- List Bank EFT deposits at `GET /admin/deposits/bank-eft/`
+- Get Bank EFT deposits at `POST /admin/deposits/bank-eft/{identifier}/`
+- REST actions for the old Card Deposits are now also available at `/admin/deposits/card/`
 
 #### Changed
 - Changed `first_name` and `last_name` to NOT be required for `POST /auth/register/` and `POST /admin/users/` endpoints.
+- Changed the old deposit model to `card_deposit`. REST actions at `/admin/deposits/` serve exclusively card deposits. These are also available at `/admin/deposits/card/` as added above
 
 #### Fixed
 - Registering a user via the `/auth/register` endpoint no longer returns a 400 if the `groups` field is included in the POST payload.

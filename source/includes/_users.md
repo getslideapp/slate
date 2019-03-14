@@ -26,6 +26,7 @@ curl "{base_url}/user/" \
         "company": "slide",
         "groups": "user",
         "type": null,
+        "status": "active",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },

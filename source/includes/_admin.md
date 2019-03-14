@@ -523,7 +523,74 @@ curl "{base_url}/admin/deposits/" \
                       "status": "Complete"
                   }
               ],
-              "type": "transfer"
+              "type": "card_deposit"
+            }
+      ],
+      "total": 1
+    }
+}
+```
+
+This endpoint retrieves a list of all card deposits.
+
+#### HTTP Request
+
+`GET /admin/deposits/`
+
+
+
+### List Bank EFT Deposits
+
+```shell
+curl "{base_url}/admin/deposits/bank-eft/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "success",
+    "message": null,
+    "data": {
+        "results": [
+          {
+              "identifier": "68796fab-7edb-413c-9881-55e1101d9777",
+              "user": {
+                  "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+                  "first_name": "Testy",
+                  "last_name": "McTester",
+                  "email": "testy@getslideapp.com",
+                  "mobile_number": "+27821111112",
+                  "company": "slide_dev",
+                  "groups": "user",
+                  "type": null,
+                  "status": "active",
+                  "reference_number": "sld-a1b2",
+                  "created": "2018-09-30T15:53:37.012334Z",
+                  "updated": "2018-10-31T09:48:38.299689Z"
+              },
+              "amount": 40,
+              "total_amount_charged": 49,
+              "currency": "ZAR",
+              "created": "2018-10-31T14:20:47.628274Z",
+              "updated": "2018-10-31T14:21:24.875560Z",
+              "status": "Complete",
+              "charges": [
+                  {
+                      "type": "user",
+                      "identifier": "729c086e-1dab-4f39-9679-1cdaee6f5c06",
+                      "amount": 9,
+                      "flat_fee_charge": 5,
+                      "percentage_rate_charge": 4,
+                      "currency": "ZAR",
+                      "created": "2018-10-31T14:20:48.095841Z",
+                      "updated": "2018-10-31T14:21:38.732972Z",
+                      "status": "Complete"
+                  }
+              ],
+              "type": "bank_eft_deposit"
             }
       ],
       "total": 1
@@ -834,6 +901,67 @@ This endpoint retrieves the card Deposit with `identifier = {identifier}` if the
 
 `GET /admin/deposits/{identifier}/`
 
+
+### Get Bank EFT Deposit
+
+```shell
+curl "{base_url}/admin/deposits/bank-eft/{identifier}/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "68796fab-7edb-413c-9881-55e1101d9777",
+        "user": {
+            "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+            "first_name": "Testy",
+            "last_name": "McTester",
+            "email": "testy@getslideapp.com",
+            "mobile_number": "+27821111112",
+            "company": "slide_dev",
+            "groups": "user",
+            "type": null,
+            "status": "active",
+            "reference_number": "sld-a1b2",
+            "created": "2018-09-30T15:53:37.012334Z",
+            "updated": "2018-10-31T09:48:38.299689Z"
+        },
+        "amount": 40,
+        "total_amount_charged": 49,
+        "currency": "ZAR",
+        "created": "2018-10-31T14:20:47.628274Z",
+        "updated": "2018-10-31T14:21:24.875560Z",
+        "status": "Complete",
+        "charges": [
+            {
+                "type": "user",
+                "identifier": "729c086e-1dab-4f39-9679-1cdaee6f5c06",
+                "amount": 9,
+                "flat_fee_charge": 5,
+                "percentage_rate_charge": 4,
+                "currency": "ZAR",
+                "created": "2018-10-31T14:20:48.095841Z",
+                "updated": "2018-10-31T14:21:38.732972Z",
+                "status": "Complete"
+            }
+        ],
+        "type": "bank_eft_deposit"
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves the bank EFT Deposit with `identifier = {identifier}`, or a `404 Not Found` if it does not exist.
+
+#### HTTP Request
+
+`GET /admin/deposits/{identifier}/`
+
 ### Get Transfer
 
 ```shell
@@ -1085,6 +1213,7 @@ curl "{base_url}/admin/deposits/bank-eft/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1093,7 +1222,7 @@ curl "{base_url}/admin/deposits/bank-eft/" \
         "currency": "ZAR",
         "created": "2018-11-01T12:54:27.467077Z",
         "updated": "2018-11-01T12:54:59.902736Z",
-        "status": "Complete",
+        "status": "Initialized",
         "charges": [
             {
                 "type": "user",
@@ -1104,7 +1233,7 @@ curl "{base_url}/admin/deposits/bank-eft/" \
                 "currency": "ZAR",
                 "created": "2018-11-01T12:54:27.618507Z",
                 "updated": "2018-11-01T12:55:11.583940Z",
-                "status": "Complete"
+                "status": "Initialized"
             }
         ],
         "type": "bank_eft_deposit"
@@ -1112,7 +1241,9 @@ curl "{base_url}/admin/deposits/bank-eft/" \
 }
 ```
 
-This endpoint creates a card deposit transaction for the specified user.
+This endpoint creates a Bank EFT deposit transaction for the specified user. Following the initialization of the transaction using this endpoint, the user will then be required to make a bank EFT deposit for the total amount,
+quoting their user `reference_number` as a reference. When this deposit is processed, the status will shift to `Complete` and only then will the funds will reflect in the user balance.
+
 
 #### HTTP Request
 

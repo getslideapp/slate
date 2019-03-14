@@ -602,7 +602,7 @@ This endpoint retrieves a list of all card deposits.
 
 #### HTTP Request
 
-`GET /admin/deposits/`
+`GET /admin/deposits/bank-eft/`
 
 ### List Transfers
 
@@ -960,7 +960,7 @@ This endpoint retrieves the bank EFT Deposit with `identifier = {identifier}`, o
 
 #### HTTP Request
 
-`GET /admin/deposits/{identifier}/`
+`GET /admin/deposits/bank-eft/{identifier}/`
 
 ### Get Transfer
 
@@ -1247,7 +1247,7 @@ quoting their user `reference_number` as a reference. When this deposit is proce
 
 #### HTTP Request
 
-`POST /admin/deposits/`
+`POST /admin/deposits/bank-eft/`
 
 #### POST Parameters
 

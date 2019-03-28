@@ -3,7 +3,7 @@
 ## [unreleased]
 
 #### Added
-- Included status in `POST /admin/users/` and `PUT /admin/users/{identifier}/` endpoints docs with the options `pending`, `active` and `inactive`.
+- Included status in `POST /admin/users/` and `PUT /admin/users/{identifier}/` endpoints with the options `pending`, `active` and `inactive`.
 - Filtering support added to the `GET /admin/users/` endpoint
 - Filtering support added to the `GET /admin/transactions/` endpoint
 

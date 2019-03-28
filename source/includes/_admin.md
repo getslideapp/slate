@@ -682,7 +682,7 @@ curl "{base_url}/admin/transfers/" \
                       "status": "Complete"
                   }
               ],
-              "type": "card_deposit"
+              "type": "transfer"
         }      
       ],
       "total": 1

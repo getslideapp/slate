@@ -2,10 +2,13 @@
 
 ## [unreleased]
 
+## [2.9.0] - 2019-04-02
+
 #### Added
 - Included status in `POST /admin/users/` and `PUT /admin/users/{identifier}/` endpoints docs with the options `pending`, `active` and `inactive`.
 - Filtering support added to the `GET /admin/users/` endpoint
 - Filtering support added to the `GET /admin/transactions/` endpoint
+- Added `GET /admin/account/balance/` endpoint
 
 #### Changed
 - Changed `first_name` and `last_name` to NOT be required for `POST /auth/register/` and `POST /admin/users/` endpoints.

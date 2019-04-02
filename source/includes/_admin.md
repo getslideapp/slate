@@ -60,6 +60,7 @@ curl "{base_url}/admin/users/" \
         "groups": "user",
         "type": null,
         "status": "active",
+        "reference_number": "sld-a1b2",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
         }
@@ -126,6 +127,7 @@ curl "{base_url}/admin/users/{identifier}/" \
           "groups": "user",
           "type": null,
           "status": "active",
+          "reference_number": "sld-a1b2",
           "created": "2018-08-21T09:27:25.882898Z",
           "updated": "2018-08-29T16:58:54.647283Z"
         },
@@ -168,6 +170,7 @@ curl "{base_url}/admin/users/" \
         "groups": "user",
         "type": null,
         "status": "active",
+        "reference_number": "sld-a1b2",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },
@@ -226,6 +229,7 @@ curl "{base_url}/admin/users/{identifier}/" \
         "groups": "user",
         "type": null,
         "status": "active",
+        "reference_number": "sld-a1b2",
         "created": "2018-08-21T09:27:25.882898Z",
         "updated": "2018-08-29T16:58:54.647283Z"
     },
@@ -332,6 +336,7 @@ curl "{base_url}/admin/transactions/?amount__gt=200" \
                     "groups": "user",
                     "type": null,
                     "status": "active",
+                    "reference_number": "sld-a1b2",
                     "created": "2018-12-04T11:14:51.924388Z",
                     "updated": "2019-01-17T10:06:46.021888Z"
                 },
@@ -345,6 +350,7 @@ curl "{base_url}/admin/transactions/?amount__gt=200" \
                     "groups": "user",
                     "type": null,
                     "status": "active",
+                    "reference_number": "sld-a1b2",
                     "created": "2018-12-04T11:17:37.522889Z",
                     "updated": "2018-12-13T13:12:55.896326Z"
                 },
@@ -496,7 +502,7 @@ Each object in the list is split into three child objects, one for each type of 
 
 
 
-### List Deposits
+### List Card Deposits
 
 ```shell
 curl "{base_url}/admin/deposits/" \
@@ -524,6 +530,7 @@ curl "{base_url}/admin/deposits/" \
                   "groups": "user",
                   "type": null,
                   "status": "active",
+                  "reference_number": "sld-a1b2",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -545,19 +552,87 @@ curl "{base_url}/admin/deposits/" \
                       "updated": "2018-10-31T14:21:38.732972Z",
                       "status": "Complete"
                   }
-              ]
-        }
+              ],
+              "type": "card_deposit"
+            }
       ],
       "total": 1
     }
 }
 ```
 
-This endpoint retrieves a list of all deposits.
+This endpoint retrieves a list of all card deposits.
 
 #### HTTP Request
 
 `GET /admin/deposits/`
+
+
+
+### List Bank EFT Deposits
+
+```shell
+curl "{base_url}/admin/deposits/bank-eft/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "success",
+    "message": null,
+    "data": {
+        "results": [
+          {
+              "identifier": "68796fab-7edb-413c-9881-55e1101d9777",
+              "user": {
+                  "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+                  "first_name": "Testy",
+                  "last_name": "McTester",
+                  "email": "testy@getslideapp.com",
+                  "mobile_number": "+27821111112",
+                  "company": "slide_dev",
+                  "groups": "user",
+                  "type": null,
+                  "status": "active",
+                  "reference_number": "sld-a1b2",
+                  "created": "2018-09-30T15:53:37.012334Z",
+                  "updated": "2018-10-31T09:48:38.299689Z"
+              },
+              "amount": 40,
+              "total_amount_charged": 49,
+              "currency": "ZAR",
+              "created": "2018-10-31T14:20:47.628274Z",
+              "updated": "2018-10-31T14:21:24.875560Z",
+              "status": "Complete",
+              "charges": [
+                  {
+                      "type": "user",
+                      "identifier": "729c086e-1dab-4f39-9679-1cdaee6f5c06",
+                      "amount": 9,
+                      "flat_fee_charge": 5,
+                      "percentage_rate_charge": 4,
+                      "currency": "ZAR",
+                      "created": "2018-10-31T14:20:48.095841Z",
+                      "updated": "2018-10-31T14:21:38.732972Z",
+                      "status": "Complete"
+                  }
+              ],
+              "type": "bank_eft_deposit"
+            }
+      ],
+      "total": 1
+    }
+}
+```
+
+This endpoint retrieves a list of all card deposits.
+
+#### HTTP Request
+
+`GET /admin/deposits/bank-eft/`
 
 ### List Transfers
 
@@ -587,6 +662,7 @@ curl "{base_url}/admin/transfers/" \
                   "groups": "user",
                   "type": null,
                   "status": "active",
+                  "reference_number": "sld-a1b2",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -600,6 +676,7 @@ curl "{base_url}/admin/transfers/" \
                   "groups": "user",
                   "type": null,
                   "status": "active",
+                  "reference_number": "sld-a1b2",
                   "created": "2018-07-24T10:50:42.364399Z",
                   "updated": "2018-07-24T10:50:48.329165Z"
               },
@@ -634,7 +711,8 @@ curl "{base_url}/admin/transfers/" \
                       "updated": "2018-10-31T13:56:19.209375Z",
                       "status": "Complete"
                   }
-              ]
+              ],
+              "type": "transfer"
         }      
       ],
       "total": 1
@@ -677,6 +755,7 @@ curl "{base_url}/admin/withdrawals/" \
                   "groups": "user",
                   "type": null,
                   "status": "active",
+                  "reference_number": "sld-a1b2",
                   "created": "2018-09-30T15:53:37.012334Z",
                   "updated": "2018-10-31T09:48:38.299689Z"
               },
@@ -698,7 +777,8 @@ curl "{base_url}/admin/withdrawals/" \
                       "updated": "2018-10-31T14:09:02.457248Z",
                       "status": "Complete"
                   }
-              ]
+              ],
+              "type": "withdrawal"
           }
         ],
         "total": 1
@@ -738,6 +818,7 @@ curl "{base_url}/admin/transactions/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-12-04T11:14:51.924388Z",
             "updated": "2019-01-17T10:06:46.021888Z"
         },
@@ -751,6 +832,7 @@ curl "{base_url}/admin/transactions/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-12-04T11:17:37.522889Z",
             "updated": "2018-12-13T13:12:55.896326Z"
         },
@@ -789,7 +871,7 @@ The type of the transaction is specified in the `type` field of the object.
 `GET /admin/transactions/{identifier}/`
 
 
-### Get Deposit
+### Get Card Deposit
 
 ```shell
 curl "{base_url}/admin/deposits/{identifier}/" \
@@ -813,6 +895,7 @@ curl "{base_url}/admin/deposits/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -834,18 +917,80 @@ curl "{base_url}/admin/deposits/{identifier}/" \
                 "updated": "2018-10-31T14:21:38.732972Z",
                 "status": "Complete"
             }
-        ]
+        ],
+        "type": "card_deposit"
     },
     "message": null,
     "status": "success"
 }
 ```
 
-This endpoint retrieves the Deposit with `identifier = {identifier}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
+This endpoint retrieves the card Deposit with `identifier = {identifier}` if the logged in user is the resource owner, otherwise it returns a `404 Not Found`.
 
 #### HTTP Request
 
 `GET /admin/deposits/{identifier}/`
+
+
+### Get Bank EFT Deposit
+
+```shell
+curl "{base_url}/admin/deposits/bank-eft/{identifier}/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "identifier": "68796fab-7edb-413c-9881-55e1101d9777",
+        "user": {
+            "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+            "first_name": "Testy",
+            "last_name": "McTester",
+            "email": "testy@getslideapp.com",
+            "mobile_number": "+27821111112",
+            "company": "slide_dev",
+            "groups": "user",
+            "type": null,
+            "status": "active",
+            "reference_number": "sld-a1b2",
+            "created": "2018-09-30T15:53:37.012334Z",
+            "updated": "2018-10-31T09:48:38.299689Z"
+        },
+        "amount": 40,
+        "total_amount_charged": 49,
+        "currency": "ZAR",
+        "created": "2018-10-31T14:20:47.628274Z",
+        "updated": "2018-10-31T14:21:24.875560Z",
+        "status": "Complete",
+        "charges": [
+            {
+                "type": "user",
+                "identifier": "729c086e-1dab-4f39-9679-1cdaee6f5c06",
+                "amount": 9,
+                "flat_fee_charge": 5,
+                "percentage_rate_charge": 4,
+                "currency": "ZAR",
+                "created": "2018-10-31T14:20:48.095841Z",
+                "updated": "2018-10-31T14:21:38.732972Z",
+                "status": "Complete"
+            }
+        ],
+        "type": "bank_eft_deposit"
+    },
+    "message": null,
+    "status": "success"
+}
+```
+
+This endpoint retrieves the bank EFT Deposit with `identifier = {identifier}`, or a `404 Not Found` if it does not exist.
+
+#### HTTP Request
+
+`GET /admin/deposits/bank-eft/{identifier}/`
 
 ### Get Transfer
 
@@ -871,6 +1016,7 @@ curl "{base_url}/admin/transfers/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -884,6 +1030,7 @@ curl "{base_url}/admin/transfers/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-07-24T10:50:42.364399Z",
             "updated": "2018-07-24T10:50:48.329165Z"
         },
@@ -918,7 +1065,8 @@ curl "{base_url}/admin/transfers/{identifier}/" \
                 "updated": "2018-10-31T13:56:19.209375Z",
                 "status": "Complete"
             }
-        ]
+        ],
+        "type": "transfer"
     },
     "message": null,
     "status": "success"
@@ -955,6 +1103,7 @@ curl "{base_url}/admin/withdrawals/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -976,7 +1125,8 @@ curl "{base_url}/admin/withdrawals/{identifier}/" \
                 "updated": "2018-10-31T14:09:02.457248Z",
                 "status": "Complete"
             }
-        ]
+        ],
+        "type": "withdrawal"
     },
     "message": null,
     "status": "success"
@@ -989,7 +1139,7 @@ This endpoint retrieves the Withdrawal with `identifier = {identifier}` if the l
 
 `GET /admin/withdrawals/{identifier}/`
 
-### Create Deposit
+### Create Card Deposit
 
 ```shell
 curl "{base_url}/admin/deposits/" \
@@ -1020,6 +1170,7 @@ curl "{base_url}/admin/deposits/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1041,16 +1192,92 @@ curl "{base_url}/admin/deposits/" \
                 "updated": "2018-11-01T12:55:11.583940Z",
                 "status": "Complete"
             }
-        ]
+        ],
+        "type": "card_deposit"
     },
 }
 ```
 
-This endpoint creates a deposit transaction for the specified user.
+This endpoint creates a card deposit transaction for the specified user.
 
 #### HTTP Request
 
 `POST /admin/deposits/`
+
+#### POST Parameters
+
+Parameter | Description | Type | Required
+--------- | ----------- | -----| --------
+`user` | User's identifier | String | Yes
+`amount` | Deposit amount (cents) | Integer | Yes
+
+
+### Create Bank EFT Deposit
+
+```shell
+curl "{base_url}/admin/deposits/bank-eft/" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token {token}" \
+  -d '{
+      "user": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+       "amount": 40
+     }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "success",
+    "message": "created",
+    "data": {
+        "identifier": "138cf55f-cbcb-40a8-9db6-c153e7f3be81",
+        "user": {
+            "identifier": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+            "first_name": "Testy",
+            "last_name": "McTester",
+            "email": "testy@getslideapp.com",
+            "mobile_number": "+27654329999",
+            "company": "slide_dev",
+            "groups": "user",
+            "type": null,
+            "status": "active",
+            "reference_number": "sld-a1b2",
+            "created": "2018-09-30T15:53:37.012334Z",
+            "updated": "2018-11-01T12:51:29.721300Z"
+        },
+        "amount": 40,
+        "total_amount_charged": 49,
+        "currency": "ZAR",
+        "created": "2018-11-01T12:54:27.467077Z",
+        "updated": "2018-11-01T12:54:59.902736Z",
+        "status": "Initialized",
+        "charges": [
+            {
+                "type": "user",
+                "identifier": "9a8dc48c-cd4d-4f6a-9705-981e687e3106",
+                "amount": 9,
+                "flat_fee_charge": 5,
+                "percentage_rate_charge": 4,
+                "currency": "ZAR",
+                "created": "2018-11-01T12:54:27.618507Z",
+                "updated": "2018-11-01T12:55:11.583940Z",
+                "status": "Initialized"
+            }
+        ],
+        "type": "bank_eft_deposit"
+    },
+}
+```
+
+This endpoint creates a Bank EFT deposit transaction for the specified user. Following the initialization of the transaction using this endpoint, the user will then be required to make a bank EFT deposit for the total amount,
+quoting their user `reference_number` as a reference. When this deposit is processed, the status will shift to `Complete` and only then will the funds will reflect in the user balance.
+
+
+#### HTTP Request
+
+`POST /admin/deposits/bank-eft/`
 
 #### POST Parameters
 
@@ -1089,6 +1316,7 @@ curl "{base_url}/admin/transfers/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1102,6 +1330,7 @@ curl "{base_url}/admin/transfers/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-07-24T10:50:42.364399Z",
             "updated": "2018-07-24T10:50:48.329165Z"
         },
@@ -1136,7 +1365,8 @@ curl "{base_url}/admin/transfers/" \
                 "updated": "2018-11-01T13:25:15.709067Z",
                 "status": "Complete"
             }
-        ]
+        ],
+        "type": "transfer"
     },
     "status": "success"
 }
@@ -1186,6 +1416,7 @@ curl "{base_url}/admin/withdrawals/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1195,7 +1426,8 @@ curl "{base_url}/admin/withdrawals/" \
         "created": "2018-11-01T13:29:14.458608Z",
         "updated": "2018-11-01T13:30:10.851876Z",
         "status": "Complete",
-        "charges": []
+        "charges": [],
+        "type": "withdrawal"
     },
 }
 ```

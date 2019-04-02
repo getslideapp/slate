@@ -2,10 +2,13 @@
 
 ## [unreleased]
 
+## [2.9.0] - 2019-04-02
+
 #### Added
 - Included status in `POST /admin/users/` and `PUT /admin/users/{identifier}/` endpoints with the options `pending`, `active` and `inactive`.
 - Filtering support added to the `GET /admin/users/` endpoint
 - Filtering support added to the `GET /admin/transactions/` endpoint
+- Added `GET /admin/account/balance/` endpoint
 - `type` to user and transaction responses
 - `reference-number` to the user model and user responses
 - Create Bank EFT deposits at `POST /admin/deposits/bank-eft/`

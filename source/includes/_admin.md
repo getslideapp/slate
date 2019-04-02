@@ -2,6 +2,36 @@
 
 Admin endpoints are a set of admin-only accessible endpoints that provide administrative functionality across a company.
 
+## Account
+
+The admin account endpoints allow the admin to retrieve information pertaining to the company admin account.
+
+### Get Balance
+ 
+```shell
+curl "{base_url}/admin/account/balance/" \
+  -X GET \
+  -H "Authorization: Token {token}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "success",
+    "data": {
+        "balance": 1000
+    },
+    "message": null
+}
+```
+
+This endpoint retrieves the company account balance.
+
+#### HTTP Request
+
+`GET /admin/account/balance/`
+
 ## Users
 
 The Admin user endpoints allows an admin user to view or alter user information the user's behalf.

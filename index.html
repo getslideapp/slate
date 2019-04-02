@@ -358,6 +358,14 @@
             <a href="#admin" class="toc-h1 toc-link" data-title="Admin">Admin</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#admin-account" class="toc-h2 toc-link" data-title="Account">Account</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#admin-account-get-balance" class="toc-h3 toc-link" data-title="Admin">Get Balance</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#admin-users" class="toc-h2 toc-link" data-title="Users">Users</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -387,7 +395,10 @@
                             <a href="#admin-transactions-aggregate-transactions" class="toc-h3 toc-link" data-title="Admin">Aggregate Transactions</a>
                           </li>
                           <li>
-                            <a href="#admin-transactions-list-deposits" class="toc-h3 toc-link" data-title="Admin">List Deposits</a>
+                            <a href="#admin-transactions-list-card-deposits" class="toc-h3 toc-link" data-title="Admin">List Card Deposits</a>
+                          </li>
+                          <li>
+                            <a href="#admin-transactions-list-bank-eft-deposits" class="toc-h3 toc-link" data-title="Admin">List Bank EFT Deposits</a>
                           </li>
                           <li>
                             <a href="#admin-transactions-list-transfers" class="toc-h3 toc-link" data-title="Admin">List Transfers</a>
@@ -399,7 +410,10 @@
                             <a href="#admin-transactions-get-transaction" class="toc-h3 toc-link" data-title="Admin">Get Transaction</a>
                           </li>
                           <li>
-                            <a href="#admin-transactions-get-deposit" class="toc-h3 toc-link" data-title="Admin">Get Deposit</a>
+                            <a href="#admin-transactions-get-card-deposit" class="toc-h3 toc-link" data-title="Admin">Get Card Deposit</a>
+                          </li>
+                          <li>
+                            <a href="#admin-transactions-get-bank-eft-deposit" class="toc-h3 toc-link" data-title="Admin">Get Bank EFT Deposit</a>
                           </li>
                           <li>
                             <a href="#admin-transactions-get-transfer" class="toc-h3 toc-link" data-title="Admin">Get Transfer</a>
@@ -408,7 +422,10 @@
                             <a href="#admin-transactions-get-withdrawal" class="toc-h3 toc-link" data-title="Admin">Get Withdrawal</a>
                           </li>
                           <li>
-                            <a href="#admin-transactions-create-deposit" class="toc-h3 toc-link" data-title="Admin">Create Deposit</a>
+                            <a href="#admin-transactions-create-card-deposit" class="toc-h3 toc-link" data-title="Admin">Create Card Deposit</a>
+                          </li>
+                          <li>
+                            <a href="#admin-transactions-create-bank-eft-deposit" class="toc-h3 toc-link" data-title="Admin">Create Bank EFT Deposit</a>
                           </li>
                           <li>
                             <a href="#admin-transactions-create-transfer" class="toc-h3 toc-link" data-title="Admin">Create Transfer</a>
@@ -447,6 +464,9 @@
                     <a href="#changelog-unreleased" class="toc-h2 toc-link" data-title="[unreleased]">[unreleased]</a>
                   </li>
                   <li>
+                    <a href="#changelog-2-9-0-2019-04-02" class="toc-h2 toc-link" data-title="[2.9.0] - 2019-04-02">[2.9.0] - 2019-04-02</a>
+                  </li>
+                  <li>
                     <a href="#changelog-2-7-0-2019-03-05" class="toc-h2 toc-link" data-title="[2.7.0] - 2019-03-05">[2.7.0] - 2019-03-05</a>
                   </li>
                   <li>
@@ -458,7 +478,7 @@
         <ul class="toc-footer">
             <li><a href='https://dashboard.getslideapp.com'>Production Slide Dashboard</a></li>
             <li><a href='https://dev.dashboard.getslideapp.com'>Development Slide Dashboard</a></li>
-            <li>v2.3.1-167-g3c5ea08</li>
+            <li>v2.3.1-201-g34eae85</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -621,6 +641,7 @@ You must replace <code>{token}</code> with your personal API token.
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T12:28:37.605119Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T12:28:37.605138Z"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -628,7 +649,7 @@ You must replace <code>{token}</code> with your personal API token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h4 id='authorization-register-admin-authentication-http-request'>HTTP Request</h4>
 <p><code>POST /auth/register/</code></p>
-<h4 id='authorization-register-admin-authentication-url-parameters'>URL Parameters</h4>
+<h4 id='authorization-register-admin-authentication-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -638,28 +659,10 @@ You must replace <code>{token}</code> with your personal API token.
 </tr>
 </thead><tbody>
 <tr>
-<td><code>first_name</code></td>
-<td>User&#39;s first name</td>
-<td>String</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td><code>last_name</code></td>
-<td>User&#39;s last name</td>
-<td>String</td>
-<td>Yes</td>
-</tr>
-<tr>
 <td><code>email</code></td>
 <td>User&#39;s email address</td>
 <td>String</td>
 <td>Yes</td>
-</tr>
-<tr>
-<td><code>mobile_number</code></td>
-<td>User&#39;s mobile number</td>
-<td>String</td>
-<td>No</td>
 </tr>
 <tr>
 <td><code>password1</code></td>
@@ -672,6 +675,24 @@ You must replace <code>{token}</code> with your personal API token.
 <td>Password confirmation</td>
 <td>String</td>
 <td>Yes</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>User&#39;s first name</td>
+<td>String</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>User&#39;s last name</td>
+<td>String</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>mobile_number</code></td>
+<td>User&#39;s mobile number</td>
+<td>String</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code>session_duration</code></td>
@@ -711,6 +732,7 @@ The session duration, if not set, will default to 10 hours. A session duration o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T12:28:37.605119Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T12:28:37.605138Z"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -718,7 +740,7 @@ The session duration, if not set, will default to 10 hours. A session duration o
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h4 id='authorization-login-admin-authentication-http-request'>HTTP Request</h4>
 <p><code>POST /auth/login/</code></p>
-<h4 id='authorization-login-admin-authentication-url-parameters'>URL Parameters</h4>
+<h4 id='authorization-login-admin-authentication-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -805,7 +827,7 @@ The session duration, if not set, will default to 10 hours. A session duration o
 <p>This endpoint creates a new permanent token for the user.</p>
 <h4 id='authorization-tokens-create-token-http-request'>HTTP Request</h4>
 <p><code>POST /auth/tokens/</code></p>
-<h4 id='authorization-tokens-create-token-url-parameters'>URL Parameters</h4>
+<h4 id='authorization-tokens-create-token-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -866,7 +888,10 @@ The duration, if not set, will default to 10 hours. A duration of 0 will create 
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-2308"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -976,7 +1001,7 @@ The bank `branch_code` will be set for each bank account based on the chosen ban
 </aside>
 <h4 id='users-bank-accounts-create-bank-account-http-request'>HTTP Request</h4>
 <p><code>POST /user/bank-accounts/</code></p>
-<h4 id='users-bank-accounts-create-bank-account-url-parameters'>URL Parameters</h4>
+<h4 id='users-bank-accounts-create-bank-account-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1225,7 +1250,7 @@ The card type will be set for each bank account based on the chosen bank's card.
 </aside>
 <h4 id='users-cards-register-card-http-request'>HTTP Request</h4>
 <p><code>POST /user/cards/</code></p>
-<h4 id='users-cards-register-card-url-parameters'>URL Parameters</h4>
+<h4 id='users-cards-register-card-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1417,6 +1442,7 @@ Note that all all the variables are mapped directly to the response, except for 
                     </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-04T11:14:51.924388Z"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-17T10:06:46.021888Z"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -1430,6 +1456,7 @@ Note that all all the variables are mapped directly to the response, except for 
                     </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-04T11:17:37.522889Z"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-13T13:12:55.896326Z"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -1465,7 +1492,7 @@ Note that all all the variables are mapped directly to the response, except for 
 The type of each transaction is specified in the <code>type</code> field of the object.</p>
 <h4 id='users-transactions-list-transactions-http-request'>HTTP Request</h4>
 <p><code>GET /user/transactions/</code></p>
-<h4 id='users-transactions-list-transactions-url-parameters'>URL Parameters</h4>
+<h4 id='users-transactions-list-transactions-post-parameters'>POST Parameters</h4>
 <p>This endpoint supports pagination, with the following parameters available for use:</p>
 
 <table><thead>
@@ -1515,6 +1542,7 @@ curl "{base_url}/user/deposits/" \
                 "groups": "user",
                 "type": null,
                 "status": "active",
+                "reference_number": "sld-a1b2",
                 "created": "2018-09-30T15:53:37.012334Z",
                 "updated": "2018-10-31T09:48:38.299689Z"
             },
@@ -1567,6 +1595,7 @@ This endpoint retrieves a list of all the user's deposits.
                 </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -1580,6 +1609,7 @@ This endpoint retrieves a list of all the user's deposits.
                 </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:42.364399Z"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:48.329165Z"</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -1645,6 +1675,7 @@ This endpoint retrieves a list of all the user's deposits.
                 </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -1697,6 +1728,7 @@ curl "{base_url}/admin/deposits/{identifier}/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-10-31T09:48:38.299689Z"
         },
@@ -1748,6 +1780,7 @@ This endpoint retrieves the Deposit with `identifier = {identifier}` if the logg
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-04T11:14:51.924388Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-17T10:06:46.021888Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -1761,6 +1794,7 @@ This endpoint retrieves the Deposit with `identifier = {identifier}` if the logg
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-04T11:17:37.522889Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-13T13:12:55.896326Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -1815,6 +1849,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -1828,6 +1863,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:42.364399Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:48.329165Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -1891,6 +1927,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -1951,6 +1988,7 @@ curl "{base_url}/admin/deposits/" \
             "groups": "user",
             "type": null,
             "status": "active",
+            "reference_number": "sld-a1b2",
             "created": "2018-09-30T15:53:37.012334Z",
             "updated": "2018-11-01T12:51:29.721300Z"
         },
@@ -1979,7 +2017,7 @@ curl "{base_url}/admin/deposits/" \
 This endpoint creates a deposit transaction for the specified user.
 #### HTTP Request
 `POST /admin/deposits/`
-#### URL Parameters
+#### POST Parameters
 Parameter | Description | Type | Required
 --------- | ----------- | -----| --------
 `user` | User's identifier | String | Yes
@@ -2009,6 +2047,7 @@ Parameter | Description | Type | Required
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:51:29.721300Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2022,6 +2061,7 @@ Parameter | Description | Type | Required
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:42.364399Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:48.329165Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2064,7 +2104,7 @@ Parameter | Description | Type | Required
 <p>This endpoint creates a transfer transaction from the specified user to the specified recipient.</p>
 <h4 id='users-transactions-create-transfer-http-request'>HTTP Request</h4>
 <p><code>POST /user/transfers/</code></p>
-<h4 id='users-transactions-create-transfer-url-parameters'>URL Parameters</h4>
+<h4 id='users-transactions-create-transfer-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2116,6 +2156,7 @@ Parameter | Description | Type | Required
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:51:29.721300Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2132,7 +2173,7 @@ Parameter | Description | Type | Required
 <p>This endpoint creates a withdrawal transaction for the specified user.</p>
 <h4 id='users-transactions-create-withdrawal-http-request'>HTTP Request</h4>
 <p><code>POST /user/withdrawals/</code></p>
-<h4 id='users-transactions-create-withdrawal-url-parameters'>URL Parameters</h4>
+<h4 id='users-transactions-create-withdrawal-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2150,6 +2191,26 @@ Parameter | Description | Type | Required
 </tbody></table>
 <h1 id='admin'>Admin</h1>
 <p>Admin endpoints are a set of admin-only accessible endpoints that provide administrative functionality across a company.</p>
+<h2 id='admin-account'>Account</h2>
+<p>The admin account endpoints allow the admin to retrieve information pertaining to the company admin account.</p>
+<h3 id='admin-account-get-balance'>Get Balance</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/account/balance/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the company account balance.</p>
+<h4 id='admin-account-get-balance-http-request'>HTTP Request</h4>
+<p><code>GET /admin/account/balance/</code></p>
 <h2 id='admin-users'>Users</h2>
 <p>The Admin user endpoints allows an admin user to view or alter user information the user&#39;s behalf.</p>
 <h3 id='admin-users-list-users'>List Users</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/"</span> <span class="se">\</span>
@@ -2172,6 +2233,7 @@ Parameter | Description | Type | Required
         </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -2184,8 +2246,8 @@ Parameter | Description | Type | Required
 </span></code></pre>
 <p>This endpoint retrieves a list of all users.</p>
 <h4 id='admin-users-list-users-http-request'>HTTP Request</h4>
-<p><code>GET /admin/users/</code></p>
-<h4 id='admin-users-list-users-url-parameters'>URL Parameters</h4>
+<p><code>GET /admin/users/?first_name=john&amp;email=johndoe@getslideapp.com</code></p>
+<h4 id='admin-users-list-users-pagination-parameters'>Pagination Parameters</h4>
 <p>This endpoint supports pagination, with the following parameters available for use:</p>
 
 <table><thead>
@@ -2209,6 +2271,56 @@ Parameter | Description | Type | Required
 <td>No</td>
 </tr>
 </tbody></table>
+<h4 id='admin-users-list-users-filter-parameters'>Filter Parameters</h4>
+<p>This endpoint supports filtering, with the following query parameters available for use:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>identifier</code></td>
+<td>User&#39;s <code>identifier</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>User&#39;s <code>first_name</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>User&#39;s <code>last_name</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>User&#39;s <code>email</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>mobile_number</code></td>
+<td>User&#39;s <code>mobile_number</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>User&#39;s status (Options are: <code>pending</code>, <code>active</code>, or <code>inactive</code>)</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>groups</code></td>
+<td>User&#39;s group (Options are: <code>user</code> or <code>admin_user</code>)</td>
+<td>String</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+When filtering using arguments that contain special characters, the special characters should be URL encoded. For example, + should be replaced with %2B when filtering on email or mobile_number.
+</aside>
 <h3 id='admin-users-get-user'>Get User</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/users/{identifier}/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
@@ -2229,6 +2341,7 @@ Parameter | Description | Type | Required
           </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2262,6 +2375,7 @@ Parameter | Description | Type | Required
         </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2269,10 +2383,11 @@ Parameter | Description | Type | Required
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint creates a user. When a new user is created they will by default be in the <code>user</code> group.</p>
+<p>This endpoint creates a user. When a new user is created they will by default be in the <code>user</code> group. Their
+status defaults to <code>active</code> if none is specified.</p>
 <h4 id='admin-users-create-user-http-request'>HTTP Request</h4>
 <p><code>POST /admin/users/</code></p>
-<h4 id='admin-users-create-user-url-parameters'>URL Parameters</h4>
+<h4 id='admin-users-create-user-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2282,28 +2397,34 @@ Parameter | Description | Type | Required
 </tr>
 </thead><tbody>
 <tr>
+<td><code>email</code></td>
+<td>User&#39;s email address</td>
+<td>String</td>
+<td>Yes</td>
+</tr>
+<tr>
 <td><code>first_name</code></td>
 <td>User&#39;s first name</td>
 <td>String</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code>last_name</code></td>
 <td>User&#39;s last name</td>
 <td>String</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code>mobile_number</code></td>
 <td>User&#39;s mobile number</td>
 <td>String</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
-<td><code>email</code></td>
-<td>User&#39;s email address</td>
+<td><code>status</code></td>
+<td>User&#39;s status (Options are: <code>pending</code>, <code>active</code>, or <code>inactive</code>)</td>
 <td>String</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code>groups</code></td>
@@ -2341,6 +2462,7 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
         </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T09:27:25.882898Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-29T16:58:54.647283Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2351,7 +2473,7 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 <p>This endpoint updates an existing user.</p>
 <h4 id='admin-users-update-user-http-request'>HTTP Request</h4>
 <p><code>PUT /admin/users/{identifier}/</code></p>
-<h4 id='admin-users-update-user-url-parameters'>URL Parameters</h4>
+<h4 id='admin-users-update-user-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2360,6 +2482,12 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 <th>Required</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>User&#39;s email address</td>
+<td>String</td>
+<td>No</td>
+</tr>
 <tr>
 <td><code>first_name</code></td>
 <td>User&#39;s first name</td>
@@ -2379,8 +2507,8 @@ Formatting of `mobile_number` is such that it should be exactly 11 characters in
 <td>No</td>
 </tr>
 <tr>
-<td><code>email</code></td>
-<td>User&#39;s email address</td>
+<td><code>status</code></td>
+<td>User&#39;s status (Options are: <code>pending</code>, <code>active</code>, or <code>inactive</code>)</td>
 <td>String</td>
 <td>No</td>
 </tr>
@@ -2428,7 +2556,7 @@ Upon the completion of each successful transaction on which fees are imposed, th
 Fees imposed on the user and recipients are charged to these user accounts and transferred to the company admin account. Fees imposed on the company are paid from the company admin account to Slide. For each transaction, any and all such charges can be found
 under the <b>charges</b> field in the response.
 </aside>
-<h3 id='admin-transactions-list-transactions'>List Transactions</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/transactions/"</span> <span class="se">\</span>
+<h3 id='admin-transactions-list-transactions'>List Transactions</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/transactions/?amount__gt=200"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -2456,6 +2584,7 @@ under the <b>charges</b> field in the response.
                     </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-04T11:14:51.924388Z"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-17T10:06:46.021888Z"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -2469,6 +2598,7 @@ under the <b>charges</b> field in the response.
                     </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-04T11:17:37.522889Z"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-13T13:12:55.896326Z"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -2504,7 +2634,7 @@ under the <b>charges</b> field in the response.
 The type of each transaction is specified in the <code>type</code> field of the object.</p>
 <h4 id='admin-transactions-list-transactions-http-request'>HTTP Request</h4>
 <p><code>GET /admin/transactions/</code></p>
-<h4 id='admin-transactions-list-transactions-url-parameters'>URL Parameters</h4>
+<h4 id='admin-transactions-list-transactions-pagination-parameters'>Pagination Parameters</h4>
 <p>This endpoint supports pagination, with the following parameters available for use:</p>
 
 <table><thead>
@@ -2528,6 +2658,61 @@ The type of each transaction is specified in the <code>type</code> field of the 
 <td>No</td>
 </tr>
 </tbody></table>
+<h4 id='admin-transactions-list-transactions-filter-parameters'>Filter Parameters</h4>
+<p>This endpoint supports filtering, with the following query parameters available for use:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>Type of transaction (Options are: <code>transfer</code>, <code>withdrawal</code>, <code>deposit</code>, <code>card_deposit</code> or <code>bank_eft_deposit</code>)</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>User initiating transaction. Can filter on a user&#39;s <code>identifier</code>, <code>email</code> or <code>mobile_number</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>recipient</code></td>
+<td>User receiving transfer. Can filter on a recipient&#39;s <code>identifier</code>, <code>email</code> or <code>mobile_number</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>amount__gt</code></td>
+<td>Only return transactions where the amount is greater than this value, in cents</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td><code>amount__lt</code></td>
+<td>Only return transactions where the amount is less than this value, in cents</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td><code>amount__exact</code></td>
+<td>Only return transactions where the amount is equal to this value, in cents</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td><code>created__gt</code></td>
+<td>Only return transactions created after this date, in the UNIX timestamp format</td>
+<td>Float</td>
+</tr>
+<tr>
+<td><code>created__lt</code></td>
+<td>Only return transactions created before this date, in the UNIX timestamp format</td>
+<td>Float</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+When filtering using arguments that contain special characters, the special characters should be URL encoded. For example, + should be replaced with %2B when filtering on email or mobile_number.
+</aside>
 <h3 id='admin-transactions-aggregate-transactions'>Aggregate Transactions</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/transactions/aggregate/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
@@ -2600,7 +2785,7 @@ Each object in the list is split into three child objects, one for each type of 
 <p><code>amount</code> represents the aggregated amount of that object in cents for the given period, i.e. <code>amount: 525</code> in a <code>transfers</code> object indicates the sum of all the transfers for that day was 525 cents.</p>
 <h4 id='admin-transactions-aggregate-transactions-http-request'>HTTP Request</h4>
 <p><code>GET /admin/transactions/aggregate/</code></p>
-<h3 id='admin-transactions-list-deposits'>List Deposits</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/"</span> <span class="se">\</span>
+<h3 id='admin-transactions-list-card-deposits'>List Card Deposits</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
 </code></pre>
@@ -2624,6 +2809,7 @@ Each object in the list is split into three child objects, one for each type of 
                   </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
               </span><span class="p">},</span><span class="w">
@@ -2645,16 +2831,74 @@ Each object in the list is split into three child objects, one for each type of 
                       </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:38.732972Z"</span><span class="p">,</span><span class="w">
                       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
                   </span><span class="p">}</span><span class="w">
-              </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card_deposit"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a list of all deposits.</p>
-<h4 id='admin-transactions-list-deposits-http-request'>HTTP Request</h4>
+<p>This endpoint retrieves a list of all card deposits.</p>
+<h4 id='admin-transactions-list-card-deposits-http-request'>HTTP Request</h4>
 <p><code>GET /admin/deposits/</code></p>
+<h3 id='admin-transactions-list-bank-eft-deposits'>List Bank EFT Deposits</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/bank-eft/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68796fab-7edb-413c-9881-55e1101d9777"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:20:47.628274Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:24.875560Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"729c086e-1dab-4f39-9679-1cdaee6f5c06"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:20:48.095841Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:38.732972Z"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_eft_deposit"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of all card deposits.</p>
+<h4 id='admin-transactions-list-bank-eft-deposits-http-request'>HTTP Request</h4>
+<p><code>GET /admin/deposits/bank-eft/</code></p>
 <h3 id='admin-transactions-list-transfers'>List Transfers</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/transfers/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
@@ -2679,6 +2923,7 @@ Each object in the list is split into three child objects, one for each type of 
                   </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
               </span><span class="p">},</span><span class="w">
@@ -2692,6 +2937,7 @@ Each object in the list is split into three child objects, one for each type of 
                   </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:42.364399Z"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:48.329165Z"</span><span class="w">
               </span><span class="p">},</span><span class="w">
@@ -2726,7 +2972,8 @@ Each object in the list is split into three child objects, one for each type of 
                       </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:56:19.209375Z"</span><span class="p">,</span><span class="w">
                       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
                   </span><span class="p">}</span><span class="w">
-              </span><span class="p">]</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer"</span><span class="w">
         </span><span class="p">}</span><span class="w">      
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
@@ -2761,6 +3008,7 @@ Each object in the list is split into three child objects, one for each type of 
                   </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
                   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
               </span><span class="p">},</span><span class="w">
@@ -2782,7 +3030,8 @@ Each object in the list is split into three child objects, one for each type of 
                       </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:09:02.457248Z"</span><span class="p">,</span><span class="w">
                       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
                   </span><span class="p">}</span><span class="w">
-              </span><span class="p">]</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdrawal"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
@@ -2813,6 +3062,7 @@ Each object in the list is split into three child objects, one for each type of 
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-04T11:14:51.924388Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-17T10:06:46.021888Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2826,6 +3076,7 @@ Each object in the list is split into three child objects, one for each type of 
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-04T11:17:37.522889Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-13T13:12:55.896326Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2859,7 +3110,7 @@ Each object in the list is split into three child objects, one for each type of 
 The type of the transaction is specified in the <code>type</code> field of the object.</p>
 <h4 id='admin-transactions-get-transaction-http-request'>HTTP Request</h4>
 <p><code>GET /admin/transactions/{identifier}/</code></p>
-<h3 id='admin-transactions-get-deposit'>Get Deposit</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/{identifier}/"</span> <span class="se">\</span>
+<h3 id='admin-transactions-get-card-deposit'>Get Card Deposit</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/{identifier}/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
 </code></pre>
@@ -2879,6 +3130,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2900,15 +3152,68 @@ The type of the transaction is specified in the <code>type</code> field of the o
                 </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:38.732972Z"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card_deposit"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves the Deposit with <code>identifier = {identifier}</code> if the logged in user is the resource owner, otherwise it returns a <code>404 Not Found</code>.</p>
-<h4 id='admin-transactions-get-deposit-http-request'>HTTP Request</h4>
+<p>This endpoint retrieves the card Deposit with <code>identifier = {identifier}</code> if the logged in user is the resource owner, otherwise it returns a <code>404 Not Found</code>.</p>
+<h4 id='admin-transactions-get-card-deposit-http-request'>HTTP Request</h4>
 <p><code>GET /admin/deposits/{identifier}/</code></p>
+<h3 id='admin-transactions-get-bank-eft-deposit'>Get Bank EFT Deposit</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/bank-eft/{identifier}/"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68796fab-7edb-413c-9881-55e1101d9777"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27821111112"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:20:47.628274Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:24.875560Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"729c086e-1dab-4f39-9679-1cdaee6f5c06"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:20:48.095841Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:21:38.732972Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_eft_deposit"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the bank EFT Deposit with <code>identifier = {identifier}</code>, or a <code>404 Not Found</code> if it does not exist.</p>
+<h4 id='admin-transactions-get-bank-eft-deposit-http-request'>HTTP Request</h4>
+<p><code>GET /admin/deposits/bank-eft/{identifier}/</code></p>
 <h3 id='admin-transactions-get-transfer'>Get Transfer</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/transfers/{identifier}/"</span> <span class="se">\</span>
   -X GET <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span>
@@ -2929,6 +3234,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2942,6 +3248,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:42.364399Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:48.329165Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -2976,7 +3283,8 @@ The type of the transaction is specified in the <code>type</code> field of the o
                 </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T13:56:19.209375Z"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
@@ -3005,6 +3313,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T09:48:38.299689Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -3026,7 +3335,8 @@ The type of the transaction is specified in the <code>type</code> field of the o
                 </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-31T14:09:02.457248Z"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdrawal"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
@@ -3035,7 +3345,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
 <p>This endpoint retrieves the Withdrawal with <code>identifier = {identifier}</code> if the logged in user is the resource owner, otherwise it returns a <code>404 Not Found</code>.</p>
 <h4 id='admin-transactions-get-withdrawal-http-request'>HTTP Request</h4>
 <p><code>GET /admin/withdrawals/{identifier}/</code></p>
-<h3 id='admin-transactions-create-deposit'>Create Deposit</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/"</span> <span class="se">\</span>
+<h3 id='admin-transactions-create-card-deposit'>Create Card Deposit</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
@@ -3062,6 +3372,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:51:29.721300Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -3083,14 +3394,95 @@ The type of the transaction is specified in the <code>type</code> field of the o
                 </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:55:11.583940Z"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card_deposit"</span><span class="w">
     </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint creates a deposit transaction for the specified user.</p>
-<h4 id='admin-transactions-create-deposit-http-request'>HTTP Request</h4>
+<p>This endpoint creates a card deposit transaction for the specified user.</p>
+<h4 id='admin-transactions-create-card-deposit-http-request'>HTTP Request</h4>
 <p><code>POST /admin/deposits/</code></p>
-<h4 id='admin-transactions-create-deposit-url-parameters'>URL Parameters</h4>
+<h4 id='admin-transactions-create-card-deposit-post-parameters'>POST Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user</code></td>
+<td>User&#39;s identifier</td>
+<td>String</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>Deposit amount (cents)</td>
+<td>Integer</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='admin-transactions-create-bank-eft-deposit'>Create Bank EFT Deposit</h3><pre class="highlight shell tab-shell"><code>curl <span class="s2">"{base_url}/admin/deposits/bank-eft/"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Token {token}"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+      "user": "c1e21425-66c5-44d0-bc14-5352301fb7f0",
+       "amount": 40
+     }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"138cf55f-cbcb-40a8-9db6-c153e7f3be81"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e21425-66c5-44d0-bc14-5352301fb7f0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testy"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McTester"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testy@getslideapp.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27654329999"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_dev"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:51:29.721300Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_amount_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:54:27.467077Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:54:59.902736Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Initialized"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a8dc48c-cd4d-4f6a-9705-981e687e3106"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"flat_fee_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"percentage_rate_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAR"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:54:27.618507Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:55:11.583940Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Initialized"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_eft_deposit"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a Bank EFT deposit transaction for the specified user. Following the initialization of the transaction using this endpoint, the user will then be required to make a bank EFT deposit for the total amount,
+quoting their user <code>reference_number</code> as a reference. When this deposit is processed, the status will shift to <code>Complete</code> and only then will the funds will reflect in the user balance.</p>
+<h4 id='admin-transactions-create-bank-eft-deposit-http-request'>HTTP Request</h4>
+<p><code>POST /admin/deposits/bank-eft/</code></p>
+<h4 id='admin-transactions-create-bank-eft-deposit-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3138,6 +3530,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:51:29.721300Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -3151,6 +3544,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:42.364399Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-24T10:50:48.329165Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -3185,7 +3579,8 @@ The type of the transaction is specified in the <code>type</code> field of the o
                 </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T13:25:15.709067Z"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3193,7 +3588,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
 <p>This endpoint creates a transfer transaction from the specified user to the specified recipient.</p>
 <h4 id='admin-transactions-create-transfer-http-request'>HTTP Request</h4>
 <p><code>POST /admin/transfers/</code></p>
-<h4 id='admin-transactions-create-transfer-url-parameters'>URL Parameters</h4>
+<h4 id='admin-transactions-create-transfer-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3252,6 +3647,7 @@ The type of the transaction is specified in the <code>type</code> field of the o
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sld-a1b2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-30T15:53:37.012334Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T12:51:29.721300Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -3261,14 +3657,15 @@ The type of the transaction is specified in the <code>type</code> field of the o
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T13:29:14.458608Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01T13:30:10.851876Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complete"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdrawal"</span><span class="w">
     </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a withdrawal transaction for the specified user.</p>
 <h4 id='admin-transactions-create-withdrawal-http-request'>HTTP Request</h4>
 <p><code>POST /admin/withdrawals/</code></p>
-<h4 id='admin-transactions-create-withdrawal-url-parameters'>URL Parameters</h4>
+<h4 id='admin-transactions-create-withdrawal-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3445,7 +3842,7 @@ Fees set for the company are not able to be viewed but not created nor updated v
 <p>This endpoint creates a fee.</p>
 <h4 id='admin-fees-create-fee-http-request'>HTTP Request</h4>
 <p><code>POST /admin/fees/</code></p>
-<h4 id='admin-fees-create-fee-url-parameters'>URL Parameters</h4>
+<h4 id='admin-fees-create-fee-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3522,7 +3919,7 @@ Fees set for the company are not able to be viewed but not created nor updated v
 <p>This endpoint updates a fee.</p>
 <h4 id='admin-fees-update-fee-http-request'>HTTP Request</h4>
 <p><code>PUT /admin/fees/{identifier}/</code></p>
-<h4 id='admin-fees-update-fee-url-parameters'>URL Parameters</h4>
+<h4 id='admin-fees-update-fee-post-parameters'>POST Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3620,9 +4017,28 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>Internal Server Error -- We had a problem with our server. Try again later.</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1><h2 id='changelog-unreleased'>[unreleased]</h2><h4 id='changelog-unreleased-update-fee-fixed'>Fixed</h4>
+<h1 id='changelog'>Changelog</h1><h2 id='changelog-unreleased'>[unreleased]</h2><h2 id='changelog-2-9-0-2019-04-02'>[2.9.0] - 2019-04-02</h2><h4 id='changelog-2-9-0-2019-04-02-update-fee-added'>Added</h4>
+<ul>
+<li>Included status in <code>POST /admin/users/</code> and <code>PUT /admin/users/{identifier}/</code> endpoints with the options <code>pending</code>, <code>active</code> and <code>inactive</code>.</li>
+<li>Filtering support added to the <code>GET /admin/users/</code> endpoint</li>
+<li>Filtering support added to the <code>GET /admin/transactions/</code> endpoint</li>
+<li>Added <code>GET /admin/account/balance/</code> endpoint</li>
+<li><code>type</code> to user and transaction responses</li>
+<li><code>reference-number</code> to the user model and user responses</li>
+<li>Create Bank EFT deposits at <code>POST /admin/deposits/bank-eft/</code></li>
+<li>List Bank EFT deposits at <code>GET /admin/deposits/bank-eft/</code></li>
+<li>Get Bank EFT deposits at <code>POST /admin/deposits/bank-eft/{identifier}/</code></li>
+<li>REST actions for the old Card Deposits are now also available at <code>/admin/deposits/card/</code></li>
+</ul>
+<h4 id='changelog-2-9-0-2019-04-02-update-fee-changed'>Changed</h4>
+<ul>
+<li>Changed <code>first_name</code> and <code>last_name</code> to NOT be required for <code>POST /auth/register/</code> and <code>POST /admin/users/</code> endpoints.</li>
+<li>Changed the old deposit model to <code>card_deposit</code>. REST actions at <code>/admin/deposits/</code> serve exclusively card deposits. These are also available at <code>/admin/deposits/card/</code> as added above</li>
+</ul>
+<h4 id='changelog-2-9-0-2019-04-02-update-fee-fixed'>Fixed</h4>
 <ul>
 <li>Registering a user via the <code>/auth/register</code> endpoint no longer returns a 400 if the <code>groups</code> field is included in the POST payload.</li>
+<li>Fixed a bug causing withdrawals to timeout.</li>
 </ul>
 <h2 id='changelog-2-7-0-2019-03-05'>[2.7.0] - 2019-03-05</h2><h4 id='changelog-2-7-0-2019-03-05-update-fee-added'>Added</h4>
 <ul>

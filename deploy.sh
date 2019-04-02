@@ -224,6 +224,7 @@ increment_version() {
 
 uncommitted_changes_check() {
 # check that file has no uncommitted changes
+  git status
   if git diff-index --quiet HEAD --; then
       echo No uncommitted local changes
   else
